@@ -1,0 +1,1614 @@
+{
+  "seed": 20261120,
+  "total": 200,
+  "category_counts": {
+    "arithmetic": 60,
+    "date_calendar": 30,
+    "unit_conversion": 30,
+    "python_output": 30,
+    "string_tasks": 25,
+    "logic_ordering": 25
+  },
+  "items": [
+    {
+      "id": "arith-001",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Maya's workshop makes 40 ceramic mugs per hour for 8 hours a day over 5 days. Quality inspection rejects 15% of the total made, and 8 more are kept aside as lab samples. The remaining ceramic mugs are packed into full boxes of 12, and any leftover single ceramic mugs stay unpacked. If each full box sells for $21 and each unpacked mug sells for $5, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2392",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-002",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Liam's workshop makes 30 notebooks per hour for 5 hours a day over 5 days. Quality inspection rejects 10% of the total made, and 18 more are kept aside as lab samples. The remaining notebooks are packed into full boxes of 10, and any leftover single notebooks stay unpacked. If each full box sells for $45 and each unpacked notebook sells for $4, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2953",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-003",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Nora's workshop makes 30 solar sensors per hour for 6 hours a day over 3 days. Quality inspection rejects 20% of the total made, and 5 more are kept aside as lab samples. The remaining solar sensors are packed into full boxes of 6, and any leftover single solar sensors stay unpacked. If each full box sells for $40 and each unpacked sensor sells for $4, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2844",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-004",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Tariq's workshop makes 45 glass jars per hour for 8 hours a day over 5 days. Quality inspection rejects 20% of the total made, and 16 more are kept aside as lab samples. The remaining glass jars are packed into full boxes of 10, and any leftover single glass jars stay unpacked. If each full box sells for $29 and each unpacked jar sells for $2, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "4126",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-005",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Elena's workshop makes 60 wooden toys per hour for 5 hours a day over 5 days. Quality inspection rejects 15% of the total made, and 17 more are kept aside as lab samples. The remaining wooden toys are packed into full boxes of 12, and any leftover single wooden toys stay unpacked. If each full box sells for $19 and each unpacked toy sells for $5, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2026",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-006",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Samir's workshop makes 35 circuit boards per hour for 4 hours a day over 5 days. Quality inspection rejects 25% of the total made, and 18 more are kept aside as lab samples. The remaining circuit boards are packed into full boxes of 12, and any leftover single circuit boards stay unpacked. If each full box sells for $30 and each unpacked board sells for $4, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1272",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-007",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Claire's workshop makes 40 tea tins per hour for 6 hours a day over 3 days. Quality inspection rejects 25% of the total made, and 5 more are kept aside as lab samples. The remaining tea tins are packed into full boxes of 10, and any leftover single tea tins stay unpacked. If each full box sells for $39 and each unpacked tin sells for $2, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2077",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-008",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Kenji's workshop makes 30 candles per hour for 5 hours a day over 3 days. Quality inspection rejects 10% of the total made, and 14 more are kept aside as lab samples. The remaining candles are packed into full boxes of 10, and any leftover single candles stay unpacked. If each full box sells for $41 and each unpacked candle sells for $4, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1603",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-009",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "Hana's workshop makes 40 ceramic mugs per hour for 5 hours a day over 3 days. Quality inspection rejects 10% of the total made, and 19 more are kept aside as lab samples. The remaining ceramic mugs are packed into full boxes of 10, and any leftover single ceramic mugs stay unpacked. If each full box sells for $18 and each unpacked mug sells for $4, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "940",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-010",
+      "category": "arithmetic",
+      "subtype": "production_packing_revenue",
+      "prompt": "David's workshop makes 50 notebooks per hour for 4 hours a day over 4 days. Quality inspection rejects 10% of the total made, and 6 more are kept aside as lab samples. The remaining notebooks are packed into full boxes of 6, and any leftover single notebooks stay unpacked. If each full box sells for $26 and each unpacked notebook sells for $5, what is the total revenue in dollars if everything packed and unpacked sells?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3094",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-011",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Tariq buys equipment with a list price of $1200. The store first applies a 10% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $74 coupon. Finally, 10% sales tax is added to the post-coupon price. How many dollars does Tariq pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "869",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-012",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Elena buys equipment with a list price of $3400. The store first applies a 20% seasonal discount, then an additional 10% member discount on the already discounted price, and then subtracts a $18 coupon. Finally, 10% sales tax is added to the post-coupon price. How many dollars does Elena pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2673",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-013",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Samir buys equipment with a list price of $3200. The store first applies a 20% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $28 coupon. Finally, 5% sales tax is added to the post-coupon price. How many dollars does Samir pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2121",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-014",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Claire buys equipment with a list price of $1000. The store first applies a 25% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $50 coupon. Finally, 10% sales tax is added to the post-coupon price. How many dollars does Claire pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "605",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-015",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Kenji buys equipment with a list price of $3000. The store first applies a 25% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $50 coupon. Finally, 12% sales tax is added to the post-coupon price. How many dollars does Kenji pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1960",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-016",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Hana buys equipment with a list price of $2000. The store first applies a 25% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $50 coupon. Finally, 12% sales tax is added to the post-coupon price. How many dollars does Hana pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1288",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-017",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "David buys equipment with a list price of $1600. The store first applies a 10% seasonal discount, then an additional 10% member discount on the already discounted price, and then subtracts a $66 coupon. Finally, 10% sales tax is added to the post-coupon price. How many dollars does David pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1353",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-018",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Priya buys equipment with a list price of $3600. The store first applies a 10% seasonal discount, then an additional 10% member discount on the already discounted price, and then subtracts a $26 coupon. Finally, 10% sales tax is added to the post-coupon price. How many dollars does Priya pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3179",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-019",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Omar buys equipment with a list price of $800. The store first applies a 10% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $36 coupon. Finally, 15% sales tax is added to the post-coupon price. How many dollars does Omar pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "621",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-020",
+      "category": "arithmetic",
+      "subtype": "sequential_discount_tax",
+      "prompt": "Sofia buys equipment with a list price of $2200. The store first applies a 20% seasonal discount, then an additional 20% member discount on the already discounted price, and then subtracts a $38 coupon. Finally, 10% sales tax is added to the post-coupon price. How many dollars does Sofia pay in total?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1507",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-021",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 30 pages per minute and Printer B prints 21 pages per minute. To complete a print job of 1968 pages, Printer A works alone for 16 minutes, then both printers run together for 23 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1968-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "54",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-022",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 22 pages per minute and Printer B prints 22 pages per minute. To complete a print job of 1342 pages, Printer A works alone for 14 minutes, then both printers run together for 20 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1342-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "41",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-023",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 19 pages per minute and Printer B prints 18 pages per minute. To complete a print job of 1031 pages, Printer A works alone for 8 minutes, then both printers run together for 15 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1031-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "41",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-024",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 22 pages per minute and Printer B prints 23 pages per minute. To complete a print job of 1620 pages, Printer A works alone for 18 minutes, then both printers run together for 18 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1620-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "54",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-025",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 24 pages per minute and Printer B prints 13 pages per minute. To complete a print job of 1439 pages, Printer A works alone for 18 minutes, then both printers run together for 23 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1439-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "53",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-026",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 30 pages per minute and Printer B prints 19 pages per minute. To complete a print job of 1767 pages, Printer A works alone for 20 minutes, then both printers run together for 18 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1767-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "53",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-027",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 33 pages per minute and Printer B prints 14 pages per minute. To complete a print job of 1687 pages, Printer A works alone for 18 minutes, then both printers run together for 17 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1687-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "56",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-028",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 24 pages per minute and Printer B prints 30 pages per minute. To complete a print job of 1740 pages, Printer A works alone for 17 minutes, then both printers run together for 18 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1740-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "47",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-029",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 13 pages per minute and Printer B prints 17 pages per minute. To complete a print job of 734 pages, Printer A works alone for 15 minutes, then both printers run together for 14 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 734-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "36",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-030",
+      "category": "arithmetic",
+      "subtype": "staged_work_rate",
+      "prompt": "Printer A prints 30 pages per minute and Printer B prints 12 pages per minute. To complete a print job of 1836 pages, Printer A works alone for 22 minutes, then both printers run together for 24 minutes, and then Printer A stops while Printer B finishes the remaining pages alone. How many total minutes does the entire 1836-page job take?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "60",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-031",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 50 tickets in one evening, collecting $790 in total. Standard tickets cost $12 each and premium tickets cost $22 each. How many standard tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "31",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-032",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 69 tickets in one evening, collecting $1207 in total. Standard tickets cost $13 each and premium tickets cost $23 each. How many premium tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "31",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-033",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 37 tickets in one evening, collecting $835 in total. Standard tickets cost $18 each and premium tickets cost $31 each. How many standard tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "24",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-034",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 66 tickets in one evening, collecting $816 in total. Standard tickets cost $9 each and premium tickets cost $15 each. How many premium tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "37",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-035",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 74 tickets in one evening, collecting $1574 in total. Standard tickets cost $16 each and premium tickets cost $31 each. How many standard tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "48",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-036",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 55 tickets in one evening, collecting $606 in total. Standard tickets cost $7 each and premium tickets cost $20 each. How many premium tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "17",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-037",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 45 tickets in one evening, collecting $670 in total. Standard tickets cost $11 each and premium tickets cost $18 each. How many standard tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "20",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-038",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 69 tickets in one evening, collecting $611 in total. Standard tickets cost $7 each and premium tickets cost $11 each. How many premium tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "32",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-039",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 34 tickets in one evening, collecting $838 in total. Standard tickets cost $17 each and premium tickets cost $30 each. How many standard tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "14",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-040",
+      "category": "arithmetic",
+      "subtype": "two_variable_system",
+      "prompt": "A community theater sold 48 tickets in one evening, collecting $956 in total. Standard tickets cost $17 each and premium tickets cost $22 each. How many premium tickets were sold?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "28",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-041",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (24 participants) earned an average score of 80, and Group B (17 participants) earned an average score of 86. Later, 8 additional participants took the assessment, bringing the overall average across all 49 participants to exactly 78. What was the average score of those 8 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "55",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-042",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (24 participants) earned an average score of 73, and Group B (9 participants) earned an average score of 83. Later, 8 additional participants took the assessment, bringing the overall average across all 41 participants to exactly 75. What was the average score of those 8 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "72",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-043",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (21 participants) earned an average score of 85, and Group B (18 participants) earned an average score of 72. Later, 5 additional participants took the assessment, bringing the overall average across all 44 participants to exactly 79. What was the average score of those 5 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "79",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-044",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (11 participants) earned an average score of 78, and Group B (13 participants) earned an average score of 79. Later, 5 additional participants took the assessment, bringing the overall average across all 29 participants to exactly 80. What was the average score of those 5 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "87",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-045",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (16 participants) earned an average score of 79, and Group B (12 participants) earned an average score of 72. Later, 4 additional participants took the assessment, bringing the overall average across all 32 participants to exactly 78. What was the average score of those 4 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "92",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-046",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (15 participants) earned an average score of 65, and Group B (19 participants) earned an average score of 81. Later, 4 additional participants took the assessment, bringing the overall average across all 38 participants to exactly 75. What was the average score of those 4 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "84",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-047",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (11 participants) earned an average score of 85, and Group B (20 participants) earned an average score of 85. Later, 10 additional participants took the assessment, bringing the overall average across all 41 participants to exactly 75. What was the average score of those 10 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "44",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-048",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (10 participants) earned an average score of 70, and Group B (16 participants) earned an average score of 84. Later, 4 additional participants took the assessment, bringing the overall average across all 30 participants to exactly 78. What was the average score of those 4 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "74",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-049",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (22 participants) earned an average score of 73, and Group B (10 participants) earned an average score of 72. Later, 6 additional participants took the assessment, bringing the overall average across all 38 participants to exactly 74. What was the average score of those 6 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "81",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-050",
+      "category": "arithmetic",
+      "subtype": "weighted_average",
+      "prompt": "In a coding assessment, Group A (16 participants) earned an average score of 80, and Group B (8 participants) earned an average score of 88. Later, 5 additional participants took the assessment, bringing the overall average across all 29 participants to exactly 81. What was the average score of those 5 additional participants?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "73",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-051",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Samir begins the week with 195 archive tokens in an inventory. On Monday, Samir allocates 1/5 of them to Team Alpha. On Tuesday, Samir spends 18 tokens on storage tests. On Wednesday, Samir allocates 1/3 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 6 more tokens for backups. How many tokens does Samir have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "86",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-052",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Claire begins the week with 174 archive tokens in an inventory. On Monday, Claire allocates 1/3 of them to Team Alpha. On Tuesday, Claire spends 6 tokens on storage tests. On Wednesday, Claire allocates 1/2 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 11 more tokens for backups. How many tokens does Claire have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "44",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-053",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Kenji begins the week with 126 archive tokens in an inventory. On Monday, Kenji allocates 1/3 of them to Team Alpha. On Tuesday, Kenji spends 26 tokens on storage tests. On Wednesday, Kenji allocates 1/2 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 5 more tokens for backups. How many tokens does Kenji have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "24",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-054",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Hana begins the week with 120 archive tokens in an inventory. On Monday, Hana allocates 1/5 of them to Team Alpha. On Tuesday, Hana spends 18 tokens on storage tests. On Wednesday, Hana allocates 1/3 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 7 more tokens for backups. How many tokens does Hana have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "45",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-055",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "David begins the week with 220 archive tokens in an inventory. On Monday, David allocates 1/5 of them to Team Alpha. On Tuesday, David spends 16 tokens on storage tests. On Wednesday, David allocates 1/4 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 11 more tokens for backups. How many tokens does David have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "109",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-056",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Priya begins the week with 300 archive tokens in an inventory. On Monday, Priya allocates 1/3 of them to Team Alpha. On Tuesday, Priya spends 8 tokens on storage tests. On Wednesday, Priya allocates 1/4 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 10 more tokens for backups. How many tokens does Priya have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "134",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-057",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Omar begins the week with 126 archive tokens in an inventory. On Monday, Omar allocates 1/3 of them to Team Alpha. On Tuesday, Omar spends 24 tokens on storage tests. On Wednesday, Omar allocates 1/3 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 7 more tokens for backups. How many tokens does Omar have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "33",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-058",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Sofia begins the week with 150 archive tokens in an inventory. On Monday, Sofia allocates 1/3 of them to Team Alpha. On Tuesday, Sofia spends 22 tokens on storage tests. On Wednesday, Sofia allocates 1/2 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 5 more tokens for backups. How many tokens does Sofia have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "34",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-059",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Lucas begins the week with 80 archive tokens in an inventory. On Monday, Lucas allocates 1/4 of them to Team Alpha. On Tuesday, Lucas spends 8 tokens on storage tests. On Wednesday, Lucas allocates 1/2 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 3 more tokens for backups. How many tokens does Lucas have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "23",
+      "answer_type": "int"
+    },
+    {
+      "id": "arith-060",
+      "category": "arithmetic",
+      "subtype": "sequential_fractions",
+      "prompt": "Rina begins the week with 312 archive tokens in an inventory. On Monday, Rina allocates 1/3 of them to Team Alpha. On Tuesday, Rina spends 24 tokens on storage tests. On Wednesday, Rina allocates 1/4 of the tokens remaining after Tuesday to Team Beta, and on Thursday uses 10 more tokens for backups. How many tokens does Rina have left at the end of Thursday?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "128",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-001",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2024-01-15 to 2024-05-10 (i.e., the exact integer difference 2024-05-10 minus 2024-01-15)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "116",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-002",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2023-11-20 to 2025-03-05 (i.e., the exact integer difference 2025-03-05 minus 2023-11-20)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "471",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-003",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2100-01-25 to 2100-04-12 (i.e., the exact integer difference 2100-04-12 minus 2100-01-25)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "77",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-004",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2000-02-10 to 2000-04-01 (i.e., the exact integer difference 2000-04-01 minus 2000-02-10)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "51",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-005",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2024-07-28 to 2025-01-03 (i.e., the exact integer difference 2025-01-03 minus 2024-07-28)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "159",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-006",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2025-01-27 to 2025-03-27 (i.e., the exact integer difference 2025-03-27 minus 2025-01-27)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "59",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-007",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2026-07-02 to 2028-02-02 (i.e., the exact integer difference 2028-02-02 minus 2026-07-02)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "580",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-008",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2023-05-19 to 2025-01-03 (i.e., the exact integer difference 2025-01-03 minus 2023-05-19)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "595",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-009",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2017-11-20 to 2018-11-21 (i.e., the exact integer difference 2018-11-21 minus 2017-11-20)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "366",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-010",
+      "category": "date_calendar",
+      "subtype": "days_between",
+      "prompt": "How many days are there from 2019-03-24 to 2020-12-30 (i.e., the exact integer difference 2020-12-30 minus 2019-03-24)?\nEnd your response with the final integer on its own last line as:\nANSWER: <integer>",
+      "answer": "647",
+      "answer_type": "int"
+    },
+    {
+      "id": "date-011",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 25 days after 2024-02-20? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2024-03-16",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-012",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 40 days before 2024-03-15? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2024-02-04",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-013",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 180 days after 2026-11-20? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2027-05-19",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-014",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 10 days after 2100-02-25? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2100-03-07",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-015",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 408 days after 2024-11-01? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2025-12-14",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-016",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 54 days before 2020-10-08? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2020-08-15",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-017",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 372 days after 2018-06-29? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2019-07-06",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-018",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 166 days before 2021-06-16? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2021-01-01",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-019",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 157 days after 2025-10-23? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2026-03-29",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-020",
+      "category": "date_calendar",
+      "subtype": "offset_date",
+      "prompt": "What calendar date is exactly 100 days before 2020-07-13? Format the date strictly in ISO format YYYY-MM-DD.\nEnd your response with the date on its own last line as:\nANSWER: YYYY-MM-DD",
+      "answer": "2020-04-04",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "date-021",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2024-02-29? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Thursday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-022",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2026-11-20? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Friday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-023",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2000-01-01? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Saturday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-024",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2030-07-04? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Thursday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-025",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2027-04-09? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Friday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-026",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2019-01-29? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Tuesday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-027",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2025-08-25? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Monday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-028",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2022-03-10? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Thursday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-029",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2012-10-10? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Wednesday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "date-030",
+      "category": "date_calendar",
+      "subtype": "weekday",
+      "prompt": "What day of the week is 2011-11-27? Give only the full English weekday name (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday).\nEnd your response with the weekday on its own last line as:\nANSWER: <Weekday>",
+      "answer": "Sunday",
+      "answer_type": "exact_str_ci"
+    },
+    {
+      "id": "unit-001",
+      "category": "unit_conversion",
+      "subtype": "ft_in_to_cm",
+      "prompt": "Convert 10 feet 5 inches to centimeters using the exact definition 1 foot = 12 inches and 1 inch = 2.54 cm. Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "317.5",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-002",
+      "category": "unit_conversion",
+      "subtype": "ft_in_to_cm",
+      "prompt": "Convert 14 feet 7 inches to centimeters using the exact definition 1 foot = 12 inches and 1 inch = 2.54 cm. Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "444.5",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-003",
+      "category": "unit_conversion",
+      "subtype": "ft_in_to_cm",
+      "prompt": "Convert 20 feet 10 inches to centimeters using the exact definition 1 foot = 12 inches and 1 inch = 2.54 cm. Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "635",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-004",
+      "category": "unit_conversion",
+      "subtype": "ft_in_to_cm",
+      "prompt": "Convert 12 feet 6 inches to centimeters using the exact definition 1 foot = 12 inches and 1 inch = 2.54 cm. Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "381",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-005",
+      "category": "unit_conversion",
+      "subtype": "ft_in_to_cm",
+      "prompt": "Convert 8 feet 4 inches to centimeters using the exact definition 1 foot = 12 inches and 1 inch = 2.54 cm. Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "254",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-006",
+      "category": "unit_conversion",
+      "subtype": "speed_kmh_ms",
+      "prompt": "Convert a speed of 108 kilometers per hour (km/h) into meters per second (m/s). Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "30",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-007",
+      "category": "unit_conversion",
+      "subtype": "speed_kmh_ms",
+      "prompt": "Convert a speed of 18 meters per second (m/s) into kilometers per hour (km/h). Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "64.8",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-008",
+      "category": "unit_conversion",
+      "subtype": "speed_kmh_ms",
+      "prompt": "Convert a speed of 144 kilometers per hour (km/h) into meters per second (m/s). Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "40",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-009",
+      "category": "unit_conversion",
+      "subtype": "speed_kmh_ms",
+      "prompt": "Convert a speed of 33 meters per second (m/s) into kilometers per hour (km/h). Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "118.8",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-010",
+      "category": "unit_conversion",
+      "subtype": "speed_kmh_ms",
+      "prompt": "Convert a speed of 216 kilometers per hour (km/h) into meters per second (m/s). Give only the exact number (no units).\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "60",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-011",
+      "category": "unit_conversion",
+      "subtype": "celsius_fahrenheit",
+      "prompt": "Convert -40 degrees Celsius to degrees Fahrenheit using F = (9/5) * C + 32. Give only the exact integer (no units or degree symbol).\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "-40",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-012",
+      "category": "unit_conversion",
+      "subtype": "celsius_fahrenheit",
+      "prompt": "Convert 284 degrees Fahrenheit to degrees Celsius using C = (F - 32) * 5/9. Give only the exact integer (no units or degree symbol).\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "140",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-013",
+      "category": "unit_conversion",
+      "subtype": "celsius_fahrenheit",
+      "prompt": "Convert 30 degrees Celsius to degrees Fahrenheit using F = (9/5) * C + 32. Give only the exact integer (no units or degree symbol).\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "86",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-014",
+      "category": "unit_conversion",
+      "subtype": "celsius_fahrenheit",
+      "prompt": "Convert 167 degrees Fahrenheit to degrees Celsius using C = (F - 32) * 5/9. Give only the exact integer (no units or degree symbol).\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "75",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-015",
+      "category": "unit_conversion",
+      "subtype": "celsius_fahrenheit",
+      "prompt": "Convert 135 degrees Celsius to degrees Fahrenheit using F = (9/5) * C + 32. Give only the exact integer (no units or degree symbol).\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "275",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-016",
+      "category": "unit_conversion",
+      "subtype": "data_storage_rate",
+      "prompt": "How many exact bytes are in 2 MiB plus 204 KiB, where 1 MiB = 1,024 KiB and 1 KiB = 1,024 bytes? Give only the exact integer without commas or units.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2306048",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-017",
+      "category": "unit_conversion",
+      "subtype": "data_storage_rate",
+      "prompt": "How many exact bytes are in 14 MiB plus 65 KiB, where 1 MiB = 1,024 KiB and 1 KiB = 1,024 bytes? Give only the exact integer without commas or units.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "14746624",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-018",
+      "category": "unit_conversion",
+      "subtype": "data_storage_rate",
+      "prompt": "How many exact bytes are in 3 MiB plus 214 KiB, where 1 MiB = 1,024 KiB and 1 KiB = 1,024 bytes? Give only the exact integer without commas or units.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3364864",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-019",
+      "category": "unit_conversion",
+      "subtype": "data_storage_rate",
+      "prompt": "At a constant speed of 30 Mbps (where 1 Mbps = 1,000,000 bits per second), how many seconds does it take to transfer 120 MB (where 1 MB = 1,000,000 bytes and 1 byte = 8 bits)? Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "32",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-020",
+      "category": "unit_conversion",
+      "subtype": "data_storage_rate",
+      "prompt": "At a constant speed of 12 Mbps (where 1 Mbps = 1,000,000 bits per second), how many seconds does it take to transfer 120 MB (where 1 MB = 1,000,000 bytes and 1 byte = 8 bits)? Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "80",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-021",
+      "category": "unit_conversion",
+      "subtype": "compound_fluid_oz",
+      "prompt": "Convert 6 US gallons, 2 quarts, and 1 pint into fluid ounces (using 1 gallon = 4 quarts, 1 quart = 2 pints, 1 pint = 16 fluid ounces). Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "848",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-022",
+      "category": "unit_conversion",
+      "subtype": "compound_inches",
+      "prompt": "Convert 10 yards, 2 feet, and 2 inches into total inches (1 yard = 3 feet, 1 foot = 12 inches). Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "386",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-023",
+      "category": "unit_conversion",
+      "subtype": "compound_seconds",
+      "prompt": "Convert 2 hours, 20 minutes, and 24 seconds into total seconds. Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "8424",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-024",
+      "category": "unit_conversion",
+      "subtype": "compound_milligrams",
+      "prompt": "Convert 9 kilograms and 273 grams into milligrams (1 kg = 1,000 g, 1 g = 1,000 mg). Give only the exact integer without commas.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "9273000",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-025",
+      "category": "unit_conversion",
+      "subtype": "compound_yards",
+      "prompt": "Convert 2 miles and 48 yards into total yards (1 mile = 1,760 yards). Give only the exact integer without commas.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3568",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-026",
+      "category": "unit_conversion",
+      "subtype": "area_volume",
+      "prompt": "Convert 5.5 hectares to square meters (1 hectare = 10,000 m^2). Give only the exact integer without commas.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "55000",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-027",
+      "category": "unit_conversion",
+      "subtype": "area_volume",
+      "prompt": "Convert 3.25 cubic meters to liters (1 m^3 = 1,000 liters). Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3250",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-028",
+      "category": "unit_conversion",
+      "subtype": "area_volume",
+      "prompt": "Convert 8 square feet to square inches (1 ft = 12 in). Give only the exact integer.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "1152",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-029",
+      "category": "unit_conversion",
+      "subtype": "area_volume",
+      "prompt": "Convert 5.35 square meters to square centimeters (1 m = 100 cm). Give only the exact integer without commas.\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "53500",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "unit-030",
+      "category": "unit_conversion",
+      "subtype": "area_volume",
+      "prompt": "Convert 2000 milliliters (mL) to liters (L). Give only the exact number.\nEnd your response with the number on its own last line as:\nANSWER: <number>",
+      "answer": "2",
+      "answer_type": "numeric"
+    },
+    {
+      "id": "py-001",
+      "category": "python_output",
+      "subtype": "template_0",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\na = [8, 4, 9, 4, 11, 13, 2]\nb = a[1:6][::-2]\nprint(','.join(map(str, b)))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "13,4,4",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-002",
+      "category": "python_output",
+      "subtype": "template_1",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nx, y = -18, 6\nprint(f'{x // y}:{x % y}')\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "-3:0",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-003",
+      "category": "python_output",
+      "subtype": "template_2",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nd = {}\nfor i, v in enumerate([5, 4, 1, 7, 7, 5]):\n    d.setdefault(v % 3, []).append(i + v)\nprint(sum(len(v) * k for k, v in d.items()) + len(d.get(1, [])))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "12",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-004",
+      "category": "python_output",
+      "subtype": "template_3",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nw = ['yew', 'ash', 'maple', 'birch', 'elm']\ns = sorted(w, key=lambda x: (-len(x), x))\nprint('-'.join(s[:3]))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "birch-maple-ash",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-005",
+      "category": "python_output",
+      "subtype": "template_4",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef f(n):\n    c = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        c += 1\n    return c\nprint(f(26))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "10",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-006",
+      "category": "python_output",
+      "subtype": "template_5",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ng = [[0] * 3] * 4\ng[1][2] = 6\ng[0][0] = 1\nprint(sum(sum(r) for r in g))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "28",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-007",
+      "category": "python_output",
+      "subtype": "template_6",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ntot = 0\nfor x in [1, 11, 2, 6, 12, 7]:\n    if x % 2 == 0:\n        continue\n    tot += x\n    if tot > 16:\n        break\nelse:\n    tot += 100\nprint(tot)\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "19",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-008",
+      "category": "python_output",
+      "subtype": "template_7",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\na, b = 22, 36\nprint((a ^ b) + ((a & b) << 1))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "58",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-009",
+      "category": "python_output",
+      "subtype": "template_8",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ns = 'baeccebecd'\nout = []\nfor ch in s:\n    if out and out[-1] == ch:\n        out.pop()\n    else:\n        out.append(ch)\nprint(''.join(out) or 'EMPTY')\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "babecd",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-010",
+      "category": "python_output",
+      "subtype": "template_9",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef rec(n, acc=0):\n    if n <= 1:\n        return acc + n\n    return rec(n - 1, acc + n) if n % 2 else rec(n // 2, acc + 1)\nprint(rec(6))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "6",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-011",
+      "category": "python_output",
+      "subtype": "template_10",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\na, b = set([8, 3, 4, 5, 9]), set([8, 7, 4, 2, 3])\nprint(sum(a ^ b) - len(a & b))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "20",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-012",
+      "category": "python_output",
+      "subtype": "template_11",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef make(n):\n    return [lambda x, i=i: x + i * 5 for i in range(n)]\nfs = make(4)\nprint(sum(fn(3) for fn in fs))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "42",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-013",
+      "category": "python_output",
+      "subtype": "template_12",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef run(v):\n    res = []\n    for x in v:\n        try:\n            res.append(12 // (x - 3))\n        except ZeroDivisionError:\n            res.append(-1)\n        else:\n            res[-1] += 2\n        finally:\n            if len(res) > 3: return sum(res)\n    return sum(res)\nprint(run([8, 3, 2, 5, 8]))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "1",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-014",
+      "category": "python_output",
+      "subtype": "template_13",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nxs, ys = [1, 1, 9, 7], [3, 1, 3, 1]\nprint(sum(x * y for x, y in zip(xs, reversed(ys)) if x != y))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "33",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-015",
+      "category": "python_output",
+      "subtype": "template_14",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nt = '|'.join(['zyx', 'zyy', 'yxz', 'zzx', 'xyy'])\nparts = t.split('x')\nprint(f'{len(parts)}:{sum(len(p) for p in parts)}')\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "5:15",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-016",
+      "category": "python_output",
+      "subtype": "template_0",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\na = [3, 3, 13, 8, 7, 5, 13]\nb = a[1:6][::-3]\nprint(','.join(map(str, b)))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "5,13",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-017",
+      "category": "python_output",
+      "subtype": "template_1",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nx, y = -26, 5\nprint(f'{x // y}:{x % y}')\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "-6:4",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-018",
+      "category": "python_output",
+      "subtype": "template_2",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nd = {}\nfor i, v in enumerate([9, 4, 8, 4, 8, 5]):\n    d.setdefault(v % 3, []).append(i + v)\nprint(sum(len(v) * k for k, v in d.items()) + len(d.get(1, [])))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "10",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-019",
+      "category": "python_output",
+      "subtype": "template_3",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nw = ['oak', 'maple', 'yew', 'ash', 'elm']\ns = sorted(w, key=lambda x: (-len(x), x))\nprint('-'.join(s[:3]))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "maple-ash-elm",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-020",
+      "category": "python_output",
+      "subtype": "template_4",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef f(n):\n    c = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        c += 1\n    return c\nprint(f(44))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "16",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-021",
+      "category": "python_output",
+      "subtype": "template_5",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ng = [[0] * 3] * 4\ng[1][2] = 6\ng[0][0] = 1\nprint(sum(sum(r) for r in g))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "28",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-022",
+      "category": "python_output",
+      "subtype": "template_6",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ntot = 0\nfor x in [6, 12, 9, 1, 10, 7]:\n    if x % 2 == 0:\n        continue\n    tot += x\n    if tot > 19:\n        break\nelse:\n    tot += 100\nprint(tot)\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "117",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-023",
+      "category": "python_output",
+      "subtype": "template_7",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\na, b = 47, 28\nprint((a ^ b) + ((a & b) << 1))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "75",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-024",
+      "category": "python_output",
+      "subtype": "template_8",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ns = 'eeadbccdca'\nout = []\nfor ch in s:\n    if out and out[-1] == ch:\n        out.pop()\n    else:\n        out.append(ch)\nprint(''.join(out) or 'EMPTY')\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "adbdca",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-025",
+      "category": "python_output",
+      "subtype": "template_9",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef rec(n, acc=0):\n    if n <= 1:\n        return acc + n\n    return rec(n - 1, acc + n) if n % 2 else rec(n // 2, acc + 1)\nprint(rec(7))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "13",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-026",
+      "category": "python_output",
+      "subtype": "template_10",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\na, b = set([8, 5, 2, 3, 4]), set([4, 9, 8, 6, 7])\nprint(sum(a ^ b) - len(a & b))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "30",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-027",
+      "category": "python_output",
+      "subtype": "template_11",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef make(n):\n    return [lambda x, i=i: x + i * 3 for i in range(n)]\nfs = make(4)\nprint(sum(fn(3) for fn in fs))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "30",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-028",
+      "category": "python_output",
+      "subtype": "template_12",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\ndef run(v):\n    res = []\n    for x in v:\n        try:\n            res.append(12 // (x - 3))\n        except ZeroDivisionError:\n            res.append(-1)\n        else:\n            res[-1] += 2\n        finally:\n            if len(res) > 3: return sum(res)\n    return sum(res)\nprint(run([4, 7, 2, 6, 3]))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "15",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-029",
+      "category": "python_output",
+      "subtype": "template_13",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nxs, ys = [3, 2, 9, 8], [3, 3, 2, 7]\nprint(sum(x * y for x, y in zip(xs, reversed(ys)) if x != y))\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "72",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "py-030",
+      "category": "python_output",
+      "subtype": "template_14",
+      "prompt": "What exact single line does the following Python 3 snippet print?\n```python\nt = '|'.join(['xxx', 'yyy', 'zyz', 'xyz', 'yxz'])\nparts = t.split('x')\nprint(f'{len(parts)}:{sum(len(p) for p in parts)}')\n```\nEnd your response with the exact printed line on its own last line as:\nANSWER: <printed_line>",
+      "answer": "6:14",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-001",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the character order of the string \"xvh43xbe4sbud7\" exactly (keep all characters as-is, backwards).\nEnd your response with the reversed string on its own last line as:\nANSWER: <string>",
+      "answer": "7dubs4ebx34hvx",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-002",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the character order of the string \"fmsy8ure7g4a3dzs\" exactly (keep all characters as-is, backwards).\nEnd your response with the reversed string on its own last line as:\nANSWER: <string>",
+      "answer": "szd3a4g7eru8ysmf",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-003",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the character order of the string \"n7m2su98axfk8ac6\" exactly (keep all characters as-is, backwards).\nEnd your response with the reversed string on its own last line as:\nANSWER: <string>",
+      "answer": "6ca8kfxa89us2m7n",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-004",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the character order of the string \"c4dbabmst8ab9c\" exactly (keep all characters as-is, backwards).\nEnd your response with the reversed string on its own last line as:\nANSWER: <string>",
+      "answer": "c9ba8tsmbabd4c",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-005",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the order of the words in the phrase \"amber cipher frost jasper delta beacon\" (keeping each word spelled normally) and join them with single spaces.\nEnd your response with the result on its own last line as:\nANSWER: <phrase>",
+      "answer": "beacon delta jasper frost cipher amber",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-006",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the order of the words in the phrase \"ember cipher kelp meadow amber harbor\" (keeping each word spelled normally) and join them with single spaces.\nEnd your response with the result on its own last line as:\nANSWER: <phrase>",
+      "answer": "harbor amber meadow kelp cipher ember",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-007",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the order of the words in the phrase \"amber meadow ivory orbit lantern kelp\" (keeping each word spelled normally) and join them with single spaces.\nEnd your response with the result on its own last line as:\nANSWER: <phrase>",
+      "answer": "kelp lantern orbit ivory meadow amber",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-008",
+      "category": "string_tasks",
+      "subtype": "reverse",
+      "prompt": "Reverse the order of the words in the phrase \"meadow harbor jasper frost amber orbit\" (keeping each word spelled normally) and join them with single spaces.\nEnd your response with the result on its own last line as:\nANSWER: <phrase>",
+      "answer": "orbit amber frost jasper harbor meadow",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-009",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "Count how many times the exact lowercase/uppercase character 'b' (case-sensitive) appears in \"cDcDaCbbbAdbb2CDD21CaAdD\".\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "5",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-010",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "Count how many times the exact lowercase/uppercase character 'A' (case-sensitive) appears in \"11Bb2C2Abbb1C121BbddAA1B\".\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-011",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "Count how many times the exact lowercase/uppercase character 'a' (case-sensitive) appears in \"DAbBaaacC1DABBd1BCAcBdd2\".\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-012",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "Count how many non-overlapping occurrences of the substring \"bc\" appear from left to right in \"bbbaabbcaaaababbbabcaccacc\".\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "2",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-013",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "Count how many non-overlapping occurrences of the substring \"bc\" appear from left to right in \"cbcbabaccabcbaababcbcbcabb\".\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "5",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-014",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "Count how many non-overlapping occurrences of the substring \"bc\" appear from left to right in \"caababccbacacbcccaaabcbaba\".\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "3",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-015",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "How many distinct characters appear in the string \"fgjmbekggiiaqkheqiibaq\"?\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "11",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-016",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "How many distinct characters appear in the string \"mafgcbgdifpqbhkpiaabdg\"?\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "12",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-017",
+      "category": "string_tasks",
+      "subtype": "count",
+      "prompt": "How many distinct characters appear in the string \"adqiiijfdhfemdqcnpneqj\"?\nEnd your response with the integer on its own last line as:\nANSWER: <integer>",
+      "answer": "12",
+      "answer_type": "int"
+    },
+    {
+      "id": "str-018",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort all characters in the string \"tasygcrpseyema\" in ascending alphabetical order (keeping duplicates, no spaces).\nEnd your response with the sorted string on its own last line as:\nANSWER: <string>",
+      "answer": "aaceegmprsstyy",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-019",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort all characters in the string \"xhphwgkqxyhhsz\" in ascending alphabetical order (keeping duplicates, no spaces).\nEnd your response with the sorted string on its own last line as:\nANSWER: <string>",
+      "answer": "ghhhhkpqswxxyz",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-020",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort all characters in the string \"kaphfkpszrdfax\" in ascending alphabetical order (keeping duplicates, no spaces).\nEnd your response with the sorted string on its own last line as:\nANSWER: <string>",
+      "answer": "aadffhkkpprsxz",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-021",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort these words in standard alphabetical order and join them with single commas (no spaces): beacon, zenith, vector, cipher, bridge, signal.\nEnd your response with the sorted list on its own last line as:\nANSWER: <w1,w2,...>",
+      "answer": "beacon,bridge,cipher,signal,vector,zenith",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-022",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort these words in standard alphabetical order and join them with single commas (no spaces): cipher, socket, matrix, zenith, packet, kernel.\nEnd your response with the sorted list on its own last line as:\nANSWER: <w1,w2,...>",
+      "answer": "cipher,kernel,matrix,packet,socket,zenith",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-023",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort these words in standard alphabetical order and join them with single commas (no spaces): vector, zenith, kernel, alpha, beacon, signal.\nEnd your response with the sorted list on its own last line as:\nANSWER: <w1,w2,...>",
+      "answer": "alpha,beacon,kernel,signal,vector,zenith",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-024",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort these words by length from shortest to longest (breaking ties alphabetically) and join them with single commas (no spaces): birch, willow, rowan, spruce, ash, alder.\nEnd your response with the sorted list on its own last line as:\nANSWER: <w1,w2,...>",
+      "answer": "ash,alder,birch,rowan,spruce,willow",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "str-025",
+      "category": "string_tasks",
+      "subtype": "sort",
+      "prompt": "Sort these words by length from shortest to longest (breaking ties alphabetically) and join them with single commas (no spaces): alder, willow, rowan, ash, larch, teak.\nEnd your response with the sorted list on its own last line as:\nANSWER: <w1,w2,...>",
+      "answer": "ash,teak,alder,larch,rowan,willow",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-001",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Alice, Bob, Carol, Dave, Eve) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Exactly one item is between Dave and Carol.\n- Bob and Alice are adjacent.\n- Bob is at one of the two ends (position 1 or position 5).\n- Alice is before Bob.\n- Carol is neither first nor last.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Dave,Eve,Carol,Alice,Bob",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-002",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Liam, Maya, Noah, Owen, Priya) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Maya is immediately before Noah.\n- Maya is not in position 2.\n- Priya is before Owen.\n- Exactly one item is between Priya and Noah.\n- Maya is at one of the two ends (position 1 or position 5).\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Maya,Noah,Liam,Priya,Owen",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-003",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Amber, Bronze, Coral, Dusk, Ebony) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Amber is neither first nor last.\n- Bronze is immediately before Dusk.\n- Amber and Ebony are adjacent.\n- Amber is not in position 3.\n- Amber and Coral are adjacent.\n- Coral is neither first nor last.\n- Amber is immediately before Coral.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Ebony,Amber,Coral,Bronze,Dusk",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-004",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Alpha, Bravo, Charlie, Delta, Echo) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Delta is neither first nor last.\n- Echo is immediately before Alpha.\n- Bravo is at one of the two ends (position 1 or position 5).\n- Alpha is not in position 3.\n- Charlie is not in position 4.\n- Echo is before Delta.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Echo,Alpha,Charlie,Delta,Bravo",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-005",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Alice, Bob, Carol, Dave, Eve) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Eve is at one of the two ends (position 1 or position 5).\n- Exactly one item is between Eve and Carol.\n- Bob is neither first nor last.\n- Carol is before Dave.\n- Carol is immediately before Dave.\n- Dave is before Eve.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Alice,Bob,Carol,Dave,Eve",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-006",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Liam, Maya, Noah, Owen, Priya) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Exactly one item is between Owen and Noah.\n- Maya is before Priya.\n- Owen is immediately before Maya.\n- Maya is before Liam.\n- Exactly one item is between Noah and Priya.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Owen,Maya,Noah,Liam,Priya",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-007",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Amber, Bronze, Coral, Dusk, Ebony) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Amber is immediately before Coral.\n- Exactly one item is between Amber and Dusk.\n- Exactly one item is between Coral and Bronze.\n- Ebony is before Bronze.\n- Exactly one item is between Ebony and Bronze.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Ebony,Dusk,Bronze,Amber,Coral",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-008",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Alpha, Bravo, Charlie, Delta, Echo) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Alpha is immediately before Echo.\n- Echo is before Charlie.\n- Bravo is not in position 1.\n- Exactly one item is between Echo and Delta.\n- Bravo and Charlie are adjacent.\n- Charlie is immediately before Bravo.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Delta,Alpha,Echo,Charlie,Bravo",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-009",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Alice, Bob, Carol, Dave, Eve) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Dave and Carol are adjacent.\n- Exactly one item is between Dave and Bob.\n- Bob and Eve are adjacent.\n- Exactly one item is between Eve and Carol.\n- Bob is at one of the two ends (position 1 or position 5).\n- Alice is not in position 1.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Bob,Eve,Dave,Carol,Alice",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-010",
+      "category": "logic_ordering",
+      "subtype": "linear_ordering",
+      "prompt": "Five items (Liam, Maya, Noah, Owen, Priya) are arranged in a line from position 1 (first) to position 5 (last).\nClues:\n- Maya is before Owen.\n- Priya is before Liam.\n- Exactly one item is between Priya and Noah.\n- Owen and Noah are adjacent.\n- Noah and Maya are adjacent.\n- Owen and Priya are adjacent.\nDetermine the unique order from position 1 to position 5 and list them separated by single commas (no spaces).\nEnd your response with the order on its own last line as:\nANSWER: <item1,item2,item3,item4,item5>",
+      "answer": "Maya,Noah,Owen,Priya,Liam",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-011",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"Exactly one of A and B is a truth-teller.\"\n- B says: \"Exactly 1 of the four people are truth-tellers.\"\n- C says: \"B and D are of the same type (both truth-tellers or both liars).\"\n- D says: \"B and A are of the same type (both truth-tellers or both liars).\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "A,C",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-012",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"C and B are of the same type (both truth-tellers or both liars).\"\n- B says: \"Exactly one of D and A is a truth-teller.\"\n- C says: \"At least one of A or B is a truth-teller.\"\n- D says: \"A is a truth-teller and C is a liar.\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "A,B,C",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-013",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"At least one of B or C is a truth-teller.\"\n- B says: \"Exactly one of C and B is a truth-teller.\"\n- C says: \"At least one of D or C is a truth-teller.\"\n- D says: \"At least one of A or D is a truth-teller.\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "NONE",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-014",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"Exactly one of C and B is a truth-teller.\"\n- B says: \"At least one of A or B is a truth-teller.\"\n- C says: \"D and A are of the same type (both truth-tellers or both liars).\"\n- D says: \"B is a truth-teller and C is a liar.\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "B,C",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-015",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"B and D are of the same type (both truth-tellers or both liars).\"\n- B says: \"All four of us are liars.\"\n- C says: \"At least one of A or B is a truth-teller.\"\n- D says: \"Exactly one of C and A is a truth-teller.\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "A,C",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-016",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"C and A are of the same type (both truth-tellers or both liars).\"\n- B says: \"D and A are of the same type (both truth-tellers or both liars).\"\n- C says: \"A and D are of the same type (both truth-tellers or both liars).\"\n- D says: \"D and A are of the same type (both truth-tellers or both liars).\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "A,B,C,D",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-017",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"Exactly one of B and A is a truth-teller.\"\n- B says: \"A is a truth-teller and B is a liar.\"\n- C says: \"D and C are of the same type (both truth-tellers or both liars).\"\n- D says: \"Exactly 2 of the four people are truth-tellers.\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "C,D",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-018",
+      "category": "logic_ordering",
+      "subtype": "knights_knaves",
+      "prompt": "Four people (A, B, C, and D) are each either a truth-teller (always tells the truth) or a liar (always lies).\nStatements:\n- A says: \"D and B are of the same type (both truth-tellers or both liars).\"\n- B says: \"D is a truth-teller and A is a liar.\"\n- C says: \"At least one of B or A is a truth-teller.\"\n- D says: \"A and D are of the same type (both truth-tellers or both liars).\"\nWhich people are truth-tellers? List their letters in alphabetical order separated by commas (no spaces), or write NONE if all four are liars.\nEnd your response with the result on its own last line as:\nANSWER: <letters_or_NONE>",
+      "answer": "A,C",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-019",
+      "category": "logic_ordering",
+      "subtype": "matching_floor",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from floors 1, 2, 3, and 4, one each.\nClues:\n- Dave is on the floor immediately above Bob.\n- Dave is on a higher floor than Carol (not adjacent).\n- Bob is on the floor immediately above Carol.\n- Bob is on a higher floor than Alice (not adjacent).\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "1,3,2,4",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-020",
+      "category": "logic_ordering",
+      "subtype": "matching_room",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from rooms North, East, South, and West, one each.\nClues:\n- Between Alice and Dave, one has South and the other has North (in some order).\n- Neither Alice nor Carol has North.\n- Carol does not have East.\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "South,East,West,North",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-021",
+      "category": "logic_ordering",
+      "subtype": "matching_color",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from badges Red, Blue, Green, and Yellow, one each.\nClues:\n- Between Carol and Dave, one has Blue and the other has Yellow (in some order).\n- Neither Alice nor Carol has Yellow.\n- Neither Alice nor Dave has Blue.\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "Red,Green,Blue,Yellow",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-022",
+      "category": "logic_ordering",
+      "subtype": "matching_floor",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from floors 1, 2, 3, and 4, one each.\nClues:\n- Dave is not on floor 1.\n- Alice is on the floor immediately above Dave.\n- Alice is on a higher floor than Bob (not adjacent).\n- Dave is on the floor immediately above Carol.\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "4,1,2,3",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-023",
+      "category": "logic_ordering",
+      "subtype": "matching_room",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from rooms North, East, South, and West, one each.\nClues:\n- Dave does not have West.\n- Alice does not have South.\n- Neither Alice nor Bob has North.\n- Neither Bob nor Dave has South.\n- Neither Alice nor Dave has East.\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "West,East,South,North",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-024",
+      "category": "logic_ordering",
+      "subtype": "matching_color",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from badges Red, Blue, Green, and Yellow, one each.\nClues:\n- Neither Bob nor Dave has Red.\n- Bob does not have Blue.\n- Alice does not have Yellow.\n- Neither Alice nor Bob has Red.\n- Between Bob and Dave, one has Yellow and the other has Blue (in some order).\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "Green,Yellow,Red,Blue",
+      "answer_type": "exact_str"
+    },
+    {
+      "id": "logic-025",
+      "category": "logic_ordering",
+      "subtype": "matching_floor",
+      "prompt": "Four people (Alice, Bob, Carol, and Dave) are assigned distinct items from floors 1, 2, 3, and 4, one each.\nClues:\n- Dave is on a higher floor than Alice (not adjacent).\n- Bob is not on floor 4.\n- Alice is on the floor immediately above Bob.\nGive the unique assignment for Alice, Bob, Carol, Dave in that exact order, separated by single commas (no spaces).\nEnd your response with the assignment on its own last line as:\nANSWER: <a_val,b_val,c_val,d_val>",
+      "answer": "2,1,3,4",
+      "answer_type": "exact_str"
+    }
+  ]
+}
