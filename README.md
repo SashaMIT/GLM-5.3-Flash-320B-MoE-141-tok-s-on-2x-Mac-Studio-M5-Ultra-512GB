@@ -2,6 +2,8 @@
 
 **A 320-billion-parameter Mixture-of-Experts model running locally on Apple Silicon — measured, reproducible, with open data.** The 141 tok/s figure uses both Macs together; TensorFold and mlx-vlm results use one Mac.
 
+**Reproduce it:** set up with [`SETUP.md`](SETUP.md), then follow [`AGENTS.md` → Quick replication (one Mac, ~1 hour)](AGENTS.md#quick-replication-one-mac-1-hour) to reproduce our one-Mac TensorFold number with the published prompts, pinned environments and scripts.
+
 ![Model](https://img.shields.io/badge/model-GLM--5.3--Flash%20320B%20MoE-111111)
 ![Active](https://img.shields.io/badge/active%20params-18B-555555)
 ![Hardware](https://img.shields.io/badge/hardware-2%C3%97%20Mac%20Studio%20M5%20Ultra%20512%20GB-555555)
@@ -22,7 +24,7 @@ This work stands on other people's generosity. Thank you to **Ash Hart and Tenso
 
 **What we found.**
 - **One person:** 141.4 tokens per second of output with the model split across both Macs; 94.7 on a single Mac with TensorFold.
-- **Reading prompts:** over 2,000 tokens per second on either set-up, with prompts up to 127,996 tokens.
+- **Reading prompts:** over 2,000 tokens per second on either set-up, with prompts up to 53,990 tokens on two Macs and 127,996 tokens on one Mac.
 - **Many people:** TensorFold, one per Mac, leads at 8, 16 and 32 users at once (level with GLM-Tandem at 2; not run at 4, 12, 20 or 24).
 - **Accuracy:** on a 100-question maths test (GSM8K, 5 answers per question, majority vote) the model got 100 out of 100 right with and without drafting; single answers were 494/500 without and 496/500 with. On our own 200-question generated suite, drafting off scored 197/200 and drafting on 192/200 (the difference is not statistically significant, McNemar p = 0.1250).
 
@@ -34,7 +36,7 @@ All `MEASURED`, `4-bit, lossy`, on the same TensorFold `GLM-5.3-Flash-MLX-4bit-M
 
 | | **GLM-Tandem** — 2 Macs, tensor-parallel over Thunderbolt 5 RDMA | **TensorFold 1.2.10** — 1 Mac | **mlx-vlm 0.8.0** — 1 Mac |
 |---|---|---|---|
-| **Prompt reading (prefill)** | **2,032.8 – 2,174.0 tok/s** (13,985 – 53,990-token prompts) | **2,002.6 – 2,071.6 tok/s** (31,995 – 127,996-token prompts) | not measured on public text |
+| **Prompt reading (prefill)** | **2,032.8 tok/s** at 13,985 tokens; **2,174.0** at 53,990 | **2,071.6 tok/s** at 31,995 tokens; **2,002.6** at 127,996 | not measured on public text |
 | **Output (decode), 1 user, median** | **141.4 tok/s** | **94.7 tok/s** | **43.4 tok/s** |
 | **End-to-end, 1 user, median** | 119.9 tok/s | 81.7 tok/s | 41.7 tok/s |
 | **Many users, total output** | 248.3 tok/s at 32 users | 271.8 tok/s at 32 users (one per Mac) | 334.7 tok/s at 64 users (one per Mac) |
@@ -63,13 +65,13 @@ Every 4-bit result below used the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP`
 ### Questions people ask
 
 - **Does it fit on one Mac?** Yes. On one 512 GB Mac Studio the 4-bit model peaked at 189.2 GB with TensorFold and 196.2 GB with mlx-vlm. The second Mac adds speed for a single user (GLM-Tandem splits the model across both).
-- **Will it run on a 128 GB or 256 GB Mac?** Not tested. The 4-bit model files alone are 169 GiB.
+- **Will it run on a 128 GB or 256 GB Mac?** Not tested. The 4-bit weights alone took 180.58 GB of memory when loaded (measured).
 - **What does the hardware cost?** We do not quote prices; see [Apple's Mac Studio page](https://www.apple.com/mac-studio/).
 - **How much quality does 4-bit lose?** Not measured: `mlx-lm` perplexity does not yet support this model type (`glm5_next`). Our quality checks are the maths and generated-question tests in [Quality Checks](#quality-checks-4-bit-lossy-measured).
 - **Power use, tokens per watt?** Not measured; we had no wall-power meter.
 - **Are "thinking" tokens counted in tok/s?** Yes. Output tokens are the server's own completion count, which includes the model's reasoning tokens.
-- **Was prompt caching on?** No. Every timed request started with an empty prompt cache (`cached_tokens = 0`), so first-reply times are worst case.
-- **Longest prompt?** 127,996 tokens tested. The model's configuration allows more; we did not test beyond that.
+- **Was prompt caching on?** Not for the headline tests: every timed request in Rounds 6 and 7 started with an empty prompt cache (`cached_tokens = 0`), so first-reply times are worst case. One earlier TensorFold run had cached repeats; [`BENCHMARKS.md`](BENCHMARKS.md) marks it.
+- **Longest prompt?** 127,996 tokens, on one Mac with TensorFold (its default context window is 131,051 tokens); 53,990 tokens on two Macs. We did not test beyond that.
 - **Why not TensorFold on two Macs?** We did not test TensorFold's two-Mac mode.
 - **What about llama.cpp, Ollama, LM Studio or NVIDIA GPUs?** Not tested; out of scope for this repo.
 - **Is it a one-off result?** The single-user headline held across 3 fresh restarts on a second day, and a 30-minute two-Mac run had 0 stalls. One limit: it is one pair of Macs.
@@ -78,7 +80,7 @@ Every 4-bit result below used the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP`
 
 ### What was tested
 
-- **Model:** [GLM-5.3-Flash](https://huggingface.co/zai-org) by Z.ai — **320B total, 18B active (Hugging Face tensor count ~321B)** Mixture-of-Experts, a built-in **MTP head for speculative decoding**, 1M-token context window; run as TensorFold's **4-bit MLX** pack (169 GiB on disk).
+- **Model:** [GLM-5.3-Flash](https://huggingface.co/zai-org) by Z.ai — **320B total, 18B active (Hugging Face tensor count ~321B)** Mixture-of-Experts with a built-in **MTP head for speculative decoding**; run as TensorFold's **4-bit MLX** pack (180.58 GB of weights in memory when loaded).
 - **Devices:** **2 × Apple Mac Studio, M5 Ultra, 512 GB unified memory each**, macOS 27.2, linked by one **Thunderbolt 5** cable with **RDMA**.
 - **Software:** stock **Apple MLX 0.32.4** (no patches), **TensorFold 1.2.10**, **GLM-Tandem** (two-Mac tensor parallelism), **mlx-vlm 0.8.0**; all served over **OpenAI-compatible** APIs.
 - **Topics:** local LLM · on-device AI · Apple Silicon · MLX · MoE · speculative decoding · tensor parallelism · RDMA over Thunderbolt 5 · 4-bit quantization · multi-user serving · long context.
@@ -88,7 +90,7 @@ Every 4-bit result below used the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP`
 - **TensorFold's pack underlies every 4-bit result.** All engines in the 4-bit tests (`TensorFold`, `GLM-Tandem`, `mlx-vlm` and our shard overlay) loaded `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` (the FP8 rows used the `dealignai` FP8 pack named in BENCHMARKS); thank you to TensorFold, Z.ai, icryo, Blaizzy, jundot and the MLX team ([`CREDITS.md`](CREDITS.md)).
 - **All figures in this README are `MEASURED`** in our lab logs (rounds up to Round 7, 19-20 Nov 2026) (with exact receipt filenames in [`BENCHMARKS.md`](BENCHMARKS.md)).
 - **Precision & determinism labels:** Native 4-bit MLX affine (`group_size=64`) is always labelled **`4-bit, lossy`**. Speculative draft decoding (`MTP`) and cross-engine comparisons produce **`same quality, not bit-identical at T=0`**, likely due to `bfloat16` near-tie rounding (inferred in the Round 6 report; not logged per token).
-- **Where things are:** scrubbed per-request data is in [`receipts/`](receipts/README.md), a small clean-room bench client is in [`scripts/bench_client.py`](scripts/bench_client.py), and [`BENCHMARKS.md`](BENCHMARKS.md) has all full tables, external `CLAIMED` numbers, and `ESTIMATE`s.
+- **Where things are:** scrubbed per-request data is in [`receipts/`](receipts/README.md), published prompts and their hashes are in [`receipts/prompts/`](receipts/README.md#prompts-prompts), pinned Python environments in [`env/`](env/README.md), standard-library benchmark scripts (single user, many users, fairness, GSM8K scoring, interconnect, comparison with our receipts) in [`scripts/`](scripts/), and [`BENCHMARKS.md`](BENCHMARKS.md) has all full tables, external `CLAIMED` numbers, and `ESTIMATE`s.
 
 ---
 
@@ -105,9 +107,9 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 
 | Setup & Precision | Speed (tok/s) | MTP Active? | Peak Mem / Mac | Key Receipt |
 |---|---|---|---|---|
-| **2 Macs `GLM-Tandem`** (`@ 1a703421`, `fast_synch=1`, `TP_MTP=1`, `4-bit, lossy`; `T=0`, `Low` effort) — same-day `A-B-C-C-B-A` | **`137.1`** median (`116.7–144.0` per req; **`2.77x`** vs plain pair) | **Yes** (`74.2%` accept) | `97.0–99.4 GB` phys | `result-r4b-gate2-abccba.json` |
+| **2 Macs `GLM-Tandem`** (`@ 1a703421`, `fast_synch=1`, `TP_MTP=1`, `4-bit, lossy`; `T=0`, `Low` effort) — same-day `A-B-C-C-B-A` | **`137.13`** mean of run medians (pooled median `137.20`; `116.7–144.0` per req; **`2.77x`** vs plain pair) | **Yes** (`74.2%` accept) | `97.0–99.4 GB` phys | `result-r4b-gate2-abccba.json` |
 | **2 Macs `GLM-Tandem`** 30-min soak (`309` turns, `179,387` tok, `4-bit, lossy`; `T=0`, `Low` effort) | **`136.0`** median (`129.6` agg, `0` stalls); `13,985`/`53,990`-token prompts read `2,033`/`2,174`, write `132.3`/`128.0` | **Yes** (`63–93%`) | `100.4 GB` phys | `result-tandem-r3-soak.json`, `result-tandem-r3-long.json` |
-| **2 Macs `GLM-Tandem`** (`TP_MTP=0`, `fast_synch=1`, plain greedy, `4-bit, lossy`; `T=0`, `Low` effort) | **`104.6`** median (**`2.11x`** vs plain pair) | No (plain) | `93.8–95.5 GB` phys | `result-r4b-gate2-abccba.json` |
+| **2 Macs `GLM-Tandem`** (`TP_MTP=0`, `fast_synch=1`, plain greedy, `4-bit, lossy`; `T=0`, `Low` effort) | **`104.61`** mean of run medians (**`2.11x`** vs plain pair) | No (plain) | `93.8–95.5 GB` phys | `result-r4b-gate2-abccba.json` |
 | **1 Mac `TensorFold v1.2.10`** (`Mac A`, `4-bit, lossy`; `T=0`, `Low` effort) — same-day `A-B-B-A` | **`90.1`** mean of arm medians (`89.5` Run-2 short med, max `99.2`; **`2.10x`** vs 1-Mac `mlx-vlm`; `127,996`-token write `87.8`) | **Yes** (`64.7–65.6%`) | `189.2–189.5 GB` phys | `tf1-run5-abba.json`, `tf1-run1-2.json`, `tf1-run3.json` |
 | **2 Macs `mlx-vlm 0.8.0` + shard overlay** (`fast_synch=1`, `4-bit, lossy`; `T=0`, `Low` effort) | **`49.52`** (mean of run medians; `49.8` in the earlier quiet pass) | No | `90.8 GB` phys (`94.7 GB` mlx) | `result-r4b-gate2-abccba.json`, `twomac-quiet-1119.log` |
 | **1 Mac `mlx-vlm 0.8.0` + overlay** (`4-bit, lossy`; `T=0`, `Low` effort) | **`42.94–42.97`** (`A-B-B-A` arm medians) | No | `178.7–184.9 GB` | `tf1-run5-abba.json` |
@@ -133,7 +135,7 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 | **2 Macs `GLM-Tandem`** (`TP_MTP=1`, pre-connected sockets; drafts off above 4 streams) | `32` short users | **`248.3`** (crossover: from `20` users two independent `mlx-vlm` servers give the higher total) | `8.1` / `7.8` | `6.02` p50 / `12.31` max | `result-r7-part2.json` |
 | **2 Macs `GLM-Tandem`** (`8 x ~8k`, Round 7) | `8 x ~8k` users | **`54.1`** — still the leader (no crossover up to `8 x 8k`) | `6.8` / `6.8` | `18.75` p50 / `30.09` max | `result-r7-part2.json` |
 
-**Takeaway:** For **one user**, `GLM-Tandem` (`TP_MTP=1`, fast sync, stock `mlx 0.32.4`) on two Macs gives the fastest speed: **`137.1 tok/s`** on short prompts (`2.77x` the plain two-Mac pair; `104.6 tok/s` even with drafting off) and **`121.23 tok/s` end-to-end** on a realistic mixed set at `Default` effort, about **`1.5x` over the best one-Mac engine** (`TensorFold v1.2.10`, `1.47x [1.43–1.49]` over three fresh restarts, and not an artefact of prompt-lookup copying). For **many short-prompt users (8 to 32)**, one `TensorFold v1.2.10` per Mac leads (level with `GLM-Tandem` at 2; not run at 4, 12, 20 or 24) (`243.0 tok/s` at 16 users, `271.8` at 32); from `20` users two independent `mlx-vlm` servers give a higher total than the two-Mac `GLM-Tandem` pair and keep scaling, reaching the highest total at 48 to 64 users (`334.7` at 64); for **multiple `8k` prompts**, two-Mac tensor-parallel `GLM-Tandem` leads (`54.1 tok/s`, `18.75 s` median TTFT).
+**Takeaway:** For **one user**, `GLM-Tandem` (`TP_MTP=1`, fast sync, stock `mlx 0.32.4`) on two Macs gives the fastest speed: **`137.13 tok/s`** on short prompts (mean of run medians) (`2.77x` the plain two-Mac pair; `104.61 tok/s` even with drafting off) and **`121.23 tok/s` end-to-end** on a realistic mixed set at `Default` effort, about **`1.5x` over the best one-Mac engine** (`TensorFold v1.2.10`, `1.47x [1.43–1.49]` over three fresh restarts, and not an artefact of prompt-lookup copying). For **many short-prompt users (8 to 32)**, one `TensorFold v1.2.10` per Mac leads (level with `GLM-Tandem` at 2; not run at 4, 12, 20 or 24) (`243.0 tok/s` at 16 users, `271.8` at 32); from `20` users two independent `mlx-vlm` servers give a higher total than the two-Mac `GLM-Tandem` pair and keep scaling, reaching the highest total at 48 to 64 users (`334.7` at 64); for **multiple `8k` prompts**, two-Mac tensor-parallel `GLM-Tandem` leads (`54.1 tok/s`, `18.75 s` median TTFT).
 
 ### Quality Checks (`4-bit, lossy`, `MEASURED`)
 
@@ -177,10 +179,10 @@ One `31,995`-token prompt with `8` short prompts (staggered `0.25 s` apart) dela
 
 ## How to Reproduce
 
-Point your coding agent (or follow manually) at [`AGENTS.md`](AGENTS.md). In brief:
+Point your coding agent (or follow manually) at [`AGENTS.md`](AGENTS.md); start with its one-Mac [quick replication](AGENTS.md#quick-replication-one-mac-1-hour) and the setup commands in [`SETUP.md`](SETUP.md). In brief:
 
 1. **Preflight both Macs:** Confirm macOS `27.2` (`26B118`), `iogpu.wired_limit_mb=0`, Thunderbolt Bridge (`bridge0`) OFF, `rdma_en4` active, exclusive quiet Macs, and verified model manifests (`TensorFold/GLM-5.3-Flash-MLX-4bit-MTP @ d2b17f52`, `45` SHA-256 + `9` size rows, `bad=0`, plus `config.json` SHA-256 check).
-2. **Verify RDMA sync:** Run `sync_bench` over `jaccl` (`~19 us` fast-sync `all_sum` vs `~188 us` default per sum, 1,000 steps on quiet Macs) and a 12,000-step fast-sync soak (`0` hangs; run on busy Macs, preliminary).
+2. **Verify RDMA sync:** Run `sync_bench` over `jaccl` (`all_sum` `18.2 µs` with fast sync vs `174.1 µs` default, 1,000 steps on quiet Macs) and a 12,000-step fast-sync soak (`0` hangs; run on busy Macs, preliminary).
 3. **Run benchmarks one at a time:** Keep stock `mlx==0.32.4` (`MLX_FENCE_MODE` unset), bind every HTTP server strictly to `127.0.0.1`, **never** enable `MLX_METAL_FAST_SYNCH=1` on 8-bit/FP8/MXFP8 graphs, verify MTP acceptance in both startup logs and per-request telemetry, enforce `30 s` real-token decode watchdogs + memory caps, and remove any temporary Mac-to-Mac SSH keys on exit.
 4. **Compare same-day:** Use interleaved `A-B-B-A` / `A-B-C-C-B-A` passes on fresh servers (`cached_tokens=0`) and record the full receipt schema in [`AGENTS.md`](AGENTS.md).
 

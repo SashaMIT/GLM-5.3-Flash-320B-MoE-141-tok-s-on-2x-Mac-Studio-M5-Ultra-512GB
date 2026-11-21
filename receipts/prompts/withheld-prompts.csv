@@ -1,0 +1,15 @@
+file,id,type,tokens,bytes,sha256,reason
+r6-real.json,real-sum-01,summarise,551,2496,5f572dc4c74d34b2a44e8bf51bcaa1b04a3748520eb89cca63cf74d5c08ab002,private or unrecorded-origin text
+r6-real.json,real-sum-02,summarise,1972,8579,d5cbef22d068cd04bd3cd87e4ef24271aa2b3781d4c538772103d38d2bbebce2,private or unrecorded-origin text
+r6-real.json,real-exp-01,explain,1089,4363,a6ad238c02dbc0d3d8162c6d5f961e6ed6a3edb6fff11b3e4a88b4d08cd5a96c,third-party source-code excerpt (licence boundary)
+r6-real.json,real-ar-01,translate_arabic,166,722,c6a2b1a11d16674a1edd03bd568829898068ee3c5193e4d957ec51f001842ae6,private or unrecorded-origin text
+r6-real.json,real-ar-03,translate_arabic,89,377,4bb641259c2c4ae1fd0ef4a71776a08326989ea80d3609b5316d1a167408fbb5,private or unrecorded-origin text
+r6-real.json,real-plan-03,plan,1218,5011,5d9a4cbb2ebc7423af1a9ee7a8760689852d17dc5703fe5e815721dd0c33dba7,private or unrecorded-origin text
+r6-real.json,real-qa-01,qa_doc_2k_8k,3288,14535,63979432e15ba5d13a75262d369e0042cfc8f8689cec73547aa88977c851411a,private or unrecorded-origin text
+r6-real.json,real-qa-02,qa_doc_2k_8k,7969,34354,a6c2c3d7563742468149e27661fb71241bf096612b11009f8859a69074d3406a,private or unrecorded-origin text
+r4-prompts.json,code-refactor,code,1127,4573,6265ba668bafe109621d90be3f1ce943e190ff4cd54db20170b1004363e4fb29,third-party source-code excerpt (licence boundary)
+r4-prompts.json,tool-multi-turn,multi-turn-tool,579,2415,9c3d91901533c6f10021d519b2b9591fa909eaba6beabe216bf59dad3e030272,private or unrecorded-origin text
+tf1-prompts.json,code-2k,code,1990,7911,c382cd9c71b73b5ecd53a971e3cb0a73a3499ce35f94b7d5e9a9df6585f4d9a0,third-party source-code excerpt (licence boundary)
+tf1-prompts.json,lc-128k,long_context,127996,476389,91c59fd80cba5cadb81611444ea7a0c3af91bac2e6c7f74b92d061b6ea4937c7,"restricted electronic edition (Project Gutenberg etext #100 carries a World Library, Inc. 1990-1993 copyright notice with non-commercial terms)"
+r3-prompts.json,slice-14-shakespeare.txt,soak_8k,7993,32145,a7d56a3c5d06c92864d21bdee2bc5ab072a7dc02f763f3dc6685469a03582482,"restricted electronic edition (Project Gutenberg etext #100 carries a World Library, Inc. 1990-1993 copyright notice with non-commercial terms)"
+r3-prompts.json,slice-15-shakespeare.txt,soak_8k,7989,32529,06094488ede7431a8a2e6c0aaa3e757348e0365c9c727106fcb81857b7128ea7,"restricted electronic edition (Project Gutenberg etext #100 carries a World Library, Inc. 1990-1993 copyright notice with non-commercial terms)"

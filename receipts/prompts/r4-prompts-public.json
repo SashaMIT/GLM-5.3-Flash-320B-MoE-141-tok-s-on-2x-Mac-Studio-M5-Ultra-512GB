@@ -1,0 +1,130 @@
+{
+  "original_file": "r4-prompts.json",
+  "original_sha256": "b138f27d867f9b055221870b8f3134f5f0ad6c928838c95fab6b488f5d771014",
+  "note": "Round 4 Gate 1 prompts. Withheld entries carry only id, type, token length, byte length and SHA-256.",
+  "short_prompts": [
+    {
+      "name": "english-reasoning",
+      "kind": "short",
+      "messages": [
+        {
+          "role": "user",
+          "content": "A family has 3 phones and one home storage box. Each phone takes 40 GB of new photos a year and the box holds 8 TB. Explain step by step how many years until the box is full, then give the answer."
+        }
+      ],
+      "tools": null,
+      "prompt": "A family has 3 phones and one home storage box. Each phone takes 40 GB of new photos a year and the box holds 8 TB. Explain step by step how many years until the box is full, then give the answer.",
+      "expected_tokens": 61,
+      "sha256": "f3b792e95c925045f2c5920e8c045eb5172e4baaf9a777ab1ba4c9535b47aaac"
+    },
+    {
+      "name": "arabic",
+      "kind": "short",
+      "messages": [
+        {
+          "role": "user",
+          "content": "اكتب ملخصا قصيرا من ثلاث نقاط عن أهمية حماية صور العائلة الخاصة."
+        }
+      ],
+      "tools": null,
+      "prompt": "اكتب ملخصا قصيرا من ثلاث نقاط عن أهمية حماية صور العائلة الخاصة.",
+      "expected_tokens": 36,
+      "sha256": "0cdd5130839fc4371ce851c8078e23b5fc4ebe1fb88ac9b5f9d03b16b3c3a24f"
+    },
+    {
+      "name": "prose-400",
+      "kind": "short",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write a 400-word short story about a lighthouse keeper"
+        }
+      ],
+      "tools": null,
+      "prompt": "Write a 400-word short story about a lighthouse keeper",
+      "expected_tokens": 24,
+      "sha256": "7fbe07899889207a551637d70d622bca61969eadadb92fbff04b44356c8ca10d"
+    }
+  ],
+  "gate1_prompts": [
+    {
+      "name": "english-reasoning",
+      "kind": "short",
+      "messages": [
+        {
+          "role": "user",
+          "content": "A family has 3 phones and one home storage box. Each phone takes 40 GB of new photos a year and the box holds 8 TB. Explain step by step how many years until the box is full, then give the answer."
+        }
+      ],
+      "tools": null,
+      "prompt": "A family has 3 phones and one home storage box. Each phone takes 40 GB of new photos a year and the box holds 8 TB. Explain step by step how many years until the box is full, then give the answer.",
+      "expected_tokens": 61,
+      "sha256": "f3b792e95c925045f2c5920e8c045eb5172e4baaf9a777ab1ba4c9535b47aaac"
+    },
+    {
+      "name": "arabic",
+      "kind": "short",
+      "messages": [
+        {
+          "role": "user",
+          "content": "اكتب ملخصا قصيرا من ثلاث نقاط عن أهمية حماية صور العائلة الخاصة."
+        }
+      ],
+      "tools": null,
+      "prompt": "اكتب ملخصا قصيرا من ثلاث نقاط عن أهمية حماية صور العائلة الخاصة.",
+      "expected_tokens": 36,
+      "sha256": "0cdd5130839fc4371ce851c8078e23b5fc4ebe1fb88ac9b5f9d03b16b3c3a24f"
+    },
+    {
+      "name": "prose-400",
+      "kind": "short",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write a 400-word short story about a lighthouse keeper"
+        }
+      ],
+      "tools": null,
+      "prompt": "Write a 400-word short story about a lighthouse keeper",
+      "expected_tokens": 24,
+      "sha256": "7fbe07899889207a551637d70d622bca61969eadadb92fbff04b44356c8ca10d"
+    },
+    {
+      "id": "code-refactor",
+      "type": "code",
+      "expected_tokens": 1127,
+      "bytes": 4573,
+      "sha256": "6265ba668bafe109621d90be3f1ce943e190ff4cd54db20170b1004363e4fb29",
+      "prompt": null,
+      "withheld": true,
+      "withheld_reason": "third-party source-code excerpt (licence boundary)"
+    },
+    {
+      "name": "summary-2k",
+      "kind": "summary-2k",
+      "source_desc": "public-domain IETF RFC 9110 (data/rfc9110.txt lines 1..175)",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Give a concise five-bullet summary of the main rules and definitions in the following IETF RFC 9110 (HTTP Semantics) excerpt:\n\n﻿\n\n\n\nInternet Engineering Task Force (IETF)                  R. Fielding, Ed.\nRequest for Comments: 9110                                         Adobe\nSTD: 97                                               M. Nottingham, Ed.\nObsoletes: 2818, 7230, 7231, 7232, 7233, 7235,                    Fastly\n           7538, 7615, 7694                              J. Reschke, Ed.\nUpdates: 3864                                                 greenbytes\nCategory: Standards Track                                      June 2022\nISSN: 2070-1721\n\n\n                             HTTP Semantics\n\nAbstract\n\n   The Hypertext Transfer Protocol (HTTP) is a stateless application-\n   level protocol for distributed, collaborative, hypertext information\n   systems.  This document describes the overall architecture of HTTP,\n   establishes common terminology, and defines aspects of the protocol\n   that are shared by all versions.  In this definition are core\n   protocol elements, extensibility mechanisms, and the \"http\" and\n   \"https\" Uniform Resource Identifier (URI) schemes.\n\n   This document updates RFC 3864 and obsoletes RFCs 2818, 7231, 7232,\n   7233, 7235, 7538, 7615, 7694, and portions of 7230.\n\nStatus of This Memo\n\n   This is an Internet Standards Track document.\n\n   This document is a product of the Internet Engineering Task Force\n   (IETF).  It represents the consensus of the IETF community.  It has\n   received public review and has been approved for publication by the\n   Internet Engineering Steering Group (IESG).  Further information on\n   Internet Standards is available in Section 2 of RFC 7841.\n\n   Information about the current status of this document, any errata,\n   and how to provide feedback on it may be obtained at\n   https://www.rfc-editor.org/info/rfc9110.\n\nCopyright Notice\n\n   Copyright (c) 2022 IETF Trust and the persons identified as the\n   document authors.  All rights reserved.\n\n   This document is subject to BCP 78 and the IETF Trust's Legal\n   Provisions Relating to IETF Documents\n   (https://trustee.ietf.org/license-info) in effect on the date of\n   publication of this document.  Please review these documents\n   carefully, as they describe your rights and restrictions with respect\n   to this document.  Code Components extracted from this document must\n   include Revised BSD License text as described in Section 4.e of the\n   Trust Legal Provisions and are provided without warranty as described\n   in the Revised BSD License.\n\n   This document may contain material from IETF Documents or IETF\n   Contributions published or made publicly available before November\n   10, 2008.  The person(s) controlling the copyright in some of this\n   material may not have granted the IETF Trust the right to allow\n   modifications of such material outside the IETF Standards Process.\n   Without obtaining an adequate license from the person(s) controlling\n   the copyright in such materials, this document may not be modified\n   outside the IETF Standards Process, and derivative works of it may\n   not be created outside the IETF Standards Process, except to format\n   it for publication as an RFC or to translate it into languages other\n   than English.\n\nTable of Contents\n\n   1.  Introduction\n     1.1.  Purpose\n     1.2.  History and Evolution\n     1.3.  Core Semantics\n     1.4.  Specifications Obsoleted by This Document\n   2.  Conformance\n     2.1.  Syntax Notation\n     2.2.  Requirements Notation\n     2.3.  Length Requirements\n     2.4.  Error Handling\n     2.5.  Protocol Version\n   3.  Terminology and Core Concepts\n     3.1.  Resources\n     3.2.  Representations\n     3.3.  Connections, Clients, and Servers\n     3.4.  Messages\n     3.5.  User Agents\n     3.6.  Origin Server\n     3.7.  Intermediaries\n     3.8.  Caches\n     3.9.  Example Message Exchange\n   4.  Identifiers in HTTP\n     4.1.  URI References\n     4.2.  HTTP-Related URI Schemes\n       4.2.1.  http URI Scheme\n       4.2.2.  https URI Scheme\n       4.2.3.  http(s) Normalization and Comparison\n       4.2.4.  Deprecation of userinfo in http(s) URIs\n       4.2.5.  http(s) References with Fragment Identifiers\n     4.3.  Authoritative Access\n       4.3.1.  URI Origin\n       4.3.2.  http Origins\n       4.3.3.  https Origins\n       4.3.4.  https Certificate Verification\n       4.3.5.  IP-ID Reference Identity\n   5.  Fields\n     5.1.  Field Names\n     5.2.  Field Lines and Combined Field Value\n     5.3.  Field Order\n     5.4.  Field Limits\n     5.5.  Field Values\n     5.6.  Common Rules for Defining Field Values\n       5.6.1.  Lists (#rule ABNF Extension)\n         5.6.1.1.  Sender Requirements\n         5.6.1.2.  Recipient Requirements\n       5.6.2.  Tokens\n       5.6.3.  Whitespace\n       5.6.4.  Quoted Strings\n       5.6.5.  Comments\n       5.6.6.  Parameters\n       5.6.7.  Date/Time Formats\n   6.  Message Abstraction\n     6.1.  Framing and Completeness\n     6.2.  Control Data\n     6.3.  Header Fields\n     6.4.  Content\n       6.4.1.  Content Semantics\n       6.4.2.  Identifying Content\n     6.5.  Trailer Fields\n       6.5.1.  Limitations on Use of Trailers\n       6.5.2.  Processing Trailer Fields\n     6.6.  Message Metadata\n       6.6.1.  Date\n       6.6.2.  Trailer\n   7.  Routing HTTP Messages\n     7.1.  Determining the Target Resource\n     7.2.  Host and :authority\n     7.3.  Routing Inbound Requests\n       7.3.1.  To a Cache\n       7.3.2.  To a Proxy\n       7.3.3.  To the Origin\n     7.4.  Rejecting Misdirected Requests\n     7.5.  Response Correlation\n     7.6.  Message Forwarding\n       7.6.1.  Connection\n       7.6.2.  Max-Forwards\n       7.6.3.  Via\n     7.7.  Message Transformations\n     7.8.  Upgrade\n   8.  Representation Data and Metadata\n     8.1.  Representation Data\n     8.2.  Representation Metadata\n     8.3.  Content-Type\n       8.3.1.  Media Type\n       8.3.2.  Charset\n       8.3.3.  Multipart Types\n     8.4.  Content-Encoding\n       8.4.1.  Content Codings\n         8.4.1.1.  Compress Coding\n         8.4.1.2.  Deflate Coding\n         8.4.1.3.  Gzip Coding\n     8.5.  Content-Language\n       8.5.1.  Language Tags\n     8.6.  Content-Length\n     8.7.  Content-Location\n     8.8.  Validator Fields\n       8.8.1.  Weak versus Strong\n       8.8.2.  Last-Modified\n         8.8.2.1.  Generation\n         8.8.2.2.  Comparison\n       8.8.3.  ETag\n         8.8.3.1.  Generation\n         8.8.3.2.  Comparison"
+        }
+      ],
+      "tools": null,
+      "prompt": "Give a concise five-bullet summary of the main rules and definitions in the following IETF RFC 9110 (HTTP Semantics) excerpt:\n\n﻿\n\n\n\nInternet Engineering Task Force (IETF)                  R. Fielding, Ed.\nRequest for Comments: 9110                                         Adobe\nSTD: 97                                               M. Nottingham, Ed.\nObsoletes: 2818, 7230, 7231, 7232, 7233, 7235,                    Fastly\n           7538, 7615, 7694                              J. Reschke, Ed.\nUpdates: 3864                                                 greenbytes\nCategory: Standards Track                                      June 2022\nISSN: 2070-1721\n\n\n                             HTTP Semantics\n\nAbstract\n\n   The Hypertext Transfer Protocol (HTTP) is a stateless application-\n   level protocol for distributed, collaborative, hypertext information\n   systems.  This document describes the overall architecture of HTTP,\n   establishes common terminology, and defines aspects of the protocol\n   that are shared by all versions.  In this definition are core\n   protocol elements, extensibility mechanisms, and the \"http\" and\n   \"https\" Uniform Resource Identifier (URI) schemes.\n\n   This document updates RFC 3864 and obsoletes RFCs 2818, 7231, 7232,\n   7233, 7235, 7538, 7615, 7694, and portions of 7230.\n\nStatus of This Memo\n\n   This is an Internet Standards Track document.\n\n   This document is a product of the Internet Engineering Task Force\n   (IETF).  It represents the consensus of the IETF community.  It has\n   received public review and has been approved for publication by the\n   Internet Engineering Steering Group (IESG).  Further information on\n   Internet Standards is available in Section 2 of RFC 7841.\n\n   Information about the current status of this document, any errata,\n   and how to provide feedback on it may be obtained at\n   https://www.rfc-editor.org/info/rfc9110.\n\nCopyright Notice\n\n   Copyright (c) 2022 IETF Trust and the persons identified as the\n   document authors.  All rights reserved.\n\n   This document is subject to BCP 78 and the IETF Trust's Legal\n   Provisions Relating to IETF Documents\n   (https://trustee.ietf.org/license-info) in effect on the date of\n   publication of this document.  Please review these documents\n   carefully, as they describe your rights and restrictions with respect\n   to this document.  Code Components extracted from this document must\n   include Revised BSD License text as described in Section 4.e of the\n   Trust Legal Provisions and are provided without warranty as described\n   in the Revised BSD License.\n\n   This document may contain material from IETF Documents or IETF\n   Contributions published or made publicly available before November\n   10, 2008.  The person(s) controlling the copyright in some of this\n   material may not have granted the IETF Trust the right to allow\n   modifications of such material outside the IETF Standards Process.\n   Without obtaining an adequate license from the person(s) controlling\n   the copyright in such materials, this document may not be modified\n   outside the IETF Standards Process, and derivative works of it may\n   not be created outside the IETF Standards Process, except to format\n   it for publication as an RFC or to translate it into languages other\n   than English.\n\nTable of Contents\n\n   1.  Introduction\n     1.1.  Purpose\n     1.2.  History and Evolution\n     1.3.  Core Semantics\n     1.4.  Specifications Obsoleted by This Document\n   2.  Conformance\n     2.1.  Syntax Notation\n     2.2.  Requirements Notation\n     2.3.  Length Requirements\n     2.4.  Error Handling\n     2.5.  Protocol Version\n   3.  Terminology and Core Concepts\n     3.1.  Resources\n     3.2.  Representations\n     3.3.  Connections, Clients, and Servers\n     3.4.  Messages\n     3.5.  User Agents\n     3.6.  Origin Server\n     3.7.  Intermediaries\n     3.8.  Caches\n     3.9.  Example Message Exchange\n   4.  Identifiers in HTTP\n     4.1.  URI References\n     4.2.  HTTP-Related URI Schemes\n       4.2.1.  http URI Scheme\n       4.2.2.  https URI Scheme\n       4.2.3.  http(s) Normalization and Comparison\n       4.2.4.  Deprecation of userinfo in http(s) URIs\n       4.2.5.  http(s) References with Fragment Identifiers\n     4.3.  Authoritative Access\n       4.3.1.  URI Origin\n       4.3.2.  http Origins\n       4.3.3.  https Origins\n       4.3.4.  https Certificate Verification\n       4.3.5.  IP-ID Reference Identity\n   5.  Fields\n     5.1.  Field Names\n     5.2.  Field Lines and Combined Field Value\n     5.3.  Field Order\n     5.4.  Field Limits\n     5.5.  Field Values\n     5.6.  Common Rules for Defining Field Values\n       5.6.1.  Lists (#rule ABNF Extension)\n         5.6.1.1.  Sender Requirements\n         5.6.1.2.  Recipient Requirements\n       5.6.2.  Tokens\n       5.6.3.  Whitespace\n       5.6.4.  Quoted Strings\n       5.6.5.  Comments\n       5.6.6.  Parameters\n       5.6.7.  Date/Time Formats\n   6.  Message Abstraction\n     6.1.  Framing and Completeness\n     6.2.  Control Data\n     6.3.  Header Fields\n     6.4.  Content\n       6.4.1.  Content Semantics\n       6.4.2.  Identifying Content\n     6.5.  Trailer Fields\n       6.5.1.  Limitations on Use of Trailers\n       6.5.2.  Processing Trailer Fields\n     6.6.  Message Metadata\n       6.6.1.  Date\n       6.6.2.  Trailer\n   7.  Routing HTTP Messages\n     7.1.  Determining the Target Resource\n     7.2.  Host and :authority\n     7.3.  Routing Inbound Requests\n       7.3.1.  To a Cache\n       7.3.2.  To a Proxy\n       7.3.3.  To the Origin\n     7.4.  Rejecting Misdirected Requests\n     7.5.  Response Correlation\n     7.6.  Message Forwarding\n       7.6.1.  Connection\n       7.6.2.  Max-Forwards\n       7.6.3.  Via\n     7.7.  Message Transformations\n     7.8.  Upgrade\n   8.  Representation Data and Metadata\n     8.1.  Representation Data\n     8.2.  Representation Metadata\n     8.3.  Content-Type\n       8.3.1.  Media Type\n       8.3.2.  Charset\n       8.3.3.  Multipart Types\n     8.4.  Content-Encoding\n       8.4.1.  Content Codings\n         8.4.1.1.  Compress Coding\n         8.4.1.2.  Deflate Coding\n         8.4.1.3.  Gzip Coding\n     8.5.  Content-Language\n       8.5.1.  Language Tags\n     8.6.  Content-Length\n     8.7.  Content-Location\n     8.8.  Validator Fields\n       8.8.1.  Weak versus Strong\n       8.8.2.  Last-Modified\n         8.8.2.1.  Generation\n         8.8.2.2.  Comparison\n       8.8.3.  ETag\n         8.8.3.1.  Generation\n         8.8.3.2.  Comparison",
+      "expected_tokens": 1987,
+      "bytes": 6474,
+      "sha256": "5693526e49b115ae2fd64d8e90b26ea214b9cbc59f9f1b611e94e36ce3cf7e94"
+    },
+    {
+      "id": "tool-multi-turn",
+      "type": "multi-turn-tool",
+      "expected_tokens": 579,
+      "bytes": 2415,
+      "sha256": "9c3d91901533c6f10021d519b2b9591fa909eaba6beabe216bf59dad3e030272",
+      "prompt": null,
+      "withheld": true,
+      "withheld_reason": "private or unrecorded-origin text",
+      "sha256_of": "rendered chat template (tools + messages, Reasoning Effort: Low)"
+    }
+  ]
+}
