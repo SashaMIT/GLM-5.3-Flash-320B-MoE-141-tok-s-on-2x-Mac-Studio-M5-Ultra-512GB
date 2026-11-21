@@ -228,7 +228,38 @@ def chart_gsm8k():
                 "".join(out), d["title"])
 
 
-for name, fn in [("0-at-a-glance", chart_glance), ("1-single-user-speed", chart_single_user),
+def chart_speed():
+    d = DATA["speed"]; rows = d["rows"]
+    panels = [("(a) Prompt reading (prefill)", "prefill", 2500, 500, 130, 520),
+              ("(b) Output (decode)", "decode", 160, 20, 680, 1060)]
+    out = []
+    top, bottom = 110, 500
+    for title, key, vmax, step, left, right in panels:
+        out.append(f'<rect x="{left}" y="{top}" width="{right-left}" height="{bottom-top}" fill="none" stroke="{INK}" stroke-width="1.2"/>')
+        sy = lambda v, vmax=vmax: bottom - (bottom - top) * v / vmax
+        for v in range(0, vmax + 1, step):
+            y = sy(v)
+            out.append(f'<line x1="{left-7}" y1="{y:.1f}" x2="{left}" y2="{y:.1f}" stroke="{INK}" stroke-width="1.2"/>')
+            out.append(t(left - 12, y + 5, f"{v:,}", 14, "end"))
+        out.append(t((left + right) / 2, top - 14, title, 17, "middle", 700))
+        out.append(t(left - 72, (top + bottom) / 2, "tokens per second", 15, "middle", 700, rotate=-90))
+        slot = (right - left) / len(rows); bw = 70
+        for i, r in enumerate(rows):
+            cx = left + slot * (i + 0.5); v = r[key]
+            if v is None:
+                out.append(t(cx, bottom - 20, "not measured", 13, "middle", 400, SERIF, "italic"))
+            else:
+                out.append(bar(cx - bw / 2, bottom, bw, bottom - sy(v), "url(#p_dark)" if key == "decode" else "url(#p_hlines)"))
+                out.append(t(cx, sy(v) - 8, f"{v:,.1f}", 14.5, "middle", 700))
+            out.append(t(cx, bottom + 24, r["engine"], 14.5, "middle"))
+            out.append(t(cx, bottom + 43, r["setup"], 13.5, "middle", fill="#333"))
+    return page("Prompt Reading and Output Speed, GLM-5.3-Flash (320B MoE, 4-bit)",
+                ["Figure 0. (a) Prefill on one long prompt (GLM-Tandem 54k tokens, TensorFold 32k tokens), fresh server, no cache.",
+                 "(b) Median output (decode) speed, single user, 144 requests per set-up (Round 7). The two panels use separate scales."],
+                "".join(out), d["title"], h=640)
+
+
+for name, fn in [("00-speed", chart_speed), ("0-at-a-glance", chart_glance), ("1-single-user-speed", chart_single_user),
                  ("2-many-users", chart_many_users), ("3-long-prompt-fairness", chart_fairness),
                  ("4-gsm8k-accuracy-speed", chart_gsm8k)]:
     with open(os.path.join(OUT, name + ".svg"), "w") as f:

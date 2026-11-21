@@ -306,5 +306,32 @@
     "note": "all users combined"
    }
   ]
+ },
+ "speed": {
+  "title": "Prompt Reading and Output Speed",
+  "rows": [
+   {
+    "engine": "GLM-Tandem",
+    "setup": "2 Macs",
+    "prefill": 2174.0,
+    "prefill_ctx": "54k prompt",
+    "decode": 141.4
+   },
+   {
+    "engine": "TensorFold 1.2.10",
+    "setup": "1 Mac",
+    "prefill": 2071.6,
+    "prefill_ctx": "32k prompt",
+    "decode": 94.7
+   },
+   {
+    "engine": "mlx-vlm 0.8.0",
+    "setup": "1 Mac",
+    "prefill": null,
+    "prefill_ctx": "not measured on public text",
+    "decode": 43.4
+   }
+  ],
+  "source": "prefill: BENCHMARKS.md 1.4 (single stream, fresh server, no cache); output: REPORT-10 Table 1.1 decode median (144 requests)"
  }
 }

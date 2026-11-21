@@ -1,11 +1,48 @@
-# GLM-5.3-Flash on One and Two Mac Studios (M5 Ultra, 512 GB) — Stock MLX Benchmarks
+# GLM-5.3-Flash at 141 tok/s on two Mac Studios
 
-Measured, gated benchmark results, failure lessons, and an agent-ready reproduction brief for running **GLM-5.3-Flash** (`glm5_next`, **320B total / 18B active** MoE, 45 layers, 288 routed experts / 8 active per token + 1 shared, 1 MTP layer, 169 GB on disk at 4-bit) across **one and two 512 GB Apple Mac Studios (M5 Ultra, macOS 27.2 build `26B118`)** over a single **Thunderbolt 5 RDMA (`jaccl`)** link using **stock `mlx 0.32.4`** (no custom C++ MLX patches).
+**A 320-billion-parameter Mixture-of-Experts model running locally on Apple Silicon — measured, reproducible, with open data.**
+
+![Model](https://img.shields.io/badge/model-GLM--5.3--Flash%20320B%20MoE-111111)
+![Active](https://img.shields.io/badge/active%20params-18B-555555)
+![Hardware](https://img.shields.io/badge/hardware-2%C3%97%20Mac%20Studio%20M5%20Ultra%20512%20GB-555555)
+![Framework](https://img.shields.io/badge/framework-Apple%20MLX-555555)
+![Engines](https://img.shields.io/badge/engines-TensorFold%20%C2%B7%20GLM--Tandem%20%C2%B7%20mlx--vlm-555555)
+![Precision](https://img.shields.io/badge/precision-4--bit-555555)
+![License](https://img.shields.io/badge/license-Apache--2.0-555555)
+
+![Prompt reading and output speed](charts/00-speed.png)
+
+## The numbers people ask for first
+
+All `MEASURED`, `4-bit, lossy`, on the same TensorFold `GLM-5.3-Flash-MLX-4bit-MTP` model pack.
+
+| | **GLM-Tandem** — 2 Macs, tensor-parallel over Thunderbolt 5 RDMA | **TensorFold 1.2.10** — 1 Mac | **mlx-vlm 0.8.0** — 1 Mac |
+|---|---|---|---|
+| **Prompt reading (prefill)** | **2,032.8 – 2,174.0 tok/s** (14k – 54k-token prompts) | **2,002.6 – 2,071.6 tok/s** (32k – 128k-token prompts) | not measured on public text |
+| **Output (decode), 1 user, median** | **141.4 tok/s** | **94.7 tok/s** | **43.4 tok/s** |
+| **End-to-end, 1 user, median** | 119.9 tok/s | 81.7 tok/s | 41.7 tok/s |
+| **Many users, total output** | 248.3 tok/s at 32 users | 271.8 tok/s at 32 users (one per Mac) | 334.7 tok/s at 64 users (one per Mac) |
+| **Peak memory per Mac** | 98.3 / 100.0 GB | 189.2 GB | 196.2 GB |
+| **Longest prompt tested** | 54k tokens | 128k tokens | — |
+
+Prefill: single long prompt, fresh server, no prompt cache ([`BENCHMARKS.md`](BENCHMARKS.md) §1.4). Single-user output: 144 timed requests per set-up across 3 fresh restarts, Round 7. Many users: median of 3 repeats ([`BENCHMARKS.md`](BENCHMARKS.md) §2.3).
+
+### What was tested
+
+- **Model:** [GLM-5.3-Flash](https://huggingface.co/zai-org) by Z.ai — **320B total / 18B active** Mixture-of-Experts, 288 routed experts (8 active + 1 shared per token), a built-in **MTP head for speculative decoding**, 1M-token context window; run as TensorFold's **4-bit MLX** pack (169 GB on disk).
+- **Devices:** **2 × Apple Mac Studio, M5 Ultra, 512 GB unified memory each**, macOS 27.2, linked by one **Thunderbolt 5** cable with **RDMA**.
+- **Software:** stock **Apple MLX 0.32.4** (no patches), **TensorFold 1.2.10**, **GLM-Tandem** (two-Mac tensor parallelism), **mlx-vlm 0.8.0**; all served over **OpenAI-compatible** APIs.
+- **Topics:** local LLM · on-device AI · Apple Silicon · MLX · MoE · speculative decoding · tensor parallelism · RDMA over Thunderbolt 5 · 4-bit quantization · multi-user serving · long context.
+
+### About these results
 
 - **TensorFold's pack underlies every result.** All engines tested here (`TensorFold`, `GLM-Tandem`, `mlx-vlm` and our shard overlay) loaded `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP`; thank you to TensorFold, Z.ai, icryo, Blaizzy, jundot and the MLX team ([`CREDITS.md`](CREDITS.md)).
 - **All figures in this README are `MEASURED`** in our lab logs (rounds up to Round 7, 19-20 Nov 2026) (with exact receipt filenames in [`BENCHMARKS.md`](BENCHMARKS.md)).
 - **Precision & determinism labels:** Native 4-bit MLX affine (`group_size=64`) is always labelled **`4-bit, lossy`**. Speculative draft decoding (`MTP`) and cross-engine comparisons produce **`same quality, not bit-identical at T=0`** due to `bfloat16` near-tie rounding.
 - **Where things are:** scrubbed per-request data is in [`receipts/`](receipts/README.md), a small clean-room bench client is in [`scripts/bench_client.py`](scripts/bench_client.py), and [`BENCHMARKS.md`](BENCHMARKS.md) has all full tables, external `CLAIMED` numbers, and `ESTIMATE`s.
+
+---
+
 
 ---
 
