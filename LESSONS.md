@@ -22,7 +22,7 @@ Every issue below happened directly during our 19 and 20 Nov 2026 runs on **Mac 
 
 - **What happened:**
   - With default sync (`MLX_METAL_FAST_SYNCH` unset), two Macs running FP8-requantized-to-MXFP8 generated at **`21.67–21.78 tok/s`** (`twomac-quiet-1119.log`, `178.7 GB` MLX peak per Mac).
-  - Running the **exact same FP8->MXFP8 build on one Mac (`Mac B`)** generated at **`26.3–26.5 tok/s`** (`334.9 GB` peak). Two Macs reached **0.82x** of one Mac.
+  - Running the **exact same FP8->MXFP8 build on one Mac (`Mac B`)** generated at **`26.3–26.5 tok/s`** (`334.9 GB` peak). Two Macs were slower than one Mac (`21.67–21.78` vs `26.3–26.5 tok/s`).
   - Even on 4-bit, disabling fast sync dropped two Macs from `49.8 tok/s` to **`27.3–27.4 tok/s`** (also below one Mac's `43.0 tok/s`).
 - **Why:**
   - `glm5_next` executes ~90+ `all_sum` collectives per token across 45 layers. Under the default fence, each `all_sum` adds **`188–197 us`** (`~17 ms/tok` of pure sync overhead), versus **`18–19 us`** with fast sync (`sync-quiet-2026-11-19.log`).
@@ -67,7 +67,7 @@ Every issue below happened directly during our 19 and 20 Nov 2026 runs on **Mac 
   - In Round 4 Gate 1 (`result-r4-gate1-identity.json`), running `GLM-Tandem` at `temperature=0` was 100% deterministic within each mode (`stream=True == stream=False`, `6/6` prompts). However, comparing `TP_MTP=0` (drafting OFF) against `TP_MTP=1` (drafting ON) diverged on **5 of 6 prompts** after `15–244` identical tokens (e.g. `"Use 8000 GB."` vs `"Use 8000."`, `"Gullwrack"` vs `"Gullwing"`).
   - Even with drafting completely OFF (`TP_MTP=0`), `GLM-Tandem` differed from `mlx-vlm 0.8.0 + overlay` on **3 of 3 prompts** after `14–75` tokens (`result-r4b-gate2-abccba.json`).
 - **Why:**
-  - Verifying multiple speculative draft tokens (`R >= 2` rows) in parallel—and using different Metal/NAX matmul/attention kernels or sharded `lm_head` reductions—computes identical mathematics in a different **`bfloat16` accumulation order**. At near-tie logit pairs (1 ULP apart), `bf16` rounding flips which token wins `argmax`.
+  - Verifying multiple speculative draft tokens (`R >= 2` rows) in parallel—and using different Metal/NAX matmul/attention kernels or sharded `lm_head` reductions—computes identical mathematics in a different **`bfloat16` accumulation order**. At near-tie logit pairs (1 ULP apart), `bf16` rounding likely flips which token wins `argmax` (inferred from the Round 6/7 reports; not logged per token).
 - **What to do:**
   - Never claim speculative decoding or cross-engine acceleration is "token-identical" or "bit-exact" at `T=0` on Apple Silicon `bf16` without verifying token hashes.
   - Verify internal determinism within each mode (`1` unique hash across repetitions, `stream == non-stream`), read outputs for factual/semantic parity, and report **`same quality, not bit-identical at T=0`**.
@@ -123,7 +123,7 @@ Every issue below happened directly during our 19 and 20 Nov 2026 runs on **Mac 
 - **Chat template defaults to `Reasoning Effort: Max`:** `GLM-5.3-Flash`'s `chat_template.jinja` inserts `<|system|>Reasoning Effort: Max` even if a plain system message is passed unless `reasoning_effort="low"` is passed explicitly to `apply_chat_template` / `--chat-template-args`.
 - **Watchdogs must count real tokens, not SSE keepalives:** Servers send `: keepalive` SSE comments during long prefills. Reset the decode watchdog only on non-empty `delta.content` or `delta.reasoning` chunks, with a separate bounded timeout for cold `14k–128k` prefill.
 - **Full 36-field `rusage_info_v4` struct in macOS `ctypes`:** Declaring only 27 fields (`224` bytes) for `proc_pid_rusage(..., RUSAGE_INFO_V4, ...)` caused a `296`-byte write overflow and Python GC segfault during Arm A1 prep; always declare all 36 fields (`296` bytes).
-- **`omlx==0.8.0rc1` is not on PyPI:** Installing from PyPI fails with HTTP `404`; download and SHA-256-verify the official GitHub Release wheel (`v0.8.0rc1`) into an isolated venv (`~/opt/tandem`) so existing `mlx-vlm` environments stay untouched.
+- **`omlx==0.8.0rc1` is not on PyPI:** Installing from PyPI fails with HTTP `404`; download and SHA-256-verify the official GitHub Release wheel (`v0.8.0rc1`) into an isolated venv (`<tandem-env>`) so existing `mlx-vlm` environments stay untouched.
 
 ---
 
@@ -143,7 +143,7 @@ Every issue below happened directly during our 19 and 20 Nov 2026 runs on **Mac 
 
 - **What happened:**
   - With one `31,995`-token prompt in flight, `8` short prompts waited `7.65 s` median (`37.04 s` for the 9th stream) on one-Mac `TensorFold`, `15.18 s` on the two-Mac `GLM-Tandem` pair, and `36.33 s` on one-Mac `mlx-vlm 0.8.0`.
-  - All six `mlx-vlm` runs reached `485.3 GB` physical / `512.8 GB` system memory on a 512 GiB Mac. Our memory watchdog (`80%`, `410.0 GB`) fired `6` times; the server drained its in-flight replies cleanly when we stopped it.
+  - All six `mlx-vlm` runs reached `485.3 GB` physical / `512.8 GB` system memory on a 512 GiB Mac. Our memory watchdog (`80%`, `410.0 GB`) fired `6` times across the three `mlx-vlm` set-ups x `2` repeats (the default set-up alone fired `2`); the server drained its in-flight replies cleanly when we stopped it.
   - Setting `mlx-vlm`'s `--prefill-step-size 512` gave a longer short-request wait (`50.23 s` vs `36.33 s`). `TensorFold`'s prefill environment variables (`TENSORFOLD_PREFILL_TOKENS`, `TENSORFOLD_PREFILL_ORDER`) are not in the `1.2.10` documentation, so we did not run them.
 - **Why:**
   - `TensorFold` is best for this job: it splits a long prompt into `16,384`-token prefill chunks, so short requests slip in after the first chunk. `mlx-vlm`'s scheduler processes all active prompt chunks before steady decoding and keeps large temporary prefill buffers (our reading of the logs, `likely`, not proven). `GLM-Tandem` has no chunking setting at this pin.

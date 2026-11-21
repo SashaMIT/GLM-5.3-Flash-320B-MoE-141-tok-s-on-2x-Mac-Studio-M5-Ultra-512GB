@@ -180,7 +180,7 @@ def chart_many_users():
     out.append(line_key(right - 250, bottom - 150, keyitems))
     return page("Total Speed as More People Share Two Mac Studios",
                 ["Figure 2. Total output speed for all users together; each point is the median of 3 repeats.",
-                 "TensorFold (one per Mac) leads from 2 to 32 users; two mlx-vlm servers reach the highest total at 48–64 users."],
+                 "TensorFold (one per Mac) leads at 8, 16 and 32 users (level with GLM-Tandem at 2); two mlx-vlm servers reach the highest total at 48–64."],
                 "".join(out), d["title"])
 
 
@@ -203,7 +203,7 @@ def chart_fairness():
     out.append(t((left + right) / 2, bottom + 80, "Engine", 17, "middle", 700))
     out.append(bar_key((left + right) / 2, 66, [("Median short request", "url(#p_dark)"), ("Slowest short request", "url(#p_cross)")]))
     return page("Waiting Time for Short Requests Beside a 32k-Token Document",
-                ["Figure 4. One 32k prompt sent with 8 short prompts; fresh server, no prompt cache. TTFT = t_first − t0. Lower is better.",
+                ["Figure 4. One 32k prompt plus 8 short prompts staggered 0.25 s apart; fresh server, no cache. TTFT = t_first − t0. Lower is better.",
                  "* mlx-vlm reached the 80% memory limit during this test."],
                 "".join(out), d["title"])
 
@@ -224,7 +224,7 @@ def chart_gsm8k():
     out.append(t((left + right) / 2, bottom + 84, "GLM-Tandem on 2 Macs, GSM8K (first 100 test questions)", 17, "middle", 700))
     return page("Maths Accuracy and Speed With and Without Drafting",
                 ["Figure 3. Five samples per question at temperature 0.6; median end-to-end speed.",
-                 "Paired exact McNemar test on majority votes: p = 1.0000 (n = 100). Accuracy is unchanged."],
+                 "Paired exact McNemar test on majority votes: p = 1.0000 (n = 100). Majority-vote accuracy is 100/100 in both."],
                 "".join(out), d["title"])
 
 
@@ -254,7 +254,7 @@ def chart_speed():
             out.append(t(cx, bottom + 24, r["engine"], 14.5, "middle"))
             out.append(t(cx, bottom + 43, r["setup"], 13.5, "middle", fill="#333"))
     return page("Prompt Reading and Output Speed, GLM-5.3-Flash (320B MoE, 4-bit)",
-                ["Figure 0. (a) Prefill on one long prompt (GLM-Tandem 54k tokens, TensorFold 32k tokens), fresh server, no cache.",
+                ["Figure 0. (a) Prefill on one long prompt (GLM-Tandem 53,990 tokens, TensorFold 31,995 tokens), fresh server, no cache.",
                  "(b) Median output (decode) speed, single user, 144 requests per set-up (Round 7). The two panels use separate scales."],
                 "".join(out), d["title"], h=640)
 

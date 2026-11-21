@@ -3,15 +3,13 @@
   "title": "Single-user speed by engine",
   "subtitle": "24 varied prompts · 144 timed requests per setup · 3 fresh restarts · temperature 0",
   "foot": "MEASURED · 4-bit, lossy · GLM-5.3-Flash (320B total, 18B active) · 2x Mac Studio M5 Ultra, 512 GB each · round 7, 20 Nov 2026",
-  "source": "REPORT-10 Table 1.1 (E2E med); recomputed from logs/r7-part1-requests.csv",
   "rows": [
    {
     "name": "GLM-Tandem, 2 Macs",
     "detail": "drafting on",
     "e2e": 119.9,
     "engine": "tandem",
-    "dim": false,
-    "badge": "fastest overall · 2 Macs"
+    "dim": false
    },
    {
     "name": "GLM-Tandem, 2 Macs",
@@ -25,8 +23,7 @@
     "detail": "drafting on",
     "e2e": 81.7,
     "engine": "tensorfold",
-    "dim": false,
-    "badge": "fastest on one Mac"
+    "dim": false
    },
    {
     "name": "TensorFold 1.2.10, 1 Mac",
@@ -47,10 +44,9 @@
   "formula": "E2E tok/s = n_out / (t_last − t0) · two Macs ÷ best one Mac = 1.47 [1.43, 1.49], 95% bootstrap CI"
  },
  "many_users": {
-  "title": "TensorFold, one per Mac, leads from 2 to 32 users",
+  "title": "TensorFold, one per Mac, leads at 8, 16 and 32 users",
   "subtitle": "Short prompts · reasoning effort low · each point is the median of 3 repeats · first token under 5 s for TensorFold up to 32 users",
   "foot": "MEASURED · 4-bit, lossy · GLM-5.3-Flash (320B total, 18B active) · 2x Mac Studio M5 Ultra, 512 GB each · round 7, 20 Nov 2026",
-  "source": "REPORT-10 Tables 2.1 (S1), 2.2 (S2), 2.3 (S3; --parallel 8 up to 16 users, --parallel 16 at 32 and 64)",
   "series": [
    {
     "name": "mlx-vlm, one per Mac",
@@ -182,18 +178,12 @@
    }
   ],
   "kicker": "Many users at once",
-  "formula": "total tok/s = Σ n_out / (max t_last − min t0) · per-user rate reported separately, never total / N",
-  "band": {
-   "from": 2,
-   "to": 32,
-   "label": "TensorFold leads"
-  }
+  "formula": "total tok/s = Σ n_out / (max t_last − min t0) · per-user rate reported separately, never total / N"
  },
  "fairness": {
-  "title": "TensorFold keeps short requests moving: 7.6 s median wait",
+  "title": "Waiting time for short requests beside a 32k-token document",
   "subtitle": "One 32k prompt sent together with 8 short prompts · fresh server · no prompt cache",
   "foot": "MEASURED · 4-bit, lossy · GLM-5.3-Flash (320B total, 18B active) · 2x Mac Studio M5 Ultra, 512 GB each · round 7, 20 Nov 2026",
-  "source": "REPORT-10 Part 3 table (short TTFT p50 / max)",
   "rows": [
    {
     "name": "TensorFold 1.2.10, 1 Mac",
@@ -222,10 +212,9 @@
   "formula": "TTFT = t_first − t0 · dot = slowest of the 8 short requests · bar = median"
  },
  "gsm8k": {
-  "title": "Drafting adds speed with no loss in maths accuracy",
+  "title": "Maths accuracy and speed with and without drafting",
   "subtitle": "GSM8K, first 100 test questions · 5 samples each at temperature 0.6 · GLM-Tandem on 2 Macs",
   "foot": "MEASURED · 4-bit, lossy · GLM-5.3-Flash (320B total, 18B active) · 2x Mac Studio M5 Ultra, 512 GB each · round 7, 20 Nov 2026",
-  "source": "REPORT-10 Part 5 table",
   "rows": [
    {
     "name": "Drafting off",
@@ -280,7 +269,7 @@
    },
    {
     "engine": "tensorfold",
-    "job": "Best for 2 to 32 users",
+    "job": "Best for 8 to 32 users",
     "who": "TensorFold 1.2.10",
     "how": "one per Mac",
     "value": "243.0",
@@ -331,7 +320,6 @@
     "prefill_ctx": "not measured on public text",
     "decode": 43.4
    }
-  ],
-  "source": "prefill: BENCHMARKS.md 1.4 (single stream, fresh server, no cache); output: REPORT-10 Table 1.1 decode median (144 requests)"
+  ]
  }
 }

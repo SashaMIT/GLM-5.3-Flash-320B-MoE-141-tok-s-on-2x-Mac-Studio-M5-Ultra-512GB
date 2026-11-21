@@ -45,19 +45,19 @@ Stop immediately and abort the run if any of these are violated:
   - Note: Does not load directly in `GLM-Tandem` (rank-1 `Linear` `.scales` error). Optional `oQ8-MTP` conversion writes 67 shards (`319 GB`, `8-bit` affine `group_size=64`, `59` `mtp.*` keys) to a separate folder (`config.json` `20ad12d3c417a849e2c9e01bdbee67ada9ec29cf8592bcdda4aae90fadeabfb7`, `index.json` `5c9c3412a521e3f5a72f01657f190a1b24ad9d2136ff70fe4dbfb497169d91d0`).
 
 ### 1.3 Software Environments
-- **Base MLX venv (`~/opt/mlx313`):**
+- **Base MLX venv (`<mlx-env>`):**
   - Python `3.13.18`, `mlx==0.32.4`, `mlx-metal==0.32.4`, `mlx-vlm==0.8.0`, `mlx-lm==0.32.2`, `transformers==5.23.0`, `safetensors==0.8.0`.
-  - Freeze SHA-256 (`uv pip freeze --python ~/opt/mlx313/bin/python | shasum -a 256`):
+  - Freeze SHA-256 (`uv pip freeze --python <mlx-env>/bin/python | shasum -a 256`):
     `43474b7e63833fda26229d44e60d93d57a6de5f57e3d233d08a31b19c7f00dfa` (verify identical before & after).
-  - Never edit `site-packages`; copy `mlx_vlm` into an overlay (`~/two-mac/overlay/mlx_vlm`) if applying a clean-room `glm5_next` `shard()` patch.
-- **GLM-Tandem venv (`~/opt/tandem`) & checkout (`~/two-mac/tandem`):**
+  - Never edit `site-packages`; copy `mlx_vlm` into an overlay (`<overlay-dir>/mlx_vlm`) if applying a clean-room `glm5_next` `shard()` patch.
+- **GLM-Tandem venv (`<tandem-env>`) & checkout (`<tandem-checkout>`):**
   - Repo: `https://github.com/icryo/GLM-Tandem` detached at `1a70342137f2650367b8ca2619e19ea854a7658b` (`git rev-parse HEAD`).
   - `oMLX` wheel (from `https://github.com/jundot/omlx/releases/tag/v0.8.0rc1`, not PyPI):
     `omlx-0.8.0rc1-cp313-cp313-macosx_15_0_universal2.whl`
     SHA-256: `a416a587d12116858bfbbe67530012ce1c368aae108cfee406b638373ebf7af0`
-  - Install into isolated `~/opt/tandem` (`uv venv --python 3.13 ~/opt/tandem`); verify `mlx==0.32.4` (stock) and `omlx==0.8.0rc1`.
+  - Install into isolated `<tandem-env>` (`uv venv --python 3.13 <tandem-env>`); verify `mlx==0.32.4` (stock) and `omlx==0.8.0rc1`.
   - Bind-address check: verify `tpserve.py` binds `--host 127.0.0.1` instead of `0.0.0.0` (keep `git diff` minimal and verify its hash before every launch).
-- **TensorFold (`~/opt/tensorfold-1.2.10`, Mac A only):**
+- **TensorFold (`<tensorfold-install>`, Mac A only):**
   - Release `v1.2.10` (`https://github.com/ashhart/TensorFold`, Apache-2.0).
   - Archive `tensorfold-1.2.10-macos-arm64.tar.gz` SHA-256: `76eb33cce9e297f156cfe5cbb0cec664b0266f4ecc3d103176adadc6aee21e58`
   - Unpack and verify `shasum -a 256 -c SHA256SUMS` (`23/23 OK`).
@@ -79,7 +79,7 @@ Run these on **both Mac A and Mac B** before every benchmark session:
    - If `exo` is running, `curl -sf http://127.0.0.1:52415/state` must report empty `instances`, `runners`, and `tasks`.
    - Check `lsof -iTCP:8010 -sTCP:LISTEN`, `:8020`, `:8090` are free (stop standing `:8090` service first if active, recording the exact restart command).
 4. **Software & Manifest verification:**
-   - Check `~/opt/mlx313` freeze SHA-256 (`43474b7e...0dfa`).
+   - Check `<mlx-env>` freeze SHA-256 (`43474b7e...0dfa`).
    - Check `GLM-Tandem` `HEAD` (`1a703421...`) and `127.0.0.1` bind diff (`git diff`).
    - Check `tensorfold-native` SHA-256 (`ef0ab81e...`) and `SHA256SUMS` on Mac A.
    - Verify model directory against manifest: assert **`ok + oksize == rows`** (`45 + 9 = 54` for 4-bit; `63 + 11 = 74` for FP8), **`bad == 0`**, and explicit SHA-256 match for `config.json`, `model.safetensors.index.json`, and `tokenizer.json`.
@@ -96,22 +96,22 @@ Write host/RDMA config files with placeholders locally before running:
 - `tandem_ibv_devices.json`: `[[null, "rdma_en4"], ["rdma_en4", null]]`.
 
 ### Step A — Interconnect Microbenchmark (`sync_bench`)
-1. Run `mlx.launch --backend jaccl --hostfile <HOSTS_JSON> --python ~/opt/mlx313/bin/python <SYNC_BENCH_SCRIPT>` with `MLX_METAL_FAST_SYNCH` unset (expect `~188–197 us/sum` at 1 row) and with `--env MLX_METAL_FAST_SYNCH=1` (expect `~18–19 us/sum` at 1 row).
+1. Run `mlx.launch --backend jaccl --hostfile <HOSTS_JSON> --python <mlx-env>/bin/python <SYNC_BENCH_SCRIPT>` with `MLX_METAL_FAST_SYNCH` unset (expect `~188–197 us/sum` at 1 row) and with `--env MLX_METAL_FAST_SYNCH=1` (expect `~18–19 us/sum` at 1 row).
 2. Run a 12,000-step 1-row soak with `MLX_METAL_FAST_SYNCH=1` under a 15-minute watchdog; confirm `0` hangs before proceeding to model runs.
 
 ### Step B — One-Mac Baselines (`mlx-vlm 0.8.0`)
-1. **4-bit baseline:** Run `~/opt/mlx313/bin/python -m mlx_vlm.generate --model <4BIT_MODEL_DIR> --temperature 0 --max-tokens 1024 --verbose` (and pass `reasoning_effort="low"` via `apply_chat_template` when matching short-prompt tests).
+1. **4-bit baseline:** Run `<mlx-env>/bin/python -m mlx_vlm.generate --model <4BIT_MODEL_DIR> --temperature 0 --max-tokens 1024 --verbose` (and pass `reasoning_effort="low"` via `apply_chat_template` when matching short-prompt tests).
 2. **FP8->MXFP8 baseline (Mac B):** Run the same on `<FP8_MODEL_DIR>` under a `< 338 GB` memory guard (`expect ~26.3–26.5 tok/s`, `~334.9 GB` peak).
 
 ### Step C — Two-Mac Plain Baseline (`mlx-vlm 0.8.0` + Clean-Room `glm5_next` Shard Overlay)
 1. **Tiny-model verification first:** Run single-process reference logits vs `mlx.launch -n 2 --backend ring python test_shard.py --sharded` (`max_abs_diff <= 1e-3`, plus planted-break failure test).
-2. **4-bit pair (`fast_synch=1` and `fast_synch=0` control):** Launch via `mlx.launch --backend jaccl --hostfile <HOSTS_JSON> --env PYTHONPATH=~/two-mac/overlay --env MLX_METAL_FAST_SYNCH=1 --python ~/opt/mlx313/bin/python <TWOMAC_RUNNER>` with `temperature=0`, `reasoning_effort="low"`, `max_tokens=512` (or `2048` for A-B-C-C-B-A), checking `< 338 GB` per Mac and rank token agreement.
+2. **4-bit pair (`fast_synch=1` and `fast_synch=0` control):** Launch via `mlx.launch --backend jaccl --hostfile <HOSTS_JSON> --env PYTHONPATH=<overlay-dir> --env MLX_METAL_FAST_SYNCH=1 --python <mlx-env>/bin/python <TWOMAC_RUNNER>` with `temperature=0`, `reasoning_effort="low"`, `max_tokens=512` (or `2048` for A-B-C-C-B-A), checking `< 338 GB` per Mac and rank token agreement.
 3. **FP8->MXFP8 pair (`fast_synch=0` ONLY):** Run with `MLX_METAL_FAST_SYNCH` unset (`0`). Do NOT enable fast sync (Lesson 1).
 
 ### Step D — Two-Mac `GLM-Tandem` (Rounds 2, 3, 4, 4b, 5)
 1. **Temporary TB SSH key:** Create ed25519 key `~/.ssh/<tmp_pair_key>` on Mac A, append `.pub` to Mac B's `~/.ssh/authorized_keys`, verify `ssh -i ~/.ssh/<tmp_pair_key> -o BatchMode=yes <USER>@<MAC_B_TB_IP> true`.
 2. **Launch ranks (stock MLX `0.32.4`, `127.0.0.1` only):**
-   - Rank 0 (Mac A) & Rank 1 (Mac B) inside `~/two-mac/tandem/server` using `~/opt/tandem/bin/python -u tpserve.py` with:
+   - Rank 0 (Mac A) & Rank 1 (Mac B) inside `<tandem-checkout>/server` using `<tandem-env>/bin/python -u tpserve.py` with:
      `MODEL_PATH=<4BIT_MODEL_DIR>`, `MLX_IBV_DEVICES=<IBV_JSON>`, `MLX_RANK=<0|1>`, `MLX_WORLD_SIZE=2`, `MLX_JACCL_COORDINATOR=<MAC_A_TB_IP>:<PORT>`, `TP_PORT=8010`, `TP_MTP=1`, `TP_LOOKUP=1`, `TP_MTP_LOG=1`, `MLX_MAX_MB_PER_BUFFER=20000`, `MLX_MAX_OPS_PER_BUFFER=100000`.
    - Set `MLX_METAL_FAST_SYNCH=1` **ONLY** on 4-bit runs (`MLX_FENCE_MODE` unset). Leave `MLX_METAL_FAST_SYNCH` unset for default-sync controls and 8-bit `oQ8-MTP`.
    - Set `TP_CONC=1 TP_PROMPT_CONC=1` for single-stream/soak/long-context; set `TP_CONC=32 TP_PROMPT_CONC=1` for multi-user concurrency.
@@ -125,7 +125,7 @@ Write host/RDMA config files with placeholders locally before running:
 4. **Teardown:** Kill `tpserve.py` on both Macs, remove temporary SSH key files on Mac A and strip line from Mac B `authorized_keys`, assert TB SSH fails with `Permission denied`.
 
 ### Step E — One-Mac `TensorFold v1.2.10` (`Mac A` Only)
-1. **Launch:** `TENSORFOLD_PHASE_METRICS=1 ~/opt/tensorfold-1.2.10/.../bin/tensorfold-native serve <4BIT_MODEL_DIR> --host 127.0.0.1 --port 8020 --no-update-check --metrics-open --reasoning-effort low --temperature 0 --max-tokens <2048|1024>`.
+1. **Launch:** `TENSORFOLD_PHASE_METRICS=1 <tensorfold-install>/.../bin/tensorfold-native serve <4BIT_MODEL_DIR> --host 127.0.0.1 --port 8020 --no-update-check --metrics-open --reasoning-effort low --temperature 0 --max-tokens <2048|1024>`.
 2. **Verify MTP loaded:** Startup log must contain `45 of 45 layers and the MTP layer` and `drafts: MTP + copies`. If absent, label `plain decode` and stop after single-stream.
 3. **Workloads (TF1 & R5 Arm C):**
    - `Run 2`: 5 reps of `english-reasoning`, `arabic`, `prose-400`, `code-2k`.
@@ -135,7 +135,7 @@ Write host/RDMA config files with placeholders locally before running:
    - `Round 5 Arm C`: `1, 4, 8, 16` users + `8 x 8k` (`max_tokens=256`), plus `16` users with `--parallel 16 --max-inflight 32` (expect MTP auto-disabled `0/0` in logs).
 
 ### Step F — Dual Independent `mlx-vlm` Concurrency (`Round 5 Arm B`)
-1. Launch stock `~/opt/mlx313/bin/python -m mlx_vlm.server --host 127.0.0.1 --port 8090 --model <4BIT_MODEL_DIR> --max-tokens 4096` independently on **Mac A** and **Mac B** (no draft model, no overlay).
+1. Launch stock `<mlx-env>/bin/python -m mlx_vlm.server --host 127.0.0.1 --port 8090 --model <4BIT_MODEL_DIR> --max-tokens 4096` independently on **Mac A** and **Mac B** (no draft model, no overlay).
 2. Split `1 (1+0), 2 (1+1), 4 (2+2), 8 (4+4), 16 (8+8), 32 (16+16)` short users and `8 (4+4) x 8k` evenly across Mac A and Mac B behind a single client barrier (over local SSH tunnels or direct loopback).
 
 ### Step G — Round 6: Quality Score and Realistic Rerun (`4-bit, lossy`, `Default` effort)
@@ -173,4 +173,4 @@ Save a machine-readable JSON receipt + scrubbed server/driver logs for every run
 - **MTP status:** `mtp_head_loaded` (bool + exact startup evidence line) and per-request `accept_rate` (`acc/drafted` or `head_acc/head_off` + `lookup_acc/lookup_off`).
 - **Timing & cache hygiene:** `load_elapsed_s`, `prompt_tokens`, **`cached_tokens`** (must be `0` for cold measurements), `completion_tokens`, `finish_reason`, `ttft_s`, `decode_s`, `wall_s`, `max_inter_tok_s`, `client_read_tok_s`, `client_write_tok_s`. For multi-user batches: `completed`, `errors`, `batch_wall_s`, `batch_decode_span_s`, `agg_e2e_tok_s`, `agg_decode_span_tok_s`, per-user median & min `tok/s`, TTFT median & max.
 - **Determinism & memory:** `token_sha256` (or `content_sha256` + `reasoning_sha256`), `peak_phys_gb`, `lifetime_max_phys_gb`, `peak_sys_used_gb`, `stalls`, `mem_abort`.
-- **Post-run cleanup proof:** Zero stray processes, ports `8010`/`8020`/`8090` in expected state, `exo` idle, `~/opt/mlx313` freeze SHA-256 unchanged, temporary SSH keys removed and rejected, and any standing service restarted.
+- **Post-run cleanup proof:** Zero stray processes, ports `8010`/`8020`/`8090` in expected state, `exo` idle, `<mlx-env>` freeze SHA-256 unchanged, temporary SSH keys removed and rejected, and any standing service restarted.
