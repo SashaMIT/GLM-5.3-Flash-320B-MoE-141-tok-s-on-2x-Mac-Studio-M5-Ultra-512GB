@@ -13,7 +13,7 @@ Copy-pasteable setup for reproducing the results. Replace every `<placeholder>` 
 
 Steps marked **[admin]** need an administrator password. The step marked **[recovery mode]** also needs physical access to the Mac. Everything else runs as a normal user, with no `sudo`. Keep `sysctl iogpu.wired_limit_mb` at `0`. We never changed it.
 
-Only steps 1 to 4 are needed for the one-Mac [quick replication](AGENTS.md#quick-replication-one-mac-1-hour). Steps 5 and 6 are for the two-Mac runs.
+Only steps 1, 3 and 4 are needed for the one-Mac [quick replication](AGENTS.md#quick-replication-one-mac-1-hour). Steps 5 and 6 are for the two-Mac runs.
 
 ---
 
@@ -63,7 +63,7 @@ TensorFold by Ash Hart, Apache-2.0: <https://github.com/ashhart/TensorFold>. Use
 |---|---|
 | Asset | `tensorfold-1.2.10-macos-arm64.tar.gz` (7,651,150 bytes) |
 | Asset SHA-256 | `76eb33cce9e297f156cfe5cbb0cec664b0266f4ecc3d103176adadc6aee21e58` |
-| Unpacked folder | `tensorfold-1.2.10-macos-arm64/` with `SHA256SUMS` (23 files), `RUNTIME.md`, `bin/tensorfold-native`, `lib/`, `LICENSE`, `LICENSES/` |
+| Unpacked folder | `tensorfold-1.2.10-macos-arm64/` with `SHA256SUMS` (23 files), `RUNTIME.md`, `bin/tensorfold-native`, `lib/`, `LICENSE`, `LICENSES/`, `NOTICE`, `THIRD_PARTY_NOTICES.md`, `VERSION` |
 | `bin/tensorfold-native` SHA-256 | `ef0ab81eb11496956cf33eba9fd16d26b3500be54f6c93b08885d667c1af19b6` |
 
 ```bash
@@ -77,7 +77,7 @@ shasum -a 256 bin/tensorfold-native               # expect ef0ab81e...19b6
 bin/tensorfold-native --version                   # tensorfold-native 1.2.10
 ```
 
-Before the first run, read `RUNTIME.md`, `bin/tensorfold-native --help`, `serve --help`, `capabilities --json` and `device --json`. Use only flags documented there. Do not run any install or setup script from the package; the binary runs in place. The quick replication in [`AGENTS.md`](AGENTS.md#quick-replication-one-mac-1-hour) gives the exact launch line.
+Before the first run, read `RUNTIME.md`, `bin/tensorfold-native --help`, `serve --help`, `capabilities --json` and `device --json`. Use only flags documented there. Do not run any install or setup script from the package; the binary runs in place. `TENSORFOLD_PHASE_METRICS` is documented in `bin/tensorfold-native capabilities --json`; `serve --help` prints only usage. The quick replication in [`AGENTS.md`](AGENTS.md#quick-replication-one-mac-1-hour) gives the exact launch line.
 
 ## 5. GLM-Tandem (two-Mac engine) at the pinned commit
 

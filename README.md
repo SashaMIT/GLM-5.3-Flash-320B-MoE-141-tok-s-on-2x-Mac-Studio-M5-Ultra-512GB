@@ -4,6 +4,8 @@
 
 **Reproduce it:** set up with [`SETUP.md`](SETUP.md), then follow [`AGENTS.md` → Quick replication (one Mac, ~1 hour)](AGENTS.md#quick-replication-one-mac-1-hour) to reproduce our one-Mac TensorFold number with the published prompts, pinned environments and scripts.
 
+**Replication verified.** An independent agent with only this repo reproduced the one-Mac TensorFold result on 21 Nov 2026: 80.30 tok/s median end-to-end vs our 79.57 on the 16 published prompts (+0.9%); 80.48 over 3 fresh restarts. Same model of hardware (Mac Studio M5 Ultra, 512 GB); our own lab machine, run by a separate agent that saw only this repo. It was not a third party.
+
 ![Model](https://img.shields.io/badge/model-GLM--5.3--Flash%20320B%20MoE-111111)
 ![Active](https://img.shields.io/badge/active%20params-18B-555555)
 ![Hardware](https://img.shields.io/badge/hardware-2%C3%97%20Mac%20Studio%20M5%20Ultra%20512%20GB-555555)

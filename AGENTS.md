@@ -12,7 +12,7 @@ Everything you need is in this repository: the prompts (`receipts/prompts/`), pi
 
 **Goal:** reproduce one headline number: TensorFold 1.2.10 on one Mac, arm `T1` of Round 7 Part 1. Our receipts give a median end-to-end speed of **81.7 tok/s** over all 24 prompts (decode 94.7 tok/s). Over the 16 prompts we publish, the median is **79.6 tok/s** (decode 88.9 tok/s). The hour assumes the model has already been downloaded; the download is about 182 GB.
 
-**You need:** one Mac Studio M5 Ultra with 512 GB (we used `Mac17,15`, macOS 27.2 build `26B118`). A different Mac will give different numbers, and the comparison below then tells you how different. You also need about 200 GB of free disk, `python3` 3.9 or newer, and a quiet Mac: no other model server, build or heavy job running.
+**You need:** one Mac Studio M5 Ultra with 512 GB (we used `Mac17,15`, macOS 27.2 build `26B118`). A different Mac will give different numbers, and the comparison below then tells you how different. You also need about 200 GB of free disk, `python3` 3.9 or newer, and a quiet Mac: no other model server, build or heavy job running. The quick replication needs only the system `python3` (3.9 or newer); you do not need the MLX environment (`<mlx-env>`), and the `hf` tool comes from any recent `huggingface_hub`.
 
 1. **Set up** (details in [`SETUP.md`](SETUP.md), sections 1, 3 and 4):
    ```bash
@@ -21,30 +21,56 @@ Everything you need is in this repository: the prompts (`receipts/prompts/`), pi
    hf download TensorFold/GLM-5.3-Flash-MLX-4bit-MTP --revision d2b17f5253440224422b150705c1109a9a3a0368 \
      --local-dir <models-dir>/TensorFold__GLM-5.3-Flash-MLX-4bit-MTP
    python3 scripts/verify_model.py --model-dir <models-dir>/TensorFold__GLM-5.3-Flash-MLX-4bit-MTP   # ok=45 oksize=9 bad=0 rows=54, PASS
-   # TensorFold v1.2.10 asset tensorfold-1.2.10-macos-arm64.tar.gz from its release page, then:
-   echo "76eb33cce9e297f156cfe5cbb0cec664b0266f4ecc3d103176adadc6aee21e58  tensorfold-1.2.10-macos-arm64.tar.gz" | shasum -a 256 -c -
-   tar -xzf tensorfold-1.2.10-macos-arm64.tar.gz && (cd tensorfold-1.2.10-macos-arm64 && shasum -a 256 -c SHA256SUMS)   # 23 x OK
-   export TF=$PWD/tensorfold-1.2.10-macos-arm64/bin/tensorfold-native
-   shasum -a 256 "$TF"                                  # ef0ab81eb11496956cf33eba9fd16d26b3500be54f6c93b08885d667c1af19b6
    bash scripts/tests/run_tests.sh                      # checks the scripts against a stub server (about 20 s)
    ```
+   Then unpack TensorFold in `<tools-dir>` (not in the repository checkout), exactly as in [`SETUP.md`](SETUP.md) section 4. Put the asset `tensorfold-1.2.10-macos-arm64.tar.gz` from the `v1.2.10` release page in `<tools-dir>/tensorfold-1.2.10`, then:
+   ```bash
+   cd <tools-dir>/tensorfold-1.2.10
+   echo "76eb33cce9e297f156cfe5cbb0cec664b0266f4ecc3d103176adadc6aee21e58  tensorfold-1.2.10-macos-arm64.tar.gz" | shasum -a 256 -c -
+   tar -xzf tensorfold-1.2.10-macos-arm64.tar.gz && (cd tensorfold-1.2.10-macos-arm64 && shasum -a 256 -c SHA256SUMS)   # 23 x OK
+   export TF="$PWD/tensorfold-1.2.10-macos-arm64/bin/tensorfold-native"   # absolute path: keep it when you cd back to the repo
+   shasum -a 256 "$TF"                                  # ef0ab81eb11496956cf33eba9fd16d26b3500be54f6c93b08885d667c1af19b6
+   cd <this-repo>                                       # the later steps run from the repository root
+   ```
+   `TF` is an absolute path, so it still works after you change directory. Export it again in every new shell.
 2. **Start TensorFold, arm `T1`.** Use exactly these flags: prompt cache off, default drafting, no `--reasoning-effort` (the chat template's default applies), and loopback only. Start one fresh server per block:
    ```bash
    mkdir -p results
-   TENSORFOLD_PHASE_METRICS=1 "$TF" serve <models-dir>/TensorFold__GLM-5.3-Flash-MLX-4bit-MTP \
+   TENSORFOLD_PHASE_METRICS=1 nohup "$TF" serve <models-dir>/TensorFold__GLM-5.3-Flash-MLX-4bit-MTP \
      --host 127.0.0.1 --port 8020 --no-update-check --metrics-open --max-tokens 4096 --prompt-cache-gib 0 \
      > results/tf-r1.log 2>&1 &
    echo $! > results/tf.pid
-   until curl -sf http://127.0.0.1:8020/v1/models > /dev/null; do sleep 2; done
-   grep -E "45 of 45 layers and the MTP layer|drafts: MTP" results/tf-r1.log   # BOTH must appear
    ```
-   If either MTP line is missing, the server is not drafting. Label the run `plain decode`, do not compare it with `T1`, and stop ([`LESSONS.md`](LESSONS.md) section 3).
+   Use `nohup` and the redirect exactly as shown. From a non-interactive SSH session (for example an agent running one command per SSH call) a server started with a bare `&` is killed when the session ends. `TENSORFOLD_PHASE_METRICS` is documented in `"$TF" capabilities --json`; `"$TF" serve --help` prints only usage.
+
+   Wait for the server, with a 300 s limit and a check that the process is still alive:
+   ```bash
+   PID=$(cat results/tf.pid); ok=0
+   for i in $(seq 1 150); do
+     curl -sf http://127.0.0.1:8020/v1/models > /dev/null && { ok=1; break; }
+     kill -0 "$PID" 2>/dev/null || { echo "server exited; see results/tf-r1.log"; break; }
+     sleep 2
+   done
+   [ "$ok" = 1 ] && echo "server up" || echo "server NOT up (exited or 300 s passed)"
+   grep -q "45 of 45 layers and the MTP layer" results/tf-r1.log && grep -q "drafts: MTP" results/tf-r1.log && echo "MTP lines OK"   # both greps must succeed
+   ```
+   The two log lines are `45 of 45 layers and the MTP layer` and `drafts: MTP + copies`. Two separate greps are used because a single `grep -E` exits 0 when only one of the lines matches. If either MTP line is missing, the server is not drafting. Label the run `plain decode`, do not compare it with `T1`, and stop ([`LESSONS.md`](LESSONS.md) section 3).
 3. **Run the published prompts** (16 of the 24; the other 8 are withheld and are skipped automatically). That is 3 untimed warm-ups, then each prompt twice, at T=0 with `max_tokens` 512, one request at a time. It takes about 4 minutes:
    ```bash
    python3 scripts/bench_single.py --target http://127.0.0.1:8020 --prompts receipts/prompts/r6-real-public.json \
      --arm T1 --restart 1 --server-log results/tf-r1.log --require-mtp --out results/t1.csv
    kill "$(cat results/tf.pid)"   # stop the server
    ```
+   While the server runs, keep the memory and thermal watchdogs from [hard stop 6](#0-hard-stop-rules-non-negotiable) going in a second shell. One Mac with 512 GB: stop at 80% of RAM (about 410 GB). A minimal poll:
+   ```bash
+   while kill -0 "$(cat results/tf.pid)" 2>/dev/null; do
+     ps -o rss= -p "$(cat results/tf.pid)" | awk '{printf "server rss %.1f GB\n", $1/1048576}'   # footprint -p <pid> is more exact
+     vm_stat | awk '/page size/{ps=$8} /Pages active|Pages wired|Pages occupied by compressor/{gsub("\\.","",$NF); u+=$NF} END{printf "used ~%.1f GB\n", u*ps/1073741824}'
+     sleep 5
+   done   # kill the server and stop the run if used reaches 410 GB
+   ```
+   Thermal: `pmset -g therm`. If it prints `No thermal warning level has been recorded`, nothing has throttled the Mac, which is what you want. A `CPU_Speed_Limit` or `GPU_Speed_Limit` below 100 means throttling: stop and let the Mac cool.
+
    Optional, and closer to our method: repeat steps 2 and 3 twice more with a fresh server each time. Use `--restart 2`, then `--restart 3`, a new log file each time, and `--append`.
 4. **Compare with our receipts:**
    ```bash
@@ -55,6 +81,8 @@ Everything you need is in this repository: the prompts (`receipts/prompts/`), pi
 **What "success" means:** your median E2E tok/s is within **±5%** of our median for the same prompts. On the 16 published prompts that is 79.6 tok/s, so **75.6 to 83.6 tok/s**; with all 24 prompts it would be 81.7 tok/s (77.6 to 85.8). `compare.py` prints `PASS` and exits 0 in that case. The run should also show `cached_tokens` = 0 on every request and drafted tokens > 0 in the server log. Ours accepted 71.1% of offered drafts (43,302/60,908) over the 24 prompts.
 
 **Why ±5%, and why it is only a guide:** in our receipts, the 95% bootstrap interval of the `T1` median E2E runs from −2.7% to +1.4% for 24 prompts and −3.5% to +3.2% for the 16 published ones. That is the same 10,000-resample method over prompt × restart cells used in [`BENCHMARKS.md`](BENCHMARKS.md) section 1.7. Its headline ratio `P/T1` = 1.47 [1.43–1.49] has the same −2.7%/+1.4% width. Across our three restarts, `T1` moved by 0.54%. We rounded the widest one-sided value (3.5%) up to 5%, to leave room for a different Mac of the same model and a different day. This is a rule of thumb, not a statistical test. A result outside it is worth investigating (thermal limits, a busy Mac, a missing MTP line, a cached prompt, a different macOS or package version), not automatically wrong.
+
+**Shell pitfalls for agents.** `pgrep -f <name>` run inside `zsh -c '...'` or `bash -c '...'` matches the shell's own command line and so always finds itself; use the pid file (`results/tf.pid`) or `pgrep -x <exact-process-name>` instead. Put a timeout on every long wait (the server wait above, or `timeout 600 <command>`), so a dead server cannot hang the run.
 
 ---
 
@@ -136,7 +164,7 @@ Run these on **both Mac A and Mac B** before every benchmark session:
    - Check `tensorfold-native` SHA-256 (`ef0ab81e...`) and `SHA256SUMS` on Mac A.
    - Verify model directory against manifest: assert **`ok + oksize == rows`** (`45 + 9 = 54` for 4-bit; `63 + 11 = 74` for FP8), **`bad == 0`**, and explicit SHA-256 match for `config.json`, `model.safetensors.index.json`, and `tokenizer.json`.
 
-5. **Prompt and corpus hashes (Round 6/7 runs):** Check SHA-256 of the prompt files before use and record them: 24-prompt realistic set `825c8bc84f7709a44497acd491b47c2156079e4e8f980b3bfd2c458ee89aed10`; `short_32` / `conc_8k` set `4d3a622d61bbaedb669222fa6bbf22eb6cab670f4a5a382b1fb595172611c122`; RFC 9110 full text `21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a` (first `200,000` bytes `0c7d3f5fab58e6be647c5e979e0ddcb0a2526a4d627a14b93b52f880a9e08d55`); GSM8K test parquet `ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59` (first-100-items file `7e5802845a8ea84a106506aa84134d95f847638d7fbb1364ce8f3079291a999e`). The 200 generated questions and the 200 GSM8K questions are in `receipts/prompts/`; the `short_32` / `conc_8k` set is published in full (`receipts/prompts/r5-prompts.json`, same hash), and 16 of the 24 realistic prompts are published in `receipts/prompts/r6-real-public.json` (the other 8 as id, type, token length and SHA-256 only; see `receipts/README.md`).
+5. **Prompt and corpus hashes (Round 6/7 runs):** Check SHA-256 of the prompt files before use and record them: 24-prompt realistic set `825c8bc84f7709a44497acd491b47c2156079e4e8f980b3bfd2c458ee89aed10` (this cannot be reproduced from the public files, because 8 of the 24 prompts are withheld; for the public 16-prompt file check the public-file hash `2b24d995...a2443` in [`receipts/README.md`](receipts/README.md)); `short_32` / `conc_8k` set `4d3a622d61bbaedb669222fa6bbf22eb6cab670f4a5a382b1fb595172611c122`; RFC 9110 full text `21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a` (first `200,000` bytes `0c7d3f5fab58e6be647c5e979e0ddcb0a2526a4d627a14b93b52f880a9e08d55`); GSM8K test parquet `ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59` (first-100-items file `7e5802845a8ea84a106506aa84134d95f847638d7fbb1364ce8f3079291a999e`). The 200 generated questions and the 200 GSM8K questions are in `receipts/prompts/`; the `short_32` / `conc_8k` set is published in full (`receipts/prompts/r5-prompts.json`, same hash), and 16 of the 24 realistic prompts are published in `receipts/prompts/r6-real-public.json` (the other 8 as id, type, token length and SHA-256 only; see `receipts/README.md`).
 6. **Reasoning effort:** The pack's chat template defaults to `Max` when `reasoning_effort` is omitted. Decide the effort per test (`Low` for the short-prompt, many-user and Round 4/5 runs; `Default`/`Max` for the Round 6/7 realistic runs), apply it to every engine, and record it.
 
 ---
