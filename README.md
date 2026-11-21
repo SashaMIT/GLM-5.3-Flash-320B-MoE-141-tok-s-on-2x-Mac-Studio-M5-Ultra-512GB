@@ -10,6 +10,22 @@
 ![Precision](https://img.shields.io/badge/precision-4--bit-555555)
 ![License](https://img.shields.io/badge/license-Apache--2.0-555555)
 
+## Thank you
+
+This work stands on other people's generosity. Thank you to **Ash Hart and TensorFold**, whose 4-bit model pack every engine here ran on and whose engine leads on one Mac; to **Z.ai** for releasing GLM-5.3-Flash openly; to **icryo** for GLM-Tandem; to **Apple's MLX team**; to **Blaizzy** (mlx-vlm), **jundot** (oMLX) and **the exo team**; and to the community members whose posts taught us what to test. Every name, with what each gave us, is in [`CREDITS.md`](CREDITS.md).
+
+## Why, how, what — in plain words
+
+**Why.** Very large AI models usually live in data centres. We wanted to know whether one of the largest open models could run fast and privately on two desktop computers, and which free engine is best for which job.
+
+**How.** We joined two Apple Mac Studios with a single cable, gave every engine the same model, and timed real requests: one person, many people at once, long documents, and a maths test. Each test was repeated with fresh restarts, and every number is measured and published with its raw data.
+
+**What we found.**
+- **One person:** 141.4 tokens per second of output with the model split across both Macs; 94.7 on a single Mac with TensorFold.
+- **Reading prompts:** over 2,000 tokens per second on either set-up, with prompts up to 128,000 tokens.
+- **Many people:** TensorFold, one per Mac, gives the best results from 2 to 32 users at once.
+- **Accuracy:** the speed tricks cost nothing on a maths test — 100 out of 100 either way.
+
 ![Prompt reading and output speed](charts/00-speed.png)
 
 ## The numbers people ask for first
@@ -27,6 +43,23 @@ All `MEASURED`, `4-bit, lossy`, on the same TensorFold `GLM-5.3-Flash-MLX-4bit-M
 
 Prefill: single long prompt, fresh server, no prompt cache ([`BENCHMARKS.md`](BENCHMARKS.md) §1.4). Single-user output: 144 timed requests per set-up across 3 fresh restarts, Round 7. Many users: median of 3 repeats ([`BENCHMARKS.md`](BENCHMARKS.md) §2.3).
 
+## Which engine for which job
+
+![Table 1: the right engine for each job](charts/0-at-a-glance.png)
+
+Every engine below ran on the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP` pack** (rev `d2b17f52`), so all results here build on TensorFold's work. All figures are `MEASURED`, `4-bit, lossy`; details and receipts follow.
+
+| Job | Best choice | Measured result |
+|---|---|---|
+| Fastest for one user | **2 Macs `GLM-Tandem`** (by icryo) | `119.9 tok/s` end-to-end (Round 7), `1.47x` the best one-Mac result |
+| Fastest on one Mac | **`TensorFold 1.2.10`** (with drafting) | `81.7 tok/s` end-to-end (Round 7) |
+| Many users, 2 to 32 | **One `TensorFold 1.2.10` per Mac** | `243.0 tok/s` at 16 users, `271.8` at 32, first token under `5 s` (`3.07 s` max at 32) |
+| Short requests next to a 32k document | **`TensorFold 1.2.10`** (one Mac) | shortest median wait: `7.65 s` (the 9th queued stream waited `37.04 s`) |
+| Highest total at 48 to 64 users | **Two `mlx-vlm 0.8.0` servers** (one per Mac) | `334.7 tok/s` at 64 users, `0` errors |
+| Multiple `~8k` prompts at once | **2 Macs `GLM-Tandem`** | `54.1 tok/s`, `18.75 s` median first token (8 x 8k) |
+
+---
+
 ### What was tested
 
 - **Model:** [GLM-5.3-Flash](https://huggingface.co/zai-org) by Z.ai — **320B total / 18B active** Mixture-of-Experts, 288 routed experts (8 active + 1 shared per token), a built-in **MTP head for speculative decoding**, 1M-token context window; run as TensorFold's **4-bit MLX** pack (169 GB on disk).
@@ -43,53 +76,6 @@ Prefill: single long prompt, fresh server, no prompt cache ([`BENCHMARKS.md`](BE
 
 ---
 
-
----
-
-## At a Glance: Which Engine for Which Job
-
-Every engine below ran on the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP` pack** (rev `d2b17f52`), so all results here build on TensorFold's work. All figures are `MEASURED`, `4-bit, lossy`; details and receipts follow.
-
-| Job | Best choice | Measured result |
-|---|---|---|
-| Fastest for one user | **2 Macs `GLM-Tandem`** (by icryo) | `119.9 tok/s` end-to-end (Round 7), `1.47x` the best one-Mac result |
-| Fastest on one Mac | **`TensorFold 1.2.10`** (with drafting) | `81.7 tok/s` end-to-end (Round 7) |
-| Many users, 2 to 32 | **One `TensorFold 1.2.10` per Mac** | `243.0 tok/s` at 16 users, `271.8` at 32, first token under `5 s` (`3.07 s` max at 32) |
-| Short requests next to a 32k document | **`TensorFold 1.2.10`** (one Mac) | shortest median wait: `7.65 s` (the 9th queued stream waited `37.04 s`) |
-| Highest total at 48 to 64 users | **Two `mlx-vlm 0.8.0` servers** (one per Mac) | `334.7 tok/s` at 64 users, `0` errors |
-| Multiple `~8k` prompts at once | **2 Macs `GLM-Tandem`** | `54.1 tok/s`, `18.75 s` median first token (8 x 8k) |
-
----
-
-## Charts
-
-Five charts summarise the results. The data behind them is in [`charts/data.json`](charts/data.json), and [`scripts/make_charts.py`](scripts/make_charts.py) redraws them.
-
-### At a glance: the right engine for each job
-![The right engine for each job](charts/0-at-a-glance.png)
-
-The same TensorFold model pack, the same two Mac Studios and the same day: each engine leads at a different job.
-
-### 1. Single-user speed
-![Single-user speed](charts/1-single-user-speed.png)
-
-How fast one person gets an answer: two Macs with `GLM-Tandem` give the fastest single-user speed, and one Mac with `TensorFold` is the fastest one-Mac engine.
-
-### 2. Many users at once
-![Many users](charts/2-many-users.png)
-
-Total speed as more people ask at the same time: one `TensorFold` server per Mac is best from 2 to 32 users, and two `mlx-vlm` servers reach the highest total at 48 to 64 users.
-
-### 3. A long prompt delays everyone else
-![Long-prompt fairness](charts/3-long-prompt-fairness.png)
-
-One very long prompt makes short requests wait; the chart shows how long, for each setup. `TensorFold` has the shortest median wait.
-
-### 4. Accuracy and speed on GSM8K
-![GSM8K accuracy and speed](charts/4-gsm8k-accuracy-speed.png)
-
-Maths accuracy is the same with and without drafting (100/100 by majority vote), while drafting is faster.
-
 ---
 
 ## Headline Numbers (`MEASURED` Only)
@@ -97,6 +83,9 @@ Maths accuracy is the same with and without drafting (100/100 by majority vote),
 Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM each — `Mac A` and `Mac B`)**, macOS `27.2` build `26B118`, `iogpu.wired_limit_mb=0`, stock `mlx==0.32.4` (`MLX_FENCE_MODE` unset). Model pack: `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` (`@ d2b17f5253440224422b150705c1109a9a3a0368`).
 
 ### One-User Speed (`T=0`, `Reasoning Effort: Low`, Quiet Macs)
+
+![Figure 1: single-user speed](charts/1-single-user-speed.png)
+
 
 | Setup & Precision | Speed (tok/s) | MTP Active? | Peak Mem / Mac | Key Receipt |
 |---|---|---|---|---|
@@ -112,6 +101,9 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 | **1 Mac `TensorFold v1.2.10`**, same mixed 24 prompts (`Default` effort, Round 6) | **`82.32`** E2E median / `89.04` write; 1-Mac `mlx-vlm` `42.45` E2E | **Yes** (`69.7%`) | `190.98 GB` phys | `result-r6-partB.json` |
 
 ### Many-Users Total (`4-bit, lossy`, `T=0`, `max_tokens=256`, `cached=0`, Quiet Macs)
+
+![Figure 2: many users at once](charts/2-many-users.png)
+
 
 | Setup | Concurrency | **Aggregate E2E tok/s** (`Decode-Span`) | Per-User Med / Min tok/s | TTFT Med / Max (s) | Key Receipt |
 |---|---|---|---|---|---|
@@ -129,6 +121,9 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 
 ### Quality Checks (`4-bit, lossy`, `MEASURED`)
 
+![Figure 3: maths accuracy and speed](charts/4-gsm8k-accuracy-speed.png)
+
+
 | Check | Result | Receipt |
 |---|---|---|
 | **Round 6**: generated 200-question suite, `T=0`, max `4,096` tokens: `GLM-Tandem` drafts off / drafts on / 1-Mac `TensorFold` | **`197/200` (`98.5%`)** / **`192/200` (`96.0%`)** / **`197/200` (`98.5%`)** | `result-r6-partA.json` |
@@ -138,6 +133,9 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 | **Round 7**: 4-bit vs 8-bit loss (`mlx_lm.perplexity`) | **Could not run**: `mlx_lm` does not support model type `glm5_next`. The loss of 4-bit is **unmeasured** | `result-r7-part4.json` |
 
 ### A Long Prompt Delays Everyone Else (`MEASURED`, `4-bit, lossy`)
+
+![Figure 4: waiting time beside a long prompt](charts/3-long-prompt-fairness.png)
+
 
 One `31,995`-token prompt next to `8` short prompts delays short users by **`7.65 s` median (`37.04 s` for the 9th queued stream) on one-Mac `TensorFold`**, **`15.18 s` on two-Mac `GLM-Tandem`**, and **`36.33 s` on one-Mac `mlx-vlm 0.8.0`**, which also used up to `485.3 GB` physical memory (our `80%` memory watchdog fired `6` times in this test). Setting `mlx-vlm`'s `--prefill-step-size` to `512` gave `50.23 s`, so we do not recommend it. `TensorFold` has the shortest median wait because it splits long prompts into chunks; the `37.04 s` for the 9th queued stream is the worst case in its pool. Details: [`BENCHMARKS.md`](BENCHMARKS.md) Section 2.4.
 

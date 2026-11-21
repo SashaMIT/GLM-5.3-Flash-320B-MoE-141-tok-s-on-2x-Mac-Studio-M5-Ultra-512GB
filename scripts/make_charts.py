@@ -203,7 +203,7 @@ def chart_fairness():
     out.append(t((left + right) / 2, bottom + 80, "Engine", 17, "middle", 700))
     out.append(bar_key((left + right) / 2, 66, [("Median short request", "url(#p_dark)"), ("Slowest short request", "url(#p_cross)")]))
     return page("Waiting Time for Short Requests Beside a 32k-Token Document",
-                ["Figure 3. One 32k prompt sent with 8 short prompts; fresh server, no prompt cache. TTFT = t_first − t0. Lower is better.",
+                ["Figure 4. One 32k prompt sent with 8 short prompts; fresh server, no prompt cache. TTFT = t_first − t0. Lower is better.",
                  "* mlx-vlm reached the 80% memory limit during this test."],
                 "".join(out), d["title"])
 
@@ -223,7 +223,7 @@ def chart_gsm8k():
         out.append(t(cx, bottom + 48, f'Accuracy {r["vote"]} by majority vote; {r["samples"]} single samples', 14.5, "middle", 400, SERIF, "italic"))
     out.append(t((left + right) / 2, bottom + 84, "GLM-Tandem on 2 Macs, GSM8K (first 100 test questions)", 17, "middle", 700))
     return page("Maths Accuracy and Speed With and Without Drafting",
-                ["Figure 4. Five samples per question at temperature 0.6; median end-to-end speed.",
+                ["Figure 3. Five samples per question at temperature 0.6; median end-to-end speed.",
                  "Paired exact McNemar test on majority votes: p = 1.0000 (n = 100). Accuracy is unchanged."],
                 "".join(out), d["title"])
 
