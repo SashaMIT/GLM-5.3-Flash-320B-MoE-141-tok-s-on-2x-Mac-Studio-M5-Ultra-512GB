@@ -253,7 +253,7 @@ def chart_speed():
                 out.append(t(cx, sy(v) - 8, f"{v:,.1f}", 14.5, "middle", 700))
             out.append(t(cx, bottom + 24, r["engine"], 14.5, "middle"))
             out.append(t(cx, bottom + 43, r["setup"], 13.5, "middle", fill="#333"))
-    return page("Prompt Reading and Output Speed, GLM-5.3-Flash (320B MoE, 4-bit)",
+    return page("Prompt Reading and Output Speed, GLM-5.3-Flash (320B total, 18B active, 4-bit)",
                 ["Figure 0. (a) Prefill on one long prompt (GLM-Tandem 53,990 tokens, TensorFold 31,995 tokens), fresh server, no cache.",
                  "(b) Median output (decode) speed, single user, 144 requests per set-up (Round 7). The two panels use separate scales."],
                 "".join(out), d["title"], h=640)

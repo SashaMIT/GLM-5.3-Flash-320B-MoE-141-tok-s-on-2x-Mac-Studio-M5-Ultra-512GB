@@ -182,7 +182,7 @@
  },
  "fairness": {
   "title": "Waiting time for short requests beside a 32k-token document",
-  "subtitle": "One 32k prompt sent together with 8 short prompts · fresh server · no prompt cache",
+  "subtitle": "One 32k prompt plus 8 short prompts staggered 0.25 s apart · fresh server · no prompt cache",
   "foot": "MEASURED · 4-bit, lossy · GLM-5.3-Flash (320B total, 18B active) · 2x Mac Studio M5 Ultra, 512 GB each · round 7, 20 Nov 2026",
   "rows": [
    {
@@ -269,12 +269,12 @@
    },
    {
     "engine": "tensorfold",
-    "job": "Best for 8 to 32 users",
+    "job": "Best measured at 8, 16 and 32 users",
     "who": "TensorFold 1.2.10",
     "how": "one per Mac",
     "value": "243.0",
     "unit": "tok/s",
-    "note": "16 users · 1.59 s max first token"
+    "note": "at 16 users · 12, 20, 24 not run"
    },
    {
     "engine": "tensorfold",
