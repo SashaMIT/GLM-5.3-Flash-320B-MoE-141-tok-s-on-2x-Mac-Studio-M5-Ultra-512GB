@@ -7,7 +7,7 @@ All benchmarks were collected on **19 and 20 Nov 2026** (Sections 1.1-1.5 and 2.
 **The model:** GLM-5.3-Flash is a mixture-of-experts model with **320B total, 18B active (Hugging Face tensor count ~321B)** parameters (from the pack's own model card, rev `d2b17f52`): 45 layers, 288 routed experts (8 active per token plus 1 shared), 1 MTP (multi-token prediction) layer, 4-bit affine group 64, 1,048,576 max positions, 169 GiB on disk. Earlier internal notes called it "~355B"; that was wrong.
 
 Every row is labelled:
-- **`MEASURED`**: Directly measured in our lab logs, citing the receipt filename.
+- **`MEASURED`**: Directly measured in our lab logs, citing the receipt filename (`<mac-a>`/`<mac-b>` in a filename stands for a lab host name we removed).
 - **`CLAIMED`**: Someone else's public number, citing a link (never compared as an identical setup unless hardware, model size, and quantization match).
 - **`ESTIMATE`**: Derived projection or analytical model, never measured directly.
 
@@ -30,7 +30,7 @@ Every row is labelled:
 | **GLM-Tandem** | `https://github.com/icryo/GLM-Tandem` `@ 1a70342137f2650367b8ca2619e19ea854a7658b` | Bind `127.0.0.1` diff `af8d4ec83c73824c0468f5aa91d2c3b77c96679715ad8232be13c0f9cf2557e1` | No licence: linked only, no code copied |
 | **oMLX wheel** | `omlx==0.8.0rc1` (`omlx-0.8.0rc1-cp313-cp313-macosx_15_0_universal2.whl`) | `a416a587d12116858bfbbe67530012ce1c368aae108cfee406b638373ebf7af0` | Pulls `mlx-lm @ 0d4d3d04` (`0.32.3.dev8+g0d4d3d04f`), `mlx-vlm @ 138d7617`, stock `mlx==0.32.4` |
 | **TensorFold** | `tensorfold-native` `v1.2.10` (`https://github.com/ashhart/TensorFold`, Apache-2.0) | Tarball `76eb33cc...21e58`; `SHA256SUMS` 23/23; binary `ef0ab81eb11496956cf33eba9fd16d26b3500be54f6c93b08885d667c1af19b6` | Run on Mac A only (one-Mac) |
-| **4-bit MTP pack** | `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` (MIT) | Rev `d2b17f5253440224422b150705c1109a9a3a0368`; 54 rows (`45` SHA-256 + `9` size, `0` bad) | 4-bit affine `group_size=64`, 45 layers + 1 MTP layer, 169 GiB / 43 shards |
+| **4-bit MTP pack** | `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` (MIT) | Rev `d2b17f5253440224422b150705c1109a9a3a0368`; 54 rows (`45` SHA-256 + `9` size, `0` bad) | 4-bit affine `group_size=64`, 45 layers + 1 MTP layer, 169 GiB / 43 shards (sum of sizes in `receipts/model-manifest-4bit-mtp.tsv`) |
 | **Uncensored FP8 pack** | `dealignai/GLM-5.3-Flash-UNCENSORED-FP8` | Rev `d5822b068da8ddb301665b48c58718e6e18a2c3a`; 74 rows (`63` SHA-256 + `11` size, `0` bad) | Requantized to MXFP8 at load; 306 GiB / 62 shards; speed-only results for this pack; check its model card licence before reuse |
 | **Official FP8 pack** | `zai-org/GLM-5.3-Flash` (MIT) | Rev `46a050bec13002ad29ee795c16e61cf4fa3c4a9c`; 74 rows (`63` SHA-256 + `11` size, `0` bad) | 328 GB / 62 shards |
 | **Converted `oQ8-MTP`** | Local conversion from `zai-org/GLM-5.3-Flash` (`46a050be`) | 67 shards, 319 GB; `config.json` `20ad12d3...bfb7`, `index.json` `5c9c3412...91d0` | 8-bit affine `group_size=64`, 59 `mtp.*` tensors, `lm_head` unquantized |
@@ -48,7 +48,7 @@ Every row is labelled:
 - **macOS build:** `26B118` (Mac A & Mac B)
 - **Pins:** Stock `mlx==0.32.4` (`MLX_METAL_FAST_SYNCH=1`, `MLX_FENCE_MODE` unset); Arm A = `mlx-vlm 0.8.0` + shard overlay (`b288a028...3f5f`); Arms B & C = `icryo/GLM-Tandem @ 1a70342137f2` + `omlx 0.8.0rc1` (`a416a587...7af0`), `127.0.0.1` only
 - **Pack revision:** `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` `@ d2b17f5253440224422b150705c1109a9a3a0368`
-- **Note:** Earlier long-context runs on one Mac used a private text and are not published. The long-context rows below use public RFC 9110 (or, for `lc-128k`, a Shakespeare text file that is not included here; check its licence before reuse).
+- **Note:** Earlier long-context runs on one Mac used a text that is not included in this repo. The long-context rows below use public RFC 9110 (or, for `lc-128k`, a Shakespeare text file that is not included here; check its licence before reuse).
 - **Protocol:** Strict `A1 -> B1 -> C1 -> C2 -> B2 -> A2` order, fresh cluster per run, `T=0.0`, `Reasoning Effort: Low`, `max_tokens=2048`, 3 short prompts x 5 reps x 2 runs/arm (`30` timed requests per arm; `0` stalls; `4-bit, lossy, two Macs, fast_synch=1, stock MLX 0.32.4`).
 
 | Arm & Engine | MTP Active (Accept Rate) | Mean of Run Medians (tok/s) | Pooled 30-Rep Median (IQR, Min–Max) | Token-Weighted Aggregate (tok/s) | Pair Spread | Ratio vs A (Medians) | Peak Mem / Mac (`phys` / `sys_used`) | Label | Receipt |
@@ -114,9 +114,9 @@ Every row is labelled:
 
 | Setup, Precision & Hardware | Sync Mode | Prompt (`in -> out`) | Read tok/s | Write tok/s | MTP Accept | Peak Mem / Mac | Notes | Label | Receipt |
 |---|---|---|---|---|---|---|---|---|---|
-| 1-Mac `mlx-vlm 0.8.0`, `4-bit, lossy`, Mac B (`Effort: Max`, quiet) | n/a | EN `61->1024` / AR `36->1017` | `198.7` / `143.2` | `43.01` / `43.01` | n/a (no MTP) | `178.5 GB` mlx | Earliest quiet baseline | `MEASURED` | `one-mac-4bit-mac-b-2026-11-19-r2.log` |
-| 1-Mac `mlx-vlm 0.8.0` server, `4-bit, lossy`, Mac B (`Effort: Low`) | n/a | `24->200` / `258 tok` | — | `44–45` (`36.2` e2e) | n/a | — | Served HTTP path | `MEASURED` | `concurrency-4bit-mac-b-2026-11-19.log` |
-| 1-Mac `mlx-vlm + overlay`, `loaded from FP8, run as MXFP8`, Mac B (quiet) | n/a | EN `61->308` / AR `36->214` | `45.5` / `121.2` | **`26.3`** / **`26.5`** | n/a | `334.9 GB` | Faster than 2-Mac MXFP8; rev `d5822b06` | `MEASURED` | `onemac-fp8-mac-b-2026-11-19.log` |
+| 1-Mac `mlx-vlm 0.8.0`, `4-bit, lossy`, Mac B (`Effort: Max`, quiet) | n/a | EN `61->1024` / AR `36->1017` | `198.7` / `143.2` | `43.01` / `43.01` | n/a (no MTP) | `178.5 GB` mlx | Earliest quiet baseline | `MEASURED` | `one-mac-4bit-<mac-b>-2026-11-19-r2.log` |
+| 1-Mac `mlx-vlm 0.8.0` server, `4-bit, lossy`, Mac B (`Effort: Low`) | n/a | `24->200` / `258 tok` | — | `44–45` (`36.2` e2e) | n/a | — | Served HTTP path | `MEASURED` | `concurrency-4bit-<mac-b>-2026-11-19.log` |
+| 1-Mac `mlx-vlm + overlay`, `loaded from FP8, run as MXFP8`, Mac B (quiet) | n/a | EN `61->308` / AR `36->214` | `45.5` / `121.2` | **`26.3`** / **`26.5`** | n/a | `334.9 GB` | Faster than 2-Mac MXFP8; rev `d5822b06` | `MEASURED` | one-Mac MXFP8 lab log, 19 Nov (Mac B; not published) |
 | 2-Mac `mlx-vlm + overlay`, `4-bit, lossy`, quiet (`r1`/`r2`/`quiet`) | `fast_synch=1` | EN `61->189` / AR `36->227` | `54–320` / `262–270` | **`49.79–49.92`** (`r1`), `49.39–49.45` (`r2`), **`49.80–49.81`** (`quiet`) | n/a (no MTP) | `94.7 GB` mlx (`~112 GB` sys) | Ranks agree token-for-token | `MEASURED` | `twomac-quiet-1119.log`, `result-4bit.json`, `result-4bit-r2.json` |
 | 2-Mac `mlx-vlm + overlay`, `4-bit, lossy` (Mac A busy) | `fast_synch=0` | EN `61->189` / AR `36->227` | `239.9` / `194.5` | `27.43` / `27.32` | n/a | `94.7 GB` mlx | Default fence adds `~17 ms/tok` | `MEASURED` | `result-4bit-nofastsync.json` |
 | 2-Mac `mlx-vlm + overlay`, `loaded from FP8, run as MXFP8` | `fast_synch=1` | Load only (`36.76 s`) | — | **STALL (`0` tok)** | n/a | `178.7 GB` mlx (`189.6 GB` sys) | Deadlock in `Fence::wait` / `all_reduce`; rev `d5822b06` | `MEASURED` | `twomac-fp8-fastsync-stall.log` |
@@ -384,7 +384,7 @@ Every row is labelled:
 
 | Setup & Workload | Total In (`cached`) / Out Tok | Wall (s) | **Agg E2E tok/s** | Decode-Span tok/s | Per-User tok/s | MTP Accept | Peak Mem | Label | Receipt |
 |---|---|---|---|---|---|---|---|---|---|
-| 1-Mac `mlx-vlm 0.8.0` server, Mac B (`8` short users, `max_tokens=300`, earlier prompt set) | — / `1,577` | `17.4` | **90.5** (superseded: Round 7 re-measured one Mac at `103.4`, see Section 2.3 Table 2.3.2) | — | `12.3–14.5` (`1` req `36.2` e2e) | n/a | — | `MEASURED` | `concurrency-4bit-mac-b-2026-11-19.log` |
+| 1-Mac `mlx-vlm 0.8.0` server, Mac B (`8` short users, `max_tokens=300`, earlier prompt set) | — / `1,577` | `17.4` | **90.5** (superseded: Round 7 re-measured one Mac at `103.4`, see Section 2.3 Table 2.3.2) | — | `12.3–14.5` (`1` req `36.2` e2e) | n/a | — | `MEASURED` | `concurrency-4bit-<mac-b>-2026-11-19.log` |
 | 1-Mac `TensorFold v1.2.10`, Mac A (`4` x `~8k` RFC 9110, `max_tokens=1024`) | `31,984` (`0`) / `1,453` | `45.19` | **32.15** | `35.46` | `9.91` / `12.21` / `25.70` / `39.44` (med `18.95`) | `76.67%` (`736/960`) | `189.81 GB` phys (`217.4 GB` sys) | `MEASURED` | `tf1-run4.json` |
 
 ---
@@ -441,7 +441,7 @@ Every row is labelled:
 | `s2-8k-u8` | 8 (`8k`) | 8/0 | 29.4 [28.1-29.4] | 3.8 / 3.7 | 19.2 | 54.40 / 56.26 / 56.26 | no (`0/0`) | 222.0 / 220.9 |
 | `s2-raw-burst-u32` | 32 (`short`) | **32/0** | 263.7 [263.7-263.7] | 8.4 / 8.2 | 9.1 | 2.49 / 3.78 / 3.78 | no (`0/0`) | 192.2 / 192.2 |
 
-*Settles the Round 5 `90.5` vs `148.8` puzzle: `148.8 tok/s` in Round 5 was **two** Macs (`4+4`, matched here by `s2-short-u8` at `146.5 tok/s`, `18.4/u`). On **one** Mac (`s2-solo-1mac-u8`), `mlx-vlm 0.8.0` with `--max-num-seqs 32 --max-tokens 4096` on `short_32` (`max_tokens=256`, Effort Low) measures **`103.4 tok/s`** (`12.9/u`, `0` errors), compared to `90.5 tok/s` (`12.3–14.5/u`) in the morning single-Mac log (`concurrency-4bit-mac-b-2026-11-19.log`) which used an earlier prompt set and `max_tokens=300`. Notice also `S2` is still climbing cleanly at **`64` users (`334.7 tok/s` aggregate, `0` errors, `7.69 s` p95/max TTFT)** — the measured ceiling is not yet saturated at `64`.*
+*Settles the Round 5 `90.5` vs `148.8` puzzle: `148.8 tok/s` in Round 5 was **two** Macs (`4+4`, matched here by `s2-short-u8` at `146.5 tok/s`, `18.4/u`). On **one** Mac (`s2-solo-1mac-u8`), `mlx-vlm 0.8.0` with `--max-num-seqs 32 --max-tokens 4096` on `short_32` (`max_tokens=256`, Effort Low) measures **`103.4 tok/s`** (`12.9/u`, `0` errors), compared to `90.5 tok/s` (`12.3–14.5/u`) in the morning single-Mac log (`concurrency-4bit-<mac-b>-2026-11-19.log`) which used an earlier prompt set and `max_tokens=300`. Notice also `S2` is still climbing cleanly at **`64` users (`334.7 tok/s` aggregate, `0` errors, `7.69 s` p95/max TTFT)** — the measured ceiling is not yet saturated at `64`.*
 
 #### Table 2.3.3: `S3` Dual `TensorFold 1.2.10`, One per Mac (`MEASURED`)
 
@@ -456,7 +456,7 @@ Every row is labelled:
 | `s3-p8-8k-u8` | 8 (`8k`, `--parallel 8`) | 8/0 | 51.5 [51.5-51.5] | 6.7 / 6.4 | 15.9 | 21.12 / 34.82 / 34.82 | yes (`1,161/1,583`, `73.3%`) | 189.8 / 189.8 |
 | `s3-p16-raw-burst-u32` | 32 (`short`, `--parallel 16 --max-inflight 32`) | **32/0** | 271.3 [271.3-271.3] | 8.5 / 8.5 | 9.4 | 3.08 / 3.10 / 3.10 | no (`0/0`) | 191.6 / 191.6 |
 
-*\*Note on `S3` `--parallel 16` drafting threshold: Server logs prove `TensorFold 1.2.10` keeps MTP active at `8` active streams per Mac even with `--parallel 16` (`logs/r7-p2-s3-p16-short-u16-mac-a-server.log`: `accepted=37..123`), and switches drafting off (`accepted=0/0`) when `16` streams run concurrently per Mac (`s3-p16-short-u32`, `s3-p16-short-u64`, `s4-short-u16`).*
+*\*Note on `S3` `--parallel 16` drafting threshold: Server logs prove `TensorFold 1.2.10` keeps MTP active at `8` active streams per Mac even with `--parallel 16` (`logs/r7-p2-s3-p16-short-u16-<mac-a>-server.log`: `accepted=37..123`), and switches drafting off (`accepted=0/0`) when `16` streams run concurrently per Mac (`s3-p16-short-u32`, `s3-p16-short-u64`, `s4-short-u16`).*
 
 #### Table 2.3.4: `S4` One `TensorFold 1.2.10` on One Mac, Reference (`MEASURED`)
 

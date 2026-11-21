@@ -247,7 +247,8 @@ def chart_speed():
         for i, r in enumerate(rows):
             cx = left + slot * (i + 0.5); v = r[key]
             if v is None:
-                out.append(t(cx, bottom - 20, "not measured", 13, "middle", 400, SERIF, "italic"))
+                out.append(t(cx, bottom - 38, "not measured", 13, "middle", 400, SERIF, "italic"))
+                out.append(t(cx, bottom - 20, "on these prompts", 13, "middle", 400, SERIF, "italic"))
             else:
                 out.append(bar(cx - bw / 2, bottom, bw, bottom - sy(v), "url(#p_dark)" if key == "decode" else "url(#p_hlines)"))
                 out.append(t(cx, sy(v) - 8, f"{v:,.1f}", 14.5, "middle", 700))

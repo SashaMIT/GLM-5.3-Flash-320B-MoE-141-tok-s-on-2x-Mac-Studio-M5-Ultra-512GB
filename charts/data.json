@@ -317,7 +317,7 @@
     "engine": "mlx-vlm 0.8.0",
     "setup": "1 Mac",
     "prefill": null,
-    "prefill_ctx": "not measured on public text",
+    "prefill_ctx": "not measured on these prompts (19 Nov: 782-845 tok/s at 14,004-53,695 tokens, preliminary, text not included in this repo)",
     "decode": 43.4
    }
   ]

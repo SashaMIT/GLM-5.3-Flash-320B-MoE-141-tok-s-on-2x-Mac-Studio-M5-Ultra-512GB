@@ -40,7 +40,7 @@ We credit these people for ideas, baselines, bug reports and recipes. We do not 
 - **Apple**: TN3205, RDMA over Thunderbolt.
 
 ## Our team (how the work was done)
-- SashaMIT (project owner): idea, lab hardware, every go/no-go decision.
+- The project owner (this repository's account): idea, lab hardware, every go/no-go decision.
 - Claude (Anthropic), CTO and orchestrator: plans, verification against raw logs, the reports, and the specs for rounds 5, 6 and 7.
 - Gemini (via Cursor): ran the GLM-Tandem trials and the shard overlay, and ran, analysed and wrote up the round 7 tests.
 - Grok bot, Ash Bot, Flint, Bella (the project owner's research agents): the cheat sheet, the security review of GLM-Tandem, the pins and the test gates. Fable and Ash Bot reviewed earlier results: Fable's review named the two evidence gaps that round 6 addresses (a quality score and a realistic rerun), and Ash Bot's feedback on an earlier report fed the round 7 plan.

@@ -4,7 +4,7 @@
 
 **Reproduce it:** set up with [`SETUP.md`](SETUP.md), then follow [`AGENTS.md` → Quick replication (one Mac, ~1 hour)](AGENTS.md#quick-replication-one-mac-1-hour) to reproduce our one-Mac TensorFold number with the published prompts, pinned environments and scripts.
 
-**Replication verified.** An independent agent with only this repo reproduced the one-Mac TensorFold result on 21 Nov 2026: 80.30 tok/s median end-to-end vs our 79.57 on the 16 published prompts (+0.9%); 80.48 over 3 fresh restarts. Same model of hardware (Mac Studio M5 Ultra, 512 GB); our own lab machine, run by a separate agent that saw only this repo. It was not a third party.
+**Replication.** On 21 Nov 2026 a separate agent that saw only this repo reproduced our one-Mac TensorFold result closely on the 16 published prompts (our own median end-to-end on them is 79.57 tok/s, in [`receipts/`](receipts/README.md)). Same model of hardware (Mac Studio M5 Ultra, 512 GB); it ran on our own lab machine, so it was not a third party. Its receipt is not published yet; we will add it when the replication is re-run.
 
 ![Model](https://img.shields.io/badge/model-GLM--5.3--Flash%20320B%20MoE-111111)
 ![Active](https://img.shields.io/badge/active%20params-18B-555555)
@@ -22,7 +22,7 @@ This work stands on other people's generosity. Thank you to **Ash Hart and Tenso
 
 **Why.** Very large AI models usually live in data centres. We wanted to know whether one of the largest open models could run fast and privately on two desktop computers, and which free engine is best for which job.
 
-**How.** We joined two Apple Mac Studios with a single cable, gave every engine the same model, and timed real requests: one person, many people at once, long documents, and a maths test. Each test was repeated with fresh restarts, and every number is measured and published with its raw data.
+**How.** We joined two Apple Mac Studios with a single cable, gave every engine the same model, and timed real requests: one person, many people at once, long documents, and a maths test. The main Round 7 tests were repeated (3 fresh restarts for one person, 3 repeats of most many-users steps, 2 repeats of the long-document test); other results, such as the Round 5 many-users tests, are single runs. Every number comes from our own lab logs, and the per-request data for Rounds 6 and 7 is published in [`receipts/`](receipts/README.md).
 
 **What we found.**
 - **One person:** 141.4 tokens per second of output with the model split across both Macs; 94.7 on a single Mac with TensorFold.
@@ -38,14 +38,14 @@ All `MEASURED`, `4-bit, lossy`, on the same TensorFold `GLM-5.3-Flash-MLX-4bit-M
 
 | | **GLM-Tandem** — 2 Macs, tensor-parallel over Thunderbolt 5 RDMA | **TensorFold 1.2.10** — 1 Mac | **mlx-vlm 0.8.0** — 1 Mac |
 |---|---|---|---|
-| **Prompt reading (prefill)** | **2,032.8 tok/s** at 13,985 tokens; **2,174.0** at 53,990 | **2,071.6 tok/s** at 31,995 tokens; **2,002.6** at 127,996 | not measured on public text |
+| **Prompt reading (prefill)** | **2,032.8 tok/s** at 13,985 tokens; **2,174.0** at 53,990 | **2,071.6 tok/s** at 31,995 tokens; **2,002.6** at 127,996 | **782–845 tok/s** at 14,004–53,695 tokens (19 Nov, one run each, preliminary; that text is not included in this repo) |
 | **Output (decode), 1 user, median** | **141.4 tok/s** | **94.7 tok/s** | **43.4 tok/s** |
 | **End-to-end, 1 user, median** | 119.9 tok/s | 81.7 tok/s | 41.7 tok/s |
 | **Many users, total output** | 248.3 tok/s at 32 users | 271.8 tok/s at 32 users (one per Mac) | 334.7 tok/s at 64 users (one per Mac) |
-| **Peak memory per Mac** | 98.3 / 100.0 GB | 189.2 GB | 196.2 GB |
-| **Longest prompt tested** | 53,990 tokens | 127,996 tokens | — |
+| **Peak memory per Mac, 1 user** | 98.3 / 100.0 GB | 189.2 GB | 196.2 GB |
+| **Longest prompt tested** | 53,990 tokens | 127,996 tokens | 53,695 tokens (19 Nov, one run, preliminary; that text is not included in this repo); 31,995 on RFC 9110 |
 
-Prefill: single long prompt, fresh server, no prompt cache ([`BENCHMARKS.md`](BENCHMARKS.md) §1.4). Single-user output: 144 timed requests per set-up across 3 fresh restarts, Round 7. Many users: median of 3 repeats ([`BENCHMARKS.md`](BENCHMARKS.md) §2.3).
+Prefill for GLM-Tandem and TensorFold: single long prompt, fresh server, no prompt cache ([`BENCHMARKS.md`](BENCHMARKS.md) §1.4); for mlx-vlm: one-shot `mlx_vlm.generate` runs on 19 Nov. Single-user output: 144 timed requests per set-up across 3 fresh restarts, Round 7. Many users: median of 3 repeats, Round 7 ([`BENCHMARKS.md`](BENCHMARKS.md) §2.3). Peak memory: Round 7 single-user runs; it rises under heavy load (see Questions people ask).
 
 ## Which engine for which job
 
@@ -57,7 +57,7 @@ Every 4-bit result below used the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP`
 |---|---|---|
 | Fastest for one user | **2 Macs `GLM-Tandem`** (by icryo) | `119.9 tok/s` end-to-end (Round 7), `1.47x` the best one-Mac result |
 | Fastest on one Mac | **`TensorFold 1.2.10`** (with drafting) | `81.7 tok/s` end-to-end (Round 7) |
-| Many users, 8 to 32 | **One `TensorFold 1.2.10` per Mac** | `243.0 tok/s` at 16 users, `271.8` at 32, first token under `5 s` (`3.07 s` max at 32) |
+| Many users (measured at 8, 16 and 32) | **One `TensorFold 1.2.10` per Mac** | `243.0 tok/s` at 16 users, `271.8` at 32, first token under `5 s` (`3.07 s` max at 32) |
 | Short requests next to a 31,995-token document | **`TensorFold 1.2.10`** (one Mac) | shortest median wait: `7.65 s` (the 9th queued stream waited `37.04 s`) |
 | Highest total at 48 to 64 users | **Two `mlx-vlm 0.8.0` servers** (one per Mac) | `334.7 tok/s` at 64 users, `0` errors |
 | Multiple `~8k` prompts at once | **2 Macs `GLM-Tandem`** | `54.1 tok/s`, `18.75 s` median first token (8 x 8k) |
@@ -66,7 +66,7 @@ Every 4-bit result below used the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP`
 
 ### Questions people ask
 
-- **Does it fit on one Mac?** Yes. On one 512 GB Mac Studio the 4-bit model peaked at 189.2 GB with TensorFold and 196.2 GB with mlx-vlm. The second Mac adds speed for a single user (GLM-Tandem splits the model across both).
+- **Does it fit on one Mac?** Yes. On one 512 GB Mac Studio, for one user (Round 7), the 4-bit model peaked at 189.2 GB with TensorFold and 196.2 GB with mlx-vlm. Under load it rose: TensorFold reached 191.6 GB at 32 users, and mlx-vlm reached 485.3 GB next to a 31,995-token prompt (our 80% memory watchdog fired). The second Mac adds speed for a single user (GLM-Tandem splits the model across both).
 - **Will it run on a 128 GB or 256 GB Mac?** Not tested. The 4-bit weights alone took 180.58 GB of memory when loaded (measured).
 - **What does the hardware cost?** We do not quote prices; see [Apple's Mac Studio page](https://www.apple.com/mac-studio/).
 - **How much quality does 4-bit lose?** Not measured: `mlx-lm` perplexity does not yet support this model type (`glm5_next`). Our quality checks are the maths and generated-question tests in [Quality Checks](#quality-checks-4-bit-lossy-measured).
@@ -90,7 +90,7 @@ Every 4-bit result below used the same **TensorFold `GLM-5.3-Flash-MLX-4bit-MTP`
 ### About these results
 
 - **TensorFold's pack underlies every 4-bit result.** All engines in the 4-bit tests (`TensorFold`, `GLM-Tandem`, `mlx-vlm` and our shard overlay) loaded `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` (the FP8 rows used the `dealignai` FP8 pack named in BENCHMARKS); thank you to TensorFold, Z.ai, icryo, Blaizzy, jundot and the MLX team ([`CREDITS.md`](CREDITS.md)).
-- **All figures in this README are `MEASURED`** in our lab logs (rounds up to Round 7, 19-20 Nov 2026) (with exact receipt filenames in [`BENCHMARKS.md`](BENCHMARKS.md)).
+- **Every speed, memory and accuracy number in this README is `MEASURED`** in our lab logs (rounds up to Round 7, 19–20 Nov 2026), except where it says not measured or not tested. Model facts (parameter counts) come from the model card, and the 131,051-token window is TensorFold's default setting. Receipt names in the tables are our lab files: the Round 6 and Round 7 data are published in [`receipts/`](receipts/README.md); earlier rounds' logs are not published. Exact receipt filenames are in [`BENCHMARKS.md`](BENCHMARKS.md).
 - **Precision & determinism labels:** Native 4-bit MLX affine (`group_size=64`) is always labelled **`4-bit, lossy`**. Speculative draft decoding (`MTP`) and cross-engine comparisons produce **`same quality, not bit-identical at T=0`**, likely due to `bfloat16` near-tie rounding (inferred in the Round 6 report; not logged per token).
 - **Where things are:** scrubbed per-request data is in [`receipts/`](receipts/README.md), published prompts and their hashes are in [`receipts/prompts/`](receipts/README.md#prompts-prompts), pinned Python environments in [`env/`](env/README.md), standard-library benchmark scripts (single user, many users, fairness, GSM8K scoring, interconnect, comparison with our receipts) in [`scripts/`](scripts/), and [`BENCHMARKS.md`](BENCHMARKS.md) has all full tables, external `CLAIMED` numbers, and `ESTIMATE`s.
 
@@ -115,7 +115,7 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 | **1 Mac `TensorFold v1.2.10`** (`Mac A`, `4-bit, lossy`; `T=0`, `Low` effort) — same-day `A-B-B-A` | **`90.1`** mean of arm medians (`89.5` Run-2 short med, max `99.2`; **`2.10x`** vs 1-Mac `mlx-vlm`; `127,996`-token write `87.8`) | **Yes** (`64.7–65.6%`) | `189.2–189.5 GB` phys | `tf1-run5-abba.json`, `tf1-run1-2.json`, `tf1-run3.json` |
 | **2 Macs `mlx-vlm 0.8.0` + shard overlay** (`fast_synch=1`, `4-bit, lossy`; `T=0`, `Low` effort) | **`49.52`** (mean of run medians; `49.8` in the earlier quiet pass) | No | `90.8 GB` phys (`94.7 GB` mlx) | `result-r4b-gate2-abccba.json`, `twomac-quiet-1119.log` |
 | **1 Mac `mlx-vlm 0.8.0` + overlay** (`4-bit, lossy`; `T=0`, `Low` effort) | **`42.94–42.97`** (`A-B-B-A` arm medians) | No | `178.7–184.9 GB` | `tf1-run5-abba.json` |
-| **1 Mac vs 2 Macs FP8->MXFP8** (`dealignai` `@ d5822b06`, default sync; 1 Mac: `Max` effort, `max_tokens=1,024`; 2 Macs: `T=0`, `Low` effort, `max_tokens=512`) | **1 Mac `26.3–26.5`** vs **2 Macs `21.7–21.8`** (2 Macs are slower than 1 Mac here; `fast_synch=1` stalls) | No | `334.9 GB` (1 Mac) / `178.7 GB` mlx/Mac (2 Macs) | `onemac-fp8-mac-b-2026-11-19.log`, `twomac-quiet-1119.log` |
+| **1 Mac vs 2 Macs FP8->MXFP8** (`dealignai` `@ d5822b06`, default sync; 1 Mac: effort and token cap not recorded; 2 Macs: `T=0`, `Low` effort, `max_tokens=512`) | **1 Mac `26.3–26.5`** vs **2 Macs `21.7–21.8`** (2 Macs are slower than 1 Mac here; `fast_synch=1` stalls) | No | `334.9 GB` (1 Mac) / `178.7 GB` mlx/Mac (2 Macs) | one-Mac MXFP8 lab log, 19 Nov (Mac B), `twomac-quiet-1119.log` |
 | **2 Macs `GLM-Tandem`**, mixed 24 prompts, `Default` (`Max`) effort, `T=0.7`/`0.0`, `max_tokens=1,024` (`4-bit, lossy`, Round 6) | **`121.23`** end-to-end median (`93.49–141.99`); **`136.12`** write median; **`2.86x`** vs 1-Mac `mlx-vlm` (**`3.03x`** paired), **`1.47x`** vs 1-Mac `TensorFold` (**`1.49x`** paired) | **Yes** (`81.5%` head accept) | `99.07 / 98.21 GB` phys | `result-r6-partB.json` |
 | **Same, repeated with 3 fresh restarts** (`T=0`, `max_tokens=512`, `4-bit, lossy`, Round 7) | **`119.9`** E2E / **`141.4`** decode median; **`P/T1` = `1.47x [1.43–1.49]`** over 1-Mac `TensorFold` (`81.7` E2E); `P/Q` = `1.25x [1.22–1.30]` (drafts off `96.2`); 1-Mac `mlx-vlm` `41.7` | **Yes** (`81.0%`, `41,616/51,402`) | `98.3 / 100.0 GB` phys | `result-r7-part1.json` |
 | **1 Mac `TensorFold v1.2.10`**, same mixed 24 prompts (`Default` effort, Round 6) | **`82.32`** E2E median / `89.04` write; 1-Mac `mlx-vlm` `42.45` E2E | **Yes** (`69.7%`) | `190.98 GB` phys | `result-r6-partB.json` |
@@ -136,6 +136,8 @@ Hardware: Two identical **Apple Mac Studios (`Mac17,15`, M5 Ultra, 512 GiB RAM e
 | **Dual `mlx-vlm 0.8.0`** (`--max-num-seqs 32`, 1 per Mac) | `64` short users | **`334.7`** — `0` errors, still climbing | `5.3` / `5.2` | `4.38` p50 / `7.69` max | `result-r7-part2.json` |
 | **2 Macs `GLM-Tandem`** (`TP_MTP=1`, pre-connected sockets; drafts off above 4 streams) | `32` short users | **`248.3`** (crossover: from `20` users two independent `mlx-vlm` servers give the higher total) | `8.1` / `7.8` | `6.02` p50 / `12.31` max | `result-r7-part2.json` |
 | **2 Macs `GLM-Tandem`** (`8 x ~8k`, Round 7) | `8 x ~8k` users | **`54.1`** — still the leader (no crossover up to `8 x 8k`) | `6.8` / `6.8` | `18.75` p50 / `30.09` max | `result-r7-part2.json` |
+
+Rows citing `result-r5-*` are Round 5 single runs; in rows citing `result-r7-part2.json` the total is the median of 3 repeats (the raw-burst checks were run once).
 
 **Takeaway:** For **one user**, `GLM-Tandem` (`TP_MTP=1`, fast sync, stock `mlx 0.32.4`) on two Macs gives the fastest speed: **`137.13 tok/s`** on short prompts (mean of run medians) (`2.77x` the plain two-Mac pair; `104.61 tok/s` even with drafting off) and **`121.23 tok/s` end-to-end** on a realistic mixed set at `Default` effort, about **`1.5x` over the best one-Mac engine** (`TensorFold v1.2.10`, `1.47x [1.43–1.49]` over three fresh restarts, and not an artefact of prompt-lookup copying). For **many short-prompt users (8 to 32)**, one `TensorFold v1.2.10` per Mac leads (level with `GLM-Tandem` at 2; not run at 4, 12, 20 or 24) (`243.0 tok/s` at 16 users, `271.8` at 32); from `20` users two independent `mlx-vlm` servers give a higher total than the two-Mac `GLM-Tandem` pair and keep scaling, reaching the highest total at 48 to 64 users (`334.7` at 64); for **multiple `8k` prompts**, two-Mac tensor-parallel `GLM-Tandem` leads (`54.1 tok/s`, `18.75 s` median TTFT).
 
@@ -185,7 +187,7 @@ Point your coding agent (or follow manually) at [`AGENTS.md`](AGENTS.md); start 
 
 1. **Preflight both Macs:** Confirm macOS `27.2` (`26B118`), `iogpu.wired_limit_mb=0`, Thunderbolt Bridge (`bridge0`) OFF, `rdma_en4` active, exclusive quiet Macs, and verified model manifests (`TensorFold/GLM-5.3-Flash-MLX-4bit-MTP @ d2b17f52`, `45` SHA-256 + `9` size rows, `bad=0`, plus `config.json` SHA-256 check).
 2. **Verify RDMA sync:** Run `sync_bench` over `jaccl` (`all_sum` `18.2 µs` with fast sync vs `174.1 µs` default, 1,000 steps on quiet Macs) and a 12,000-step fast-sync soak (`0` hangs; run on busy Macs, preliminary).
-3. **Run benchmarks one at a time:** Keep stock `mlx==0.32.4` (`MLX_FENCE_MODE` unset), bind every HTTP server strictly to `127.0.0.1`, **never** enable `MLX_METAL_FAST_SYNCH=1` on 8-bit/FP8/MXFP8 graphs, verify MTP acceptance in both startup logs and per-request telemetry, enforce `30 s` real-token decode watchdogs + memory caps, and remove any temporary Mac-to-Mac SSH keys on exit.
+3. **Run benchmarks one at a time:** Keep stock `mlx==0.32.4` (`MLX_FENCE_MODE` unset), bind every HTTP server to the loopback address only (localhost), **never** enable `MLX_METAL_FAST_SYNCH=1` on 8-bit/FP8/MXFP8 graphs, verify MTP acceptance in both startup logs and per-request telemetry, enforce `30 s` real-token decode watchdogs + memory caps, and remove any temporary Mac-to-Mac SSH keys on exit.
 4. **Compare same-day:** Use interleaved `A-B-B-A` / `A-B-C-C-B-A` passes on fresh servers (`cached_tokens=0`) and record the full receipt schema in [`AGENTS.md`](AGENTS.md).
 
 ---

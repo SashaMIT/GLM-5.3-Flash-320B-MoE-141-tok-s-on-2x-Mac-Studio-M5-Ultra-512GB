@@ -9,7 +9,7 @@ Scrubbing: the two Macs are named `mac_a` and `mac_b` (originally their host nam
 | File | Backs | SHA-256 |
 |---|---|---|
 | `result-r6-summary.json` | Round 6 summary (BENCHMARKS Sections 1.6 and 3.1) | `bfff1322089c6b69f6da7a3a82c4fc86d268c27a3a9e98ac3dcef26f6ea815ee` |
-| `result-r7-summary.json` | Round 7 summary, parts 1 to 5 (Sections 1.7, 2.3, 2.4, 3.2, 3.3) | `d4eccc4c82364770a6ae7cc09dcc189c5a520202ad502f43141276887519719b` |
+| `result-r7-summary.json` | Round 7 summary, parts 1 to 5 (Sections 1.7, 2.3, 2.4, 3.2, 3.3) | `4baa7d69097971169e89ef6ddc88a98afba31f9080df31530475c87c95c7c472` |
 | `r7-part1-requests.csv` | One row per request, Round 7 Part 1 (Tables 1.7.1 to 1.7.4) | `a2a4415d0b6720f004b25d86a880409c3369bc7f2635537841c51a0f6e15981f` |
 | `r7-part2-requests.csv` | One row per request, Round 7 Part 2 many-users ladder (Section 2.3) | `102156ac85fdde509059f7ca2abdccf7fbf4add4203b5d6e2eb609a5114077a4` |
 | `r7-crossover-curve.csv` | Per-step aggregates for the crossover curve (Section 2.3, Table 2.3.2) | `dcc667288e2307c362b265f9a5ab44fc4bf5ba3b8e68a1a5338d32b42f0d4bd2` |

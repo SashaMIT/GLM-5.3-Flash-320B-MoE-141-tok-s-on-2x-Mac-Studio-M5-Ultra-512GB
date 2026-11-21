@@ -2861,7 +2861,7 @@
   "text_bytes": 200000,
   "text_sha256": "0c7d3f5fab58e6be647c5e979e0ddcb0a2526a4d627a14b93b52f880a9e08d55",
   "rfc9110_full_sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
-  "mlx_lm_version": "0.32.2 (~/opt/mlx313)",
+  "mlx_lm_version": "0.32.2 (separate mlx env)",
   "fast_sync": "OFF (unset; guard enforced)",
   "status": "stopped_glm5_next_unsupported",
   "env_pre": {
