@@ -1,0 +1,5 @@
+
+OK
+== sync_bench.py
+sync_bench.py --help OK (set MLX_PYTHON to run it)
+== all tests passed

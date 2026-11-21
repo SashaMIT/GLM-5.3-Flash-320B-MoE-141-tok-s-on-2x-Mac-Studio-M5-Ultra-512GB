@@ -1,0 +1,6 @@
+pin  model.safetensors.index.json: OK
+pin  tokenizer.json: OK
+config num_hidden_layers = 45 OK
+config num_nextn_predict_layers = 1 OK
+config quantization = {"bits": 4, "group_size": 64, "mode": "affine"} OK
+PASS

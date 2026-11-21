@@ -1,0 +1,37 @@
+MTP evidence: glm plan: 45 of 45 layers and the MTP layer, 180.58 GB in buffers, every tensor's name, dtype and shape checked; 4-bit/64 x408 | [tensorfold] serving TensorFold__GLM-5.3-Flash-MLX-4bit-MTP at http://127.0.0.1:8020/v1 (sampling: temperature 1.0, top_p 0.95; drafts: MTP + copies; context: 131051; loaded in 18.6s)
+skipping 8 withheld prompt(s) (text not published): real-sum-01, real-sum-02, real-exp-01, real-ar-01, real-ar-03, real-plan-03, real-qa-01, real-qa-02
+3 warm-up request(s) done
+[T1-r2] pass 1  1/16 real-sum-03    n_out=512   e2e=  69.29 dec=  98.27 ttft=2.189s
+[T1-r2] pass 1  2/16 real-sum-04    n_out=512   e2e=  79.29 dec=  90.73 ttft=0.825s
+[T1-r2] pass 1  3/16 real-exp-02    n_out=512   e2e=  63.14 dec=  97.49 ttft=2.868s
+[T1-r2] pass 1  4/16 real-exp-03    n_out=512   e2e=  80.80 dec=  82.69 ttft=0.157s
+[T1-r2] pass 1  5/16 real-exp-04    n_out=512   e2e=  71.62 dec=  80.92 ttft=0.834s
+[T1-r2] pass 1  6/16 real-code-01   n_out=512   e2e=  82.62 dec=  84.85 ttft=0.175s
+[T1-r2] pass 1  7/16 real-code-02   n_out=512   e2e=  84.14 dec=  86.56 ttft=0.182s
+[T1-r2] pass 1  8/16 real-code-03   n_out=512   e2e=  87.45 dec=  90.15 ttft=0.187s
+[T1-r2] pass 1  9/16 real-code-04   n_out=512   e2e=  82.05 dec=  84.05 ttft=0.160s
+[T1-r2] pass 1 10/16 real-ar-02     n_out=512   e2e=  98.73 dec= 102.26 ttft=0.188s
+[T1-r2] pass 1 11/16 real-ar-04     n_out=512   e2e=  94.02 dec=  96.66 ttft=0.159s
+[T1-r2] pass 1 12/16 real-plan-01   n_out=512   e2e=  77.24 dec=  78.86 ttft=0.149s
+[T1-r2] pass 1 13/16 real-plan-02   n_out=512   e2e=  76.87 dec=  78.30 ttft=0.134s
+[T1-r2] pass 1 14/16 real-plan-04   n_out=512   e2e=  83.35 dec=  85.15 ttft=0.142s
+[T1-r2] pass 1 15/16 real-qa-03     n_out=438   e2e=  77.07 dec= 103.11 ttft=1.445s
+[T1-r2] pass 1 16/16 real-qa-04     n_out=512   e2e=  62.79 dec= 101.53 ttft=3.121s
+[T1-r2] pass 2  1/16 real-sum-03    n_out=512   e2e=  69.31 dec=  98.31 ttft=2.189s
+[T1-r2] pass 2  2/16 real-sum-04    n_out=512   e2e=  78.95 dec=  90.28 ttft=0.825s
+[T1-r2] pass 2  3/16 real-exp-02    n_out=512   e2e=  62.78 dec=  96.58 ttft=2.865s
+[T1-r2] pass 2  4/16 real-exp-03    n_out=512   e2e=  82.57 dec=  84.55 ttft=0.157s
+[T1-r2] pass 2  5/16 real-exp-04    n_out=512   e2e=  73.82 dec=  83.75 ttft=0.834s
+[T1-r2] pass 2  6/16 real-code-01   n_out=512   e2e=  83.17 dec=  85.43 ttft=0.175s
+[T1-r2] pass 2  7/16 real-code-02   n_out=512   e2e=  86.00 dec=  88.56 ttft=0.183s
+[T1-r2] pass 2  8/16 real-code-03   n_out=512   e2e=  87.02 dec=  89.70 ttft=0.187s
+[T1-r2] pass 2  9/16 real-code-04   n_out=512   e2e=  82.66 dec=  84.69 ttft=0.160s
+[T1-r2] pass 2 10/16 real-ar-02     n_out=512   e2e=  98.75 dec= 102.27 ttft=0.188s
+[T1-r2] pass 2 11/16 real-ar-04     n_out=512   e2e=  93.00 dec=  95.58 ttft=0.159s
+[T1-r2] pass 2 12/16 real-plan-01   n_out=512   e2e=  77.51 dec=  79.15 ttft=0.149s
+[T1-r2] pass 2 13/16 real-plan-02   n_out=512   e2e=  76.82 dec=  78.25 ttft=0.134s
+[T1-r2] pass 2 14/16 real-plan-04   n_out=512   e2e=  82.32 dec=  84.06 ttft=0.141s
+[T1-r2] pass 2 15/16 real-qa-03     n_out=438   e2e=  77.28 dec= 103.40 ttft=1.442s
+[T1-r2] pass 2 16/16 real-qa-04     n_out=512   e2e=  62.71 dec= 101.28 ttft=3.120s
+wrote 32 row(s) to results/t1.csv (block_status=ok)
+[T1] N=32  E2E median 80.0 tok/s [95% CI 77.2-82.7]  decode median 89.1 tok/s  TTFT median 0.185 s (p95 3.120 s)  finish {'length': 30, 'stop': 2}  drafted yes (9030/13010)  cached_max 0

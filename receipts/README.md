@@ -17,6 +17,8 @@ Scrubbing: the two Macs are named `mac_a` and `mac_b` (originally their host nam
 | `r7-part5-requests.csv` | One row per sampled GSM8K answer, drafts off/on (Section 3.3) | `0a313b95de222a1d317e7ba4cb5754e9f73bd22ea571f66fa501abdb41445a90` |
 | `model-manifest-4bit-mtp.tsv` | Every file of `TensorFold/GLM-5.3-Flash-MLX-4bit-MTP` @ `d2b17f52` (path, size, LFS SHA-256); read by `scripts/verify_model.py` | `05a1abd48a650180add4fbe4ced4a5ba66865e29f5ec3866948bdbc4247bed22` |
 
+Replication run, 21 Nov 2026: [`replication-2026-11-21/`](replication-2026-11-21/README.md) holds the pins, model check, test run, per-request rows, server logs and the `compare.py` output for the one-Mac quick replication in `AGENTS.md`.
+
 The scripts in [`../scripts/`](../scripts/) write CSVs with the same columns as the request files above. `scripts/compare.py` compares your CSV with ours.
 
 ## Prompts (`prompts/`)

@@ -4,7 +4,7 @@
 
 **Reproduce it:** set up with [`SETUP.md`](SETUP.md), then follow [`AGENTS.md` → Quick replication (one Mac, ~1 hour)](AGENTS.md#quick-replication-one-mac-1-hour) to reproduce our one-Mac TensorFold number with the published prompts, pinned environments and scripts.
 
-**Replication.** On 21 Nov 2026 a separate agent that saw only this repo reproduced our one-Mac TensorFold result closely on the 16 published prompts (our own median end-to-end on them is 79.57 tok/s, in [`receipts/`](receipts/README.md)). Same model of hardware (Mac Studio M5 Ultra, 512 GB); it ran on our own lab machine, so it was not a third party. Its receipt is not published yet; we will add it when the replication is re-run.
+**Replication.** On 21 Nov 2026 a lab agent ran the timed steps of the one-Mac quick replication in [`AGENTS.md`](AGENTS.md#quick-replication-one-mac-1-hour) on the 16 published prompts over 3 fresh restarts (after restart 3's timed rows, the server answered the 16 prompts once more to record reply hashes): **79.12 tok/s** median end-to-end vs our receipt's 79.57 (-0.6%, inside the ±5% pass band: PASS), and decode 88.96 vs 88.94 tok/s, 96 requests each. Same model of hardware (Mac Studio M5 Ultra, 512 GB); it ran on our own lab machine, so it was not a third party. Receipt: [`receipts/replication-2026-11-21/`](receipts/replication-2026-11-21/README.md).
 
 ![Model](https://img.shields.io/badge/model-GLM--5.3--Flash%20320B%20MoE-111111)
 ![Active](https://img.shields.io/badge/active%20params-18B-555555)

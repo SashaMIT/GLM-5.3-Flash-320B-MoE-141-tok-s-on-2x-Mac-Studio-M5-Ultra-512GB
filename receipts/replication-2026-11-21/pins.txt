@@ -1,0 +1,10 @@
+macOS 27.2 build 26B118
+model Mac17,15 chip Apple M5 Ultra ram_bytes 549755813888
+iogpu.wired_limit_mb=0
+python3 Python 3.9.6
+tensorfold-1.2.10-macos-arm64.tar.gz sha256 76eb33cce9e297f156cfe5cbb0cec664b0266f4ecc3d103176adadc6aee21e58
+tensorfold-native sha256 ef0ab81eb11496956cf33eba9fd16d26b3500be54f6c93b08885d667c1af19b6
+prompts r6-real-public.json sha256 2b24d9954fed804c06ad19390dbb3cfdf984345476f8be11280a05e49d7a2443
+Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
