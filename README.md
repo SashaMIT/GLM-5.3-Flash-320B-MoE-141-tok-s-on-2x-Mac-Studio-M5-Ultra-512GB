@@ -47,6 +47,26 @@ All `MEASURED`, `4-bit, lossy`, on the same TensorFold `GLM-5.3-Flash-MLX-4bit-M
 
 Prefill for GLM-Tandem and TensorFold: single long prompt, fresh server, no prompt cache ([`BENCHMARKS.md`](BENCHMARKS.md) §1.4); for mlx-vlm: one-shot `mlx_vlm.generate` runs on 19 Nov. Single-user output: 144 timed requests per set-up across 3 fresh restarts, Round 7. Many users: median of 3 repeats, Round 7 ([`BENCHMARKS.md`](BENCHMARKS.md) §2.3). Peak memory: Round 7 single-user runs; it rises under heavy load (see Questions people ask).
 
+### Time to first token (how long before the first word appears)
+
+First-token time (TTFT) was logged for every request; this table gathers the Round 7 values that are spread across [`BENCHMARKS.md`](BENCHMARKS.md) §2.3 and the many-users table below. Per-request data: [`receipts/r7-part2-requests.csv`](receipts/r7-part2-requests.csv) (column `ttft_s`). `MEASURED`, `4-bit, lossy`, `T=0`, `max_tokens=256`, `cached_tokens=0`, client sockets pre-connected; seconds, median (p50) / max, median of 3 repeats where repeated.
+
+| Users at once | Prompt | **GLM-Tandem, 2 Macs** | Drafting on Tandem? | TensorFold, one per Mac | mlx-vlm, one per Mac |
+|---|---|---|---|---|---|
+| 1 | short (~95 tokens) | **0.35** / 0.35 | yes | not run | 0.39 / 0.39 |
+| 2 | short | **0.64** / 0.66 | yes | 0.23 / 0.24 | 0.38 / 0.40 |
+| 4 | short | **1.10** / 1.33 | yes | not run | 0.70 / 0.76 |
+| 8 | short | **1.70** / 2.55 | no (ramp edges only) | 0.81 / 0.82 | 1.03 / 1.06 |
+| 32 | short | **6.02** / 12.31 | no (ramp edges only) | 3.02 / 3.07 | 2.25 / 3.36 |
+| 1 | ~8k tokens | **3.72** / 3.72 | yes | not run | 7.94 / 7.94 |
+| 2 | ~8k | **6.48** / 7.47 | yes | not run | 7.92 / 7.94 |
+| 4 | ~8k | **11.84** / 14.90 | yes | not run | 14.96 / 21.73 |
+| 8 | ~8k | **18.75** / 30.09 | no (ramp edges only) | 21.12 / 34.82 (one repeat) | 54.40 / 56.26 |
+
+- **5 users was not a measured step** (the `GLM-Tandem` ladder ran 1, 2, 4, 8, 12, 16, 20, 24, 32, 48; [`BENCHMARKS.md`](BENCHMARKS.md) §2.3 has every step). `GLM-Tandem` at pin `1a70342` stops drafting at 5 or more concurrent streams, so its single-user `141.4 tok/s` is a one-user figure; "ramp edges only" means the few drafted tokens came from the moments when fewer than 5 streams were active.
+- `GLM-Tandem` ran with `TP_PROMPT_CONC=1`, which reads one prompt at a time; the rise in first-token time with several `~8k` prompts fits prompts waiting their turn. We did not profile it, and we did not test other `TP_PROMPT_CONC` values.
+- Without pre-connected sockets, a raw simultaneous burst of 32 users against `GLM-Tandem` completed 9 and dropped 23 (`s1-raw-burst-u32`); the TensorFold and mlx-vlm pairs completed 32/32.
+
 ## Which engine for which job
 
 ![Table 1: the right engine for each job](charts/0-at-a-glance.png)
